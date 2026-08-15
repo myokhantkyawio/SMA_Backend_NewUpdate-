@@ -198,13 +198,18 @@ export async function login(
       },
     });
   } catch (error) {
-    console.error("Login error:", error);
+  console.error("================================");
+  console.error("LOGIN ERROR:", error);
+  console.error("================================");
 
-    return res.status(500).json({
-      success: false,
-      message: "Internal server error",
-    });
-  }
+  return res.status(500).json({
+    success: false,
+    message:
+      error instanceof Error
+        ? error.message
+        : "Internal server error",
+  });
+}
 }
 
 export async function me(
