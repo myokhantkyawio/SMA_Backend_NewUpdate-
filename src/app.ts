@@ -25,6 +25,7 @@ import cashShiftRoutes from "./routes/cashShift.routes";
 import stockTransferRoutes from "./routes/stockTransfer.routes";
 import auditRoutes from "./routes/audit.routes";
 import settingRoutes from "./routes/setting.routes";
+import prisma from "./config/prisma";
 const app = express();
 
 app.use(
@@ -130,11 +131,26 @@ app.use(
   "/api/settings",
   settingRoutes
 );
-app.get("/api/health", (_req, res) => {
-  res.json({
-    success: true,
-    message: "SMA POS Backend is running",
-  });
+app.get("/api/health", async (_req, res) => {
+  try {
+    await prisma.$queryRaw`SELECT 1`;
+
+    return res.status(200).json({
+      success: true,
+      message: "SMA POS Backend and Database are connected",
+    });
+  } catch (error) {
+    console.error("DATABASE HEALTH ERROR:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Database connection failed",
+      error:
+        error instanceof Error
+          ? error.message
+          : "Unknown database error",
+    });
+  }
 });
 
 export default app;
