@@ -71,9 +71,10 @@ export async function register(
 
     const userCount = await prisma.user.count();
 
-    const role = userCount === 0
-      ? "OWNER"
-      : "CASHIER";
+    const role =
+      userCount === 0
+        ? "OWNER"
+        : "CASHIER";
 
     const passwordHash = await bcrypt.hash(
       password,
@@ -114,7 +115,7 @@ export async function register(
       },
     });
   } catch (error) {
-    console.error("Register error:", error);
+    console.error("REGISTER ERROR:", error);
 
     return res.status(500).json({
       success: false,
@@ -133,7 +134,12 @@ export async function login(
       password,
     } = req.body;
 
+    console.log("========== LOGIN START ==========");
+
     if (!email || !password) {
+      console.log("LOGIN ERROR: Missing email or password");
+      console.log("================================");
+
       return res.status(400).json({
         success: false,
         message: "Email and password are required",
@@ -144,32 +150,89 @@ export async function login(
       .trim()
       .toLowerCase();
 
+    console.log(
+      "LOGIN EMAIL:",
+      normalizedEmail
+    );
+
     const user = await prisma.user.findUnique({
       where: {
         email: normalizedEmail,
       },
     });
 
+    console.log(
+      "USER FOUND:",
+      !!user
+    );
+
     if (!user) {
+      console.log(
+        "RESULT: USER NOT FOUND"
+      );
+      console.log(
+        "================================"
+      );
+
       return res.status(401).json({
         success: false,
         message: "Invalid email or password",
       });
     }
 
+    console.log(
+      "USER EMAIL:",
+      user.email
+    );
+
+    console.log(
+      "USER ACTIVE:",
+      user.isActive
+    );
+
+    console.log(
+      "USER ROLE:",
+      user.role
+    );
+
+    console.log(
+      "HASH EXISTS:",
+      !!user.passwordHash
+    );
+
     if (!user.isActive) {
+      console.log(
+        "RESULT: USER INACTIVE"
+      );
+      console.log(
+        "================================"
+      );
+
       return res.status(403).json({
         success: false,
         message: "Your account is inactive",
       });
     }
 
-    const passwordValid = await bcrypt.compare(
-      password,
-      user.passwordHash
+    const passwordValid =
+      await bcrypt.compare(
+        password,
+        user.passwordHash
+      );
+
+    console.log(
+      "PASSWORD VALID:",
+      passwordValid
     );
 
     if (!passwordValid) {
+      console.log(
+        "RESULT: PASSWORD INVALID"
+      );
+      console.log(
+        "================================"
+      );
+
       return res.status(401).json({
         success: false,
         message: "Invalid email or password",
@@ -181,6 +244,14 @@ export async function login(
       role: user.role,
       branchId: user.branchId,
     });
+
+    console.log(
+      "RESULT: LOGIN SUCCESS"
+    );
+
+    console.log(
+      "================================"
+    );
 
     return res.status(200).json({
       success: true,
@@ -198,18 +269,27 @@ export async function login(
       },
     });
   } catch (error) {
-  console.error("================================");
-  console.error("LOGIN ERROR:", error);
-  console.error("================================");
+    console.error(
+      "================================"
+    );
 
-  return res.status(500).json({
-    success: false,
-    message:
-      error instanceof Error
-        ? error.message
-        : "Internal server error",
-  });
-}
+    console.error(
+      "LOGIN ERROR:",
+      error
+    );
+
+    console.error(
+      "================================"
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : "Internal server error",
+    });
+  }
 }
 
 export async function me(
@@ -231,7 +311,10 @@ export async function me(
       },
     });
   } catch (error) {
-    console.error("Me error:", error);
+    console.error(
+      "ME ERROR:",
+      error
+    );
 
     return res.status(500).json({
       success: false,
