@@ -248,8 +248,8 @@ export type CashMovementWhereInput = {
   reason?: Prisma.StringNullableFilter<"CashMovement"> | string | null
   reference?: Prisma.StringNullableFilter<"CashMovement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CashMovement"> | Date | string
-  shift?: Prisma.XOR<Prisma.CashShiftScalarRelationFilter, Prisma.CashShiftWhereInput>
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
+  shift?: Prisma.XOR<Prisma.CashShiftScalarRelationFilter, Prisma.CashShiftWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -263,8 +263,8 @@ export type CashMovementOrderByWithRelationInput = {
   reason?: Prisma.SortOrderInput | Prisma.SortOrder
   reference?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  shift?: Prisma.CashShiftOrderByWithRelationInput
   branch?: Prisma.BranchOrderByWithRelationInput
+  shift?: Prisma.CashShiftOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -281,8 +281,8 @@ export type CashMovementWhereUniqueInput = Prisma.AtLeast<{
   reason?: Prisma.StringNullableFilter<"CashMovement"> | string | null
   reference?: Prisma.StringNullableFilter<"CashMovement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CashMovement"> | Date | string
-  shift?: Prisma.XOR<Prisma.CashShiftScalarRelationFilter, Prisma.CashShiftWhereInput>
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
+  shift?: Prisma.XOR<Prisma.CashShiftScalarRelationFilter, Prisma.CashShiftWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
@@ -325,8 +325,8 @@ export type CashMovementCreateInput = {
   reason?: string | null
   reference?: string | null
   createdAt?: Date | string
-  shift: Prisma.CashShiftCreateNestedOneWithoutMovementsInput
   branch: Prisma.BranchCreateNestedOneWithoutCashMovementsInput
+  shift: Prisma.CashShiftCreateNestedOneWithoutMovementsInput
   user: Prisma.UserCreateNestedOneWithoutCashMovementsInput
 }
 
@@ -349,8 +349,8 @@ export type CashMovementUpdateInput = {
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  shift?: Prisma.CashShiftUpdateOneRequiredWithoutMovementsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutCashMovementsNestedInput
+  shift?: Prisma.CashShiftUpdateOneRequiredWithoutMovementsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutCashMovementsNestedInput
 }
 
@@ -653,8 +653,8 @@ export type CashMovementCreateWithoutUserInput = {
   reason?: string | null
   reference?: string | null
   createdAt?: Date | string
-  shift: Prisma.CashShiftCreateNestedOneWithoutMovementsInput
   branch: Prisma.BranchCreateNestedOneWithoutCashMovementsInput
+  shift: Prisma.CashShiftCreateNestedOneWithoutMovementsInput
 }
 
 export type CashMovementUncheckedCreateWithoutUserInput = {
@@ -804,8 +804,8 @@ export type CashMovementUpdateWithoutUserInput = {
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  shift?: Prisma.CashShiftUpdateOneRequiredWithoutMovementsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutCashMovementsNestedInput
+  shift?: Prisma.CashShiftUpdateOneRequiredWithoutMovementsNestedInput
 }
 
 export type CashMovementUncheckedUpdateWithoutUserInput = {
@@ -886,8 +886,8 @@ export type CashMovementSelect<ExtArgs extends runtime.Types.Extensions.Internal
   reason?: boolean
   reference?: boolean
   createdAt?: boolean
-  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cashMovement"]>
 
@@ -901,8 +901,8 @@ export type CashMovementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   reason?: boolean
   reference?: boolean
   createdAt?: boolean
-  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cashMovement"]>
 
@@ -916,8 +916,8 @@ export type CashMovementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   reason?: boolean
   reference?: boolean
   createdAt?: boolean
-  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cashMovement"]>
 
@@ -935,26 +935,26 @@ export type CashMovementSelectScalar = {
 
 export type CashMovementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "shiftId" | "branchId" | "userId" | "type" | "amount" | "reason" | "reference" | "createdAt", ExtArgs["result"]["cashMovement"]>
 export type CashMovementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type CashMovementIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type CashMovementIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  shift?: boolean | Prisma.CashShiftDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $CashMovementPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CashMovement"
   objects: {
-    shift: Prisma.$CashShiftPayload<ExtArgs>
     branch: Prisma.$BranchPayload<ExtArgs>
+    shift: Prisma.$CashShiftPayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1361,8 +1361,8 @@ readonly fields: CashMovementFieldRefs;
  */
 export interface Prisma__CashMovementClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  shift<T extends Prisma.CashShiftDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CashShiftDefaultArgs<ExtArgs>>): Prisma.Prisma__CashShiftClient<runtime.Types.Result.GetResult<Prisma.$CashShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   branch<T extends Prisma.BranchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BranchDefaultArgs<ExtArgs>>): Prisma.Prisma__BranchClient<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  shift<T extends Prisma.CashShiftDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CashShiftDefaultArgs<ExtArgs>>): Prisma.Prisma__CashShiftClient<runtime.Types.Result.GetResult<Prisma.$CashShiftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.

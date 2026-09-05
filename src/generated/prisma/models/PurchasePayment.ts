@@ -256,9 +256,9 @@ export type PurchasePaymentWhereInput = {
   reference?: Prisma.StringNullableFilter<"PurchasePayment"> | string | null
   note?: Prisma.StringNullableFilter<"PurchasePayment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"PurchasePayment"> | Date | string
+  branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
   purchase?: Prisma.XOR<Prisma.PurchaseScalarRelationFilter, Prisma.PurchaseWhereInput>
   supplier?: Prisma.XOR<Prisma.SupplierNullableScalarRelationFilter, Prisma.SupplierWhereInput> | null
-  branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -273,9 +273,9 @@ export type PurchasePaymentOrderByWithRelationInput = {
   reference?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  branch?: Prisma.BranchOrderByWithRelationInput
   purchase?: Prisma.PurchaseOrderByWithRelationInput
   supplier?: Prisma.SupplierOrderByWithRelationInput
-  branch?: Prisma.BranchOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -293,9 +293,9 @@ export type PurchasePaymentWhereUniqueInput = Prisma.AtLeast<{
   reference?: Prisma.StringNullableFilter<"PurchasePayment"> | string | null
   note?: Prisma.StringNullableFilter<"PurchasePayment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"PurchasePayment"> | Date | string
+  branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
   purchase?: Prisma.XOR<Prisma.PurchaseScalarRelationFilter, Prisma.PurchaseWhereInput>
   supplier?: Prisma.XOR<Prisma.SupplierNullableScalarRelationFilter, Prisma.SupplierWhereInput> | null
-  branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
@@ -340,9 +340,9 @@ export type PurchasePaymentCreateInput = {
   reference?: string | null
   note?: string | null
   createdAt?: Date | string
+  branch: Prisma.BranchCreateNestedOneWithoutPurchasePaymentsInput
   purchase: Prisma.PurchaseCreateNestedOneWithoutPaymentsInput
   supplier?: Prisma.SupplierCreateNestedOneWithoutPurchasePaymentsInput
-  branch: Prisma.BranchCreateNestedOneWithoutPurchasePaymentsInput
   user: Prisma.UserCreateNestedOneWithoutPurchasePaymentsInput
 }
 
@@ -366,9 +366,9 @@ export type PurchasePaymentUpdateInput = {
   reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branch?: Prisma.BranchUpdateOneRequiredWithoutPurchasePaymentsNestedInput
   purchase?: Prisma.PurchaseUpdateOneRequiredWithoutPaymentsNestedInput
   supplier?: Prisma.SupplierUpdateOneWithoutPurchasePaymentsNestedInput
-  branch?: Prisma.BranchUpdateOneRequiredWithoutPurchasePaymentsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutPurchasePaymentsNestedInput
 }
 
@@ -722,9 +722,9 @@ export type PurchasePaymentCreateWithoutUserInput = {
   reference?: string | null
   note?: string | null
   createdAt?: Date | string
+  branch: Prisma.BranchCreateNestedOneWithoutPurchasePaymentsInput
   purchase: Prisma.PurchaseCreateNestedOneWithoutPaymentsInput
   supplier?: Prisma.SupplierCreateNestedOneWithoutPurchasePaymentsInput
-  branch: Prisma.BranchCreateNestedOneWithoutPurchasePaymentsInput
 }
 
 export type PurchasePaymentUncheckedCreateWithoutUserInput = {
@@ -772,8 +772,8 @@ export type PurchasePaymentCreateWithoutSupplierInput = {
   reference?: string | null
   note?: string | null
   createdAt?: Date | string
-  purchase: Prisma.PurchaseCreateNestedOneWithoutPaymentsInput
   branch: Prisma.BranchCreateNestedOneWithoutPurchasePaymentsInput
+  purchase: Prisma.PurchaseCreateNestedOneWithoutPaymentsInput
   user: Prisma.UserCreateNestedOneWithoutPurchasePaymentsInput
 }
 
@@ -822,8 +822,8 @@ export type PurchasePaymentCreateWithoutPurchaseInput = {
   reference?: string | null
   note?: string | null
   createdAt?: Date | string
-  supplier?: Prisma.SupplierCreateNestedOneWithoutPurchasePaymentsInput
   branch: Prisma.BranchCreateNestedOneWithoutPurchasePaymentsInput
+  supplier?: Prisma.SupplierCreateNestedOneWithoutPurchasePaymentsInput
   user: Prisma.UserCreateNestedOneWithoutPurchasePaymentsInput
 }
 
@@ -932,9 +932,9 @@ export type PurchasePaymentUpdateWithoutUserInput = {
   reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  branch?: Prisma.BranchUpdateOneRequiredWithoutPurchasePaymentsNestedInput
   purchase?: Prisma.PurchaseUpdateOneRequiredWithoutPaymentsNestedInput
   supplier?: Prisma.SupplierUpdateOneWithoutPurchasePaymentsNestedInput
-  branch?: Prisma.BranchUpdateOneRequiredWithoutPurchasePaymentsNestedInput
 }
 
 export type PurchasePaymentUncheckedUpdateWithoutUserInput = {
@@ -980,8 +980,8 @@ export type PurchasePaymentUpdateWithoutSupplierInput = {
   reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchase?: Prisma.PurchaseUpdateOneRequiredWithoutPaymentsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutPurchasePaymentsNestedInput
+  purchase?: Prisma.PurchaseUpdateOneRequiredWithoutPaymentsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutPurchasePaymentsNestedInput
 }
 
@@ -1028,8 +1028,8 @@ export type PurchasePaymentUpdateWithoutPurchaseInput = {
   reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  supplier?: Prisma.SupplierUpdateOneWithoutPurchasePaymentsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutPurchasePaymentsNestedInput
+  supplier?: Prisma.SupplierUpdateOneWithoutPurchasePaymentsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutPurchasePaymentsNestedInput
 }
 
@@ -1070,9 +1070,9 @@ export type PurchasePaymentSelect<ExtArgs extends runtime.Types.Extensions.Inter
   reference?: boolean
   note?: boolean
   createdAt?: boolean
+  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   purchase?: boolean | Prisma.PurchaseDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.PurchasePayment$supplierArgs<ExtArgs>
-  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchasePayment"]>
 
@@ -1087,9 +1087,9 @@ export type PurchasePaymentSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   reference?: boolean
   note?: boolean
   createdAt?: boolean
+  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   purchase?: boolean | Prisma.PurchaseDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.PurchasePayment$supplierArgs<ExtArgs>
-  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchasePayment"]>
 
@@ -1104,9 +1104,9 @@ export type PurchasePaymentSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   reference?: boolean
   note?: boolean
   createdAt?: boolean
+  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   purchase?: boolean | Prisma.PurchaseDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.PurchasePayment$supplierArgs<ExtArgs>
-  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchasePayment"]>
 
@@ -1125,30 +1125,30 @@ export type PurchasePaymentSelectScalar = {
 
 export type PurchasePaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "purchaseId" | "supplierId" | "branchId" | "userId" | "amount" | "paymentMethod" | "reference" | "note" | "createdAt", ExtArgs["result"]["purchasePayment"]>
 export type PurchasePaymentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   purchase?: boolean | Prisma.PurchaseDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.PurchasePayment$supplierArgs<ExtArgs>
-  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type PurchasePaymentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   purchase?: boolean | Prisma.PurchaseDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.PurchasePayment$supplierArgs<ExtArgs>
-  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type PurchasePaymentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   purchase?: boolean | Prisma.PurchaseDefaultArgs<ExtArgs>
   supplier?: boolean | Prisma.PurchasePayment$supplierArgs<ExtArgs>
-  branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $PurchasePaymentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PurchasePayment"
   objects: {
+    branch: Prisma.$BranchPayload<ExtArgs>
     purchase: Prisma.$PurchasePayload<ExtArgs>
     supplier: Prisma.$SupplierPayload<ExtArgs> | null
-    branch: Prisma.$BranchPayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1556,9 +1556,9 @@ readonly fields: PurchasePaymentFieldRefs;
  */
 export interface Prisma__PurchasePaymentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  branch<T extends Prisma.BranchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BranchDefaultArgs<ExtArgs>>): Prisma.Prisma__BranchClient<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   purchase<T extends Prisma.PurchaseDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseClient<runtime.Types.Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   supplier<T extends Prisma.PurchasePayment$supplierArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchasePayment$supplierArgs<ExtArgs>>): Prisma.Prisma__SupplierClient<runtime.Types.Result.GetResult<Prisma.$SupplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  branch<T extends Prisma.BranchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BranchDefaultArgs<ExtArgs>>): Prisma.Prisma__BranchClient<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.

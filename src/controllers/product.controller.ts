@@ -12,17 +12,14 @@ function getId(req: AuthRequest): string {
   return id;
 }
 
-// CREATE PRODUCT
+
 export async function createProduct(
   req: AuthRequest,
   res: Response
 ) {
   try {
     const {
-      sku,
-      barcode,
       name,
-      description,
       costPrice,
       sellingPrice,
       unit,
@@ -33,8 +30,11 @@ export async function createProduct(
       maxStock,
     } = req.body;
 
+    /* =================================
+       VALIDATION
+    ================================= */
+
     if (
-      !sku ||
       !name ||
       costPrice === undefined ||
       sellingPrice === undefined
@@ -42,38 +42,13 @@ export async function createProduct(
       return res.status(400).json({
         success: false,
         message:
-          "SKU, name, costPrice and sellingPrice are required",
+          "Name, costPrice and sellingPrice are required",
       });
     }
 
-    const existingSku = await prisma.product.findUnique({
-      where: {
-        sku: String(sku).trim(),
-      },
-    });
-
-    if (existingSku) {
-      return res.status(409).json({
-        success: false,
-        message: "SKU already exists",
-      });
-    }
-
-    if (barcode) {
-      const existingBarcode =
-        await prisma.product.findUnique({
-          where: {
-            barcode: String(barcode).trim(),
-          },
-        });
-
-      if (existingBarcode) {
-        return res.status(409).json({
-          success: false,
-          message: "Barcode already exists",
-        });
-      }
-    }
+    /* =================================
+       CHECK CATEGORY
+    ================================= */
 
     if (categoryId) {
       const category =
@@ -91,6 +66,10 @@ export async function createProduct(
       }
     }
 
+    /* =================================
+       CHECK BRANCH
+    ================================= */
+
     if (branchId) {
       const branch =
         await prisma.branch.findUnique({
@@ -107,22 +86,25 @@ export async function createProduct(
       }
     }
 
+    /* =================================
+       CREATE PRODUCT
+    ================================= */
+
     const product =
       await prisma.product.create({
         data: {
-          sku: String(sku).trim(),
-          barcode: barcode
-            ? String(barcode).trim()
-            : null,
           name: String(name).trim(),
-          description: description
-            ? String(description).trim()
-            : null,
+
           costPrice: Number(costPrice),
-          sellingPrice: Number(sellingPrice),
+
+          sellingPrice: Number(
+            sellingPrice
+          ),
+
           unit: unit
             ? String(unit).trim()
             : "pcs",
+
           categoryId: categoryId
             ? String(categoryId)
             : null,
@@ -130,17 +112,24 @@ export async function createProduct(
           branches: branchId
             ? {
                 create: {
-                  branchId: String(branchId),
+                  branchId:
+                    String(branchId),
+
                   stock:
-                    stock !== undefined
+                    stock !== undefined &&
+                    stock !== ""
                       ? Number(stock)
                       : 0,
+
                   minStock:
-                    minStock !== undefined
+                    minStock !== undefined &&
+                    minStock !== ""
                       ? Number(minStock)
                       : 0,
+
                   maxStock:
-                    maxStock !== undefined
+                    maxStock !== undefined &&
+                    maxStock !== ""
                       ? Number(maxStock)
                       : null,
                 },
@@ -150,6 +139,7 @@ export async function createProduct(
 
         include: {
           category: true,
+
           branches: {
             include: {
               branch: true,
@@ -158,21 +148,32 @@ export async function createProduct(
         },
       });
 
+    /* =================================
+       SUCCESS
+    ================================= */
+
     return res.status(201).json({
       success: true,
-      message: "Product created successfully",
+
+      message:
+        "Product created successfully",
+
       data: product,
     });
   } catch (error) {
-    console.error("Create product error:", error);
+    console.error(
+      "Create product error:",
+      error
+    );
 
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
+
+      message:
+        "Internal server error",
     });
   }
 }
-
 // GET ALL PRODUCTS
 export async function getProducts(
   req: AuthRequest,

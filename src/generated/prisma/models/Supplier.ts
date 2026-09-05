@@ -207,8 +207,8 @@ export type SupplierWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
   purchases?: Prisma.PurchaseListRelationFilter
-  purchaseReturns?: Prisma.PurchaseReturnListRelationFilter
   purchasePayments?: Prisma.PurchasePaymentListRelationFilter
+  purchaseReturns?: Prisma.PurchaseReturnListRelationFilter
 }
 
 export type SupplierOrderByWithRelationInput = {
@@ -221,8 +221,8 @@ export type SupplierOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   purchases?: Prisma.PurchaseOrderByRelationAggregateInput
-  purchaseReturns?: Prisma.PurchaseReturnOrderByRelationAggregateInput
   purchasePayments?: Prisma.PurchasePaymentOrderByRelationAggregateInput
+  purchaseReturns?: Prisma.PurchaseReturnOrderByRelationAggregateInput
 }
 
 export type SupplierWhereUniqueInput = Prisma.AtLeast<{
@@ -238,8 +238,8 @@ export type SupplierWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Supplier"> | Date | string
   purchases?: Prisma.PurchaseListRelationFilter
-  purchaseReturns?: Prisma.PurchaseReturnListRelationFilter
   purchasePayments?: Prisma.PurchasePaymentListRelationFilter
+  purchaseReturns?: Prisma.PurchaseReturnListRelationFilter
 }, "id">
 
 export type SupplierOrderByWithAggregationInput = {
@@ -280,8 +280,8 @@ export type SupplierCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   purchases?: Prisma.PurchaseCreateNestedManyWithoutSupplierInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutSupplierInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutSupplierInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateInput = {
@@ -294,8 +294,8 @@ export type SupplierUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutSupplierInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutSupplierInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUpdateInput = {
@@ -308,8 +308,8 @@ export type SupplierUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   purchases?: Prisma.PurchaseUpdateManyWithoutSupplierNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutSupplierNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutSupplierNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateInput = {
@@ -322,8 +322,8 @@ export type SupplierUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutSupplierNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutSupplierNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateManyInput = {
@@ -454,8 +454,8 @@ export type SupplierCreateWithoutPurchasesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutSupplierInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutSupplierInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierUncheckedCreateWithoutPurchasesInput = {
@@ -467,8 +467,8 @@ export type SupplierUncheckedCreateWithoutPurchasesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutSupplierInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutSupplierInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutSupplierInput
 }
 
 export type SupplierCreateOrConnectWithoutPurchasesInput = {
@@ -496,8 +496,8 @@ export type SupplierUpdateWithoutPurchasesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutSupplierNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutSupplierNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierUncheckedUpdateWithoutPurchasesInput = {
@@ -509,8 +509,8 @@ export type SupplierUncheckedUpdateWithoutPurchasesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutSupplierNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutSupplierNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutSupplierNestedInput
 }
 
 export type SupplierCreateWithoutPurchaseReturnsInput = {
@@ -656,14 +656,14 @@ export type SupplierUncheckedUpdateWithoutPurchasePaymentsInput = {
 
 export type SupplierCountOutputType = {
   purchases: number
-  purchaseReturns: number
   purchasePayments: number
+  purchaseReturns: number
 }
 
 export type SupplierCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   purchases?: boolean | SupplierCountOutputTypeCountPurchasesArgs
-  purchaseReturns?: boolean | SupplierCountOutputTypeCountPurchaseReturnsArgs
   purchasePayments?: boolean | SupplierCountOutputTypeCountPurchasePaymentsArgs
+  purchaseReturns?: boolean | SupplierCountOutputTypeCountPurchaseReturnsArgs
 }
 
 /**
@@ -686,15 +686,15 @@ export type SupplierCountOutputTypeCountPurchasesArgs<ExtArgs extends runtime.Ty
 /**
  * SupplierCountOutputType without action
  */
-export type SupplierCountOutputTypeCountPurchaseReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PurchaseReturnWhereInput
+export type SupplierCountOutputTypeCountPurchasePaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchasePaymentWhereInput
 }
 
 /**
  * SupplierCountOutputType without action
  */
-export type SupplierCountOutputTypeCountPurchasePaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PurchasePaymentWhereInput
+export type SupplierCountOutputTypeCountPurchaseReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchaseReturnWhereInput
 }
 
 
@@ -708,8 +708,8 @@ export type SupplierSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   purchases?: boolean | Prisma.Supplier$purchasesArgs<ExtArgs>
-  purchaseReturns?: boolean | Prisma.Supplier$purchaseReturnsArgs<ExtArgs>
   purchasePayments?: boolean | Prisma.Supplier$purchasePaymentsArgs<ExtArgs>
+  purchaseReturns?: boolean | Prisma.Supplier$purchaseReturnsArgs<ExtArgs>
   _count?: boolean | Prisma.SupplierCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supplier"]>
 
@@ -749,8 +749,8 @@ export type SupplierSelectScalar = {
 export type SupplierOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phone" | "email" | "address" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["supplier"]>
 export type SupplierInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   purchases?: boolean | Prisma.Supplier$purchasesArgs<ExtArgs>
-  purchaseReturns?: boolean | Prisma.Supplier$purchaseReturnsArgs<ExtArgs>
   purchasePayments?: boolean | Prisma.Supplier$purchasePaymentsArgs<ExtArgs>
+  purchaseReturns?: boolean | Prisma.Supplier$purchaseReturnsArgs<ExtArgs>
   _count?: boolean | Prisma.SupplierCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SupplierIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -760,8 +760,8 @@ export type $SupplierPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   name: "Supplier"
   objects: {
     purchases: Prisma.$PurchasePayload<ExtArgs>[]
-    purchaseReturns: Prisma.$PurchaseReturnPayload<ExtArgs>[]
     purchasePayments: Prisma.$PurchasePaymentPayload<ExtArgs>[]
+    purchaseReturns: Prisma.$PurchaseReturnPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1167,8 +1167,8 @@ readonly fields: SupplierFieldRefs;
 export interface Prisma__SupplierClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   purchases<T extends Prisma.Supplier$purchasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$purchasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  purchaseReturns<T extends Prisma.Supplier$purchaseReturnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$purchaseReturnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseReturnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchasePayments<T extends Prisma.Supplier$purchasePaymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$purchasePaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchasePaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  purchaseReturns<T extends Prisma.Supplier$purchaseReturnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Supplier$purchaseReturnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseReturnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1623,30 +1623,6 @@ export type Supplier$purchasesArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Supplier.purchaseReturns
- */
-export type Supplier$purchaseReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PurchaseReturn
-   */
-  select?: Prisma.PurchaseReturnSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the PurchaseReturn
-   */
-  omit?: Prisma.PurchaseReturnOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PurchaseReturnInclude<ExtArgs> | null
-  where?: Prisma.PurchaseReturnWhereInput
-  orderBy?: Prisma.PurchaseReturnOrderByWithRelationInput | Prisma.PurchaseReturnOrderByWithRelationInput[]
-  cursor?: Prisma.PurchaseReturnWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PurchaseReturnScalarFieldEnum | Prisma.PurchaseReturnScalarFieldEnum[]
-}
-
-/**
  * Supplier.purchasePayments
  */
 export type Supplier$purchasePaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1668,6 +1644,30 @@ export type Supplier$purchasePaymentsArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.PurchasePaymentScalarFieldEnum | Prisma.PurchasePaymentScalarFieldEnum[]
+}
+
+/**
+ * Supplier.purchaseReturns
+ */
+export type Supplier$purchaseReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseReturn
+   */
+  select?: Prisma.PurchaseReturnSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PurchaseReturn
+   */
+  omit?: Prisma.PurchaseReturnOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PurchaseReturnInclude<ExtArgs> | null
+  where?: Prisma.PurchaseReturnWhereInput
+  orderBy?: Prisma.PurchaseReturnOrderByWithRelationInput | Prisma.PurchaseReturnOrderByWithRelationInput[]
+  cursor?: Prisma.PurchaseReturnWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PurchaseReturnScalarFieldEnum | Prisma.PurchaseReturnScalarFieldEnum[]
 }
 
 /**

@@ -256,8 +256,8 @@ export type SaleReturnWhereInput = {
   status?: Prisma.EnumSaleReturnStatusFilter<"SaleReturn"> | $Enums.SaleReturnStatus
   createdAt?: Prisma.DateTimeFilter<"SaleReturn"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SaleReturn"> | Date | string
-  sale?: Prisma.XOR<Prisma.SaleScalarRelationFilter, Prisma.SaleWhereInput>
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
+  sale?: Prisma.XOR<Prisma.SaleScalarRelationFilter, Prisma.SaleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   items?: Prisma.SaleReturnItemListRelationFilter
 }
@@ -273,8 +273,8 @@ export type SaleReturnOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  sale?: Prisma.SaleOrderByWithRelationInput
   branch?: Prisma.BranchOrderByWithRelationInput
+  sale?: Prisma.SaleOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
   items?: Prisma.SaleReturnItemOrderByRelationAggregateInput
 }
@@ -293,8 +293,8 @@ export type SaleReturnWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumSaleReturnStatusFilter<"SaleReturn"> | $Enums.SaleReturnStatus
   createdAt?: Prisma.DateTimeFilter<"SaleReturn"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SaleReturn"> | Date | string
-  sale?: Prisma.XOR<Prisma.SaleScalarRelationFilter, Prisma.SaleWhereInput>
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
+  sale?: Prisma.XOR<Prisma.SaleScalarRelationFilter, Prisma.SaleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   items?: Prisma.SaleReturnItemListRelationFilter
 }, "id" | "returnNumber">
@@ -341,8 +341,8 @@ export type SaleReturnCreateInput = {
   status?: $Enums.SaleReturnStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  sale: Prisma.SaleCreateNestedOneWithoutReturnsInput
   branch: Prisma.BranchCreateNestedOneWithoutSaleReturnsInput
+  sale: Prisma.SaleCreateNestedOneWithoutReturnsInput
   user: Prisma.UserCreateNestedOneWithoutSaleReturnsInput
   items?: Prisma.SaleReturnItemCreateNestedManyWithoutSaleReturnInput
 }
@@ -369,8 +369,8 @@ export type SaleReturnUpdateInput = {
   status?: Prisma.EnumSaleReturnStatusFieldUpdateOperationsInput | $Enums.SaleReturnStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sale?: Prisma.SaleUpdateOneRequiredWithoutReturnsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutSaleReturnsNestedInput
+  sale?: Prisma.SaleUpdateOneRequiredWithoutReturnsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutSaleReturnsNestedInput
   items?: Prisma.SaleReturnItemUpdateManyWithoutSaleReturnNestedInput
 }
@@ -707,8 +707,8 @@ export type SaleReturnCreateWithoutUserInput = {
   status?: $Enums.SaleReturnStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  sale: Prisma.SaleCreateNestedOneWithoutReturnsInput
   branch: Prisma.BranchCreateNestedOneWithoutSaleReturnsInput
+  sale: Prisma.SaleCreateNestedOneWithoutReturnsInput
   items?: Prisma.SaleReturnItemCreateNestedManyWithoutSaleReturnInput
 }
 
@@ -811,8 +811,8 @@ export type SaleReturnCreateWithoutItemsInput = {
   status?: $Enums.SaleReturnStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  sale: Prisma.SaleCreateNestedOneWithoutReturnsInput
   branch: Prisma.BranchCreateNestedOneWithoutSaleReturnsInput
+  sale: Prisma.SaleCreateNestedOneWithoutReturnsInput
   user: Prisma.UserCreateNestedOneWithoutSaleReturnsInput
 }
 
@@ -853,8 +853,8 @@ export type SaleReturnUpdateWithoutItemsInput = {
   status?: Prisma.EnumSaleReturnStatusFieldUpdateOperationsInput | $Enums.SaleReturnStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sale?: Prisma.SaleUpdateOneRequiredWithoutReturnsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutSaleReturnsNestedInput
+  sale?: Prisma.SaleUpdateOneRequiredWithoutReturnsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutSaleReturnsNestedInput
 }
 
@@ -941,8 +941,8 @@ export type SaleReturnUpdateWithoutUserInput = {
   status?: Prisma.EnumSaleReturnStatusFieldUpdateOperationsInput | $Enums.SaleReturnStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sale?: Prisma.SaleUpdateOneRequiredWithoutReturnsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutSaleReturnsNestedInput
+  sale?: Prisma.SaleUpdateOneRequiredWithoutReturnsNestedInput
   items?: Prisma.SaleReturnItemUpdateManyWithoutSaleReturnNestedInput
 }
 
@@ -1063,8 +1063,8 @@ export type SaleReturnSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   items?: boolean | Prisma.SaleReturn$itemsArgs<ExtArgs>
   _count?: boolean | Prisma.SaleReturnCountOutputTypeDefaultArgs<ExtArgs>
@@ -1081,8 +1081,8 @@ export type SaleReturnSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["saleReturn"]>
 
@@ -1097,8 +1097,8 @@ export type SaleReturnSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["saleReturn"]>
 
@@ -1117,28 +1117,28 @@ export type SaleReturnSelectScalar = {
 
 export type SaleReturnOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "returnNumber" | "saleId" | "branchId" | "userId" | "refundAmount" | "reason" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["saleReturn"]>
 export type SaleReturnInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   items?: boolean | Prisma.SaleReturn$itemsArgs<ExtArgs>
   _count?: boolean | Prisma.SaleReturnCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SaleReturnIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type SaleReturnIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $SaleReturnPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SaleReturn"
   objects: {
-    sale: Prisma.$SalePayload<ExtArgs>
     branch: Prisma.$BranchPayload<ExtArgs>
+    sale: Prisma.$SalePayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
     items: Prisma.$SaleReturnItemPayload<ExtArgs>[]
   }
@@ -1547,8 +1547,8 @@ readonly fields: SaleReturnFieldRefs;
  */
 export interface Prisma__SaleReturnClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  sale<T extends Prisma.SaleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SaleDefaultArgs<ExtArgs>>): Prisma.Prisma__SaleClient<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   branch<T extends Prisma.BranchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BranchDefaultArgs<ExtArgs>>): Prisma.Prisma__BranchClient<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  sale<T extends Prisma.SaleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SaleDefaultArgs<ExtArgs>>): Prisma.Prisma__SaleClient<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   items<T extends Prisma.SaleReturn$itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SaleReturn$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SaleReturnItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**

@@ -240,9 +240,9 @@ export type SaleReturnItemWhereInput = {
   quantity?: Prisma.DecimalFilter<"SaleReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice?: Prisma.DecimalFilter<"SaleReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFilter<"SaleReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleReturn?: Prisma.XOR<Prisma.SaleReturnScalarRelationFilter, Prisma.SaleReturnWhereInput>
-  saleItem?: Prisma.XOR<Prisma.SaleItemScalarRelationFilter, Prisma.SaleItemWhereInput>
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
+  saleItem?: Prisma.XOR<Prisma.SaleItemScalarRelationFilter, Prisma.SaleItemWhereInput>
+  saleReturn?: Prisma.XOR<Prisma.SaleReturnScalarRelationFilter, Prisma.SaleReturnWhereInput>
 }
 
 export type SaleReturnItemOrderByWithRelationInput = {
@@ -253,9 +253,9 @@ export type SaleReturnItemOrderByWithRelationInput = {
   quantity?: Prisma.SortOrder
   unitPrice?: Prisma.SortOrder
   total?: Prisma.SortOrder
-  saleReturn?: Prisma.SaleReturnOrderByWithRelationInput
-  saleItem?: Prisma.SaleItemOrderByWithRelationInput
   product?: Prisma.ProductOrderByWithRelationInput
+  saleItem?: Prisma.SaleItemOrderByWithRelationInput
+  saleReturn?: Prisma.SaleReturnOrderByWithRelationInput
 }
 
 export type SaleReturnItemWhereUniqueInput = Prisma.AtLeast<{
@@ -269,9 +269,9 @@ export type SaleReturnItemWhereUniqueInput = Prisma.AtLeast<{
   quantity?: Prisma.DecimalFilter<"SaleReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice?: Prisma.DecimalFilter<"SaleReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFilter<"SaleReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleReturn?: Prisma.XOR<Prisma.SaleReturnScalarRelationFilter, Prisma.SaleReturnWhereInput>
-  saleItem?: Prisma.XOR<Prisma.SaleItemScalarRelationFilter, Prisma.SaleItemWhereInput>
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
+  saleItem?: Prisma.XOR<Prisma.SaleItemScalarRelationFilter, Prisma.SaleItemWhereInput>
+  saleReturn?: Prisma.XOR<Prisma.SaleReturnScalarRelationFilter, Prisma.SaleReturnWhereInput>
 }, "id">
 
 export type SaleReturnItemOrderByWithAggregationInput = {
@@ -307,9 +307,9 @@ export type SaleReturnItemCreateInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleReturn: Prisma.SaleReturnCreateNestedOneWithoutItemsInput
-  saleItem: Prisma.SaleItemCreateNestedOneWithoutReturnsInput
   product: Prisma.ProductCreateNestedOneWithoutSaleReturnItemsInput
+  saleItem: Prisma.SaleItemCreateNestedOneWithoutReturnsInput
+  saleReturn: Prisma.SaleReturnCreateNestedOneWithoutItemsInput
 }
 
 export type SaleReturnItemUncheckedCreateInput = {
@@ -327,9 +327,9 @@ export type SaleReturnItemUpdateInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleReturn?: Prisma.SaleReturnUpdateOneRequiredWithoutItemsNestedInput
-  saleItem?: Prisma.SaleItemUpdateOneRequiredWithoutReturnsNestedInput
   product?: Prisma.ProductUpdateOneRequiredWithoutSaleReturnItemsNestedInput
+  saleItem?: Prisma.SaleItemUpdateOneRequiredWithoutReturnsNestedInput
+  saleReturn?: Prisma.SaleReturnUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type SaleReturnItemUncheckedUpdateInput = {
@@ -552,8 +552,8 @@ export type SaleReturnItemCreateWithoutProductInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleReturn: Prisma.SaleReturnCreateNestedOneWithoutItemsInput
   saleItem: Prisma.SaleItemCreateNestedOneWithoutReturnsInput
+  saleReturn: Prisma.SaleReturnCreateNestedOneWithoutItemsInput
 }
 
 export type SaleReturnItemUncheckedCreateWithoutProductInput = {
@@ -609,8 +609,8 @@ export type SaleReturnItemCreateWithoutSaleItemInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleReturn: Prisma.SaleReturnCreateNestedOneWithoutItemsInput
   product: Prisma.ProductCreateNestedOneWithoutSaleReturnItemsInput
+  saleReturn: Prisma.SaleReturnCreateNestedOneWithoutItemsInput
 }
 
 export type SaleReturnItemUncheckedCreateWithoutSaleItemInput = {
@@ -653,8 +653,8 @@ export type SaleReturnItemCreateWithoutSaleReturnInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleItem: Prisma.SaleItemCreateNestedOneWithoutReturnsInput
   product: Prisma.ProductCreateNestedOneWithoutSaleReturnItemsInput
+  saleItem: Prisma.SaleItemCreateNestedOneWithoutReturnsInput
 }
 
 export type SaleReturnItemUncheckedCreateWithoutSaleReturnInput = {
@@ -706,8 +706,8 @@ export type SaleReturnItemUpdateWithoutProductInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleReturn?: Prisma.SaleReturnUpdateOneRequiredWithoutItemsNestedInput
   saleItem?: Prisma.SaleItemUpdateOneRequiredWithoutReturnsNestedInput
+  saleReturn?: Prisma.SaleReturnUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type SaleReturnItemUncheckedUpdateWithoutProductInput = {
@@ -742,8 +742,8 @@ export type SaleReturnItemUpdateWithoutSaleItemInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleReturn?: Prisma.SaleReturnUpdateOneRequiredWithoutItemsNestedInput
   product?: Prisma.ProductUpdateOneRequiredWithoutSaleReturnItemsNestedInput
+  saleReturn?: Prisma.SaleReturnUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type SaleReturnItemUncheckedUpdateWithoutSaleItemInput = {
@@ -778,8 +778,8 @@ export type SaleReturnItemUpdateWithoutSaleReturnInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   unitPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  saleItem?: Prisma.SaleItemUpdateOneRequiredWithoutReturnsNestedInput
   product?: Prisma.ProductUpdateOneRequiredWithoutSaleReturnItemsNestedInput
+  saleItem?: Prisma.SaleItemUpdateOneRequiredWithoutReturnsNestedInput
 }
 
 export type SaleReturnItemUncheckedUpdateWithoutSaleReturnInput = {
@@ -810,9 +810,9 @@ export type SaleReturnItemSelect<ExtArgs extends runtime.Types.Extensions.Intern
   quantity?: boolean
   unitPrice?: boolean
   total?: boolean
-  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
-  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
+  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["saleReturnItem"]>
 
 export type SaleReturnItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -823,9 +823,9 @@ export type SaleReturnItemSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   quantity?: boolean
   unitPrice?: boolean
   total?: boolean
-  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
-  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
+  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["saleReturnItem"]>
 
 export type SaleReturnItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -836,9 +836,9 @@ export type SaleReturnItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   quantity?: boolean
   unitPrice?: boolean
   total?: boolean
-  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
-  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
+  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["saleReturnItem"]>
 
 export type SaleReturnItemSelectScalar = {
@@ -853,27 +853,27 @@ export type SaleReturnItemSelectScalar = {
 
 export type SaleReturnItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "saleReturnId" | "saleItemId" | "productId" | "quantity" | "unitPrice" | "total", ExtArgs["result"]["saleReturnItem"]>
 export type SaleReturnItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
-  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
+  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
 }
 export type SaleReturnItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
-  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
+  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
 }
 export type SaleReturnItemIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
-  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  saleItem?: boolean | Prisma.SaleItemDefaultArgs<ExtArgs>
+  saleReturn?: boolean | Prisma.SaleReturnDefaultArgs<ExtArgs>
 }
 
 export type $SaleReturnItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SaleReturnItem"
   objects: {
-    saleReturn: Prisma.$SaleReturnPayload<ExtArgs>
-    saleItem: Prisma.$SaleItemPayload<ExtArgs>
     product: Prisma.$ProductPayload<ExtArgs>
+    saleItem: Prisma.$SaleItemPayload<ExtArgs>
+    saleReturn: Prisma.$SaleReturnPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1277,9 +1277,9 @@ readonly fields: SaleReturnItemFieldRefs;
  */
 export interface Prisma__SaleReturnItemClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  saleReturn<T extends Prisma.SaleReturnDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SaleReturnDefaultArgs<ExtArgs>>): Prisma.Prisma__SaleReturnClient<runtime.Types.Result.GetResult<Prisma.$SaleReturnPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  saleItem<T extends Prisma.SaleItemDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SaleItemDefaultArgs<ExtArgs>>): Prisma.Prisma__SaleItemClient<runtime.Types.Result.GetResult<Prisma.$SaleItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  saleItem<T extends Prisma.SaleItemDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SaleItemDefaultArgs<ExtArgs>>): Prisma.Prisma__SaleItemClient<runtime.Types.Result.GetResult<Prisma.$SaleItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  saleReturn<T extends Prisma.SaleReturnDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SaleReturnDefaultArgs<ExtArgs>>): Prisma.Prisma__SaleReturnClient<runtime.Types.Result.GetResult<Prisma.$SaleReturnPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

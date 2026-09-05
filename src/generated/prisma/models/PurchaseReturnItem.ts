@@ -240,9 +240,9 @@ export type PurchaseReturnItemWhereInput = {
   quantity?: Prisma.DecimalFilter<"PurchaseReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice?: Prisma.DecimalFilter<"PurchaseReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFilter<"PurchaseReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseReturn?: Prisma.XOR<Prisma.PurchaseReturnScalarRelationFilter, Prisma.PurchaseReturnWhereInput>
-  purchaseItem?: Prisma.XOR<Prisma.PurchaseItemScalarRelationFilter, Prisma.PurchaseItemWhereInput>
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
+  purchaseItem?: Prisma.XOR<Prisma.PurchaseItemScalarRelationFilter, Prisma.PurchaseItemWhereInput>
+  purchaseReturn?: Prisma.XOR<Prisma.PurchaseReturnScalarRelationFilter, Prisma.PurchaseReturnWhereInput>
 }
 
 export type PurchaseReturnItemOrderByWithRelationInput = {
@@ -253,9 +253,9 @@ export type PurchaseReturnItemOrderByWithRelationInput = {
   quantity?: Prisma.SortOrder
   costPrice?: Prisma.SortOrder
   total?: Prisma.SortOrder
-  purchaseReturn?: Prisma.PurchaseReturnOrderByWithRelationInput
-  purchaseItem?: Prisma.PurchaseItemOrderByWithRelationInput
   product?: Prisma.ProductOrderByWithRelationInput
+  purchaseItem?: Prisma.PurchaseItemOrderByWithRelationInput
+  purchaseReturn?: Prisma.PurchaseReturnOrderByWithRelationInput
 }
 
 export type PurchaseReturnItemWhereUniqueInput = Prisma.AtLeast<{
@@ -269,9 +269,9 @@ export type PurchaseReturnItemWhereUniqueInput = Prisma.AtLeast<{
   quantity?: Prisma.DecimalFilter<"PurchaseReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice?: Prisma.DecimalFilter<"PurchaseReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFilter<"PurchaseReturnItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseReturn?: Prisma.XOR<Prisma.PurchaseReturnScalarRelationFilter, Prisma.PurchaseReturnWhereInput>
-  purchaseItem?: Prisma.XOR<Prisma.PurchaseItemScalarRelationFilter, Prisma.PurchaseItemWhereInput>
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
+  purchaseItem?: Prisma.XOR<Prisma.PurchaseItemScalarRelationFilter, Prisma.PurchaseItemWhereInput>
+  purchaseReturn?: Prisma.XOR<Prisma.PurchaseReturnScalarRelationFilter, Prisma.PurchaseReturnWhereInput>
 }, "id">
 
 export type PurchaseReturnItemOrderByWithAggregationInput = {
@@ -307,9 +307,9 @@ export type PurchaseReturnItemCreateInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseReturn: Prisma.PurchaseReturnCreateNestedOneWithoutItemsInput
-  purchaseItem: Prisma.PurchaseItemCreateNestedOneWithoutPurchaseReturnItemsInput
   product: Prisma.ProductCreateNestedOneWithoutPurchaseReturnItemsInput
+  purchaseItem: Prisma.PurchaseItemCreateNestedOneWithoutPurchaseReturnItemsInput
+  purchaseReturn: Prisma.PurchaseReturnCreateNestedOneWithoutItemsInput
 }
 
 export type PurchaseReturnItemUncheckedCreateInput = {
@@ -327,9 +327,9 @@ export type PurchaseReturnItemUpdateInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseReturn?: Prisma.PurchaseReturnUpdateOneRequiredWithoutItemsNestedInput
-  purchaseItem?: Prisma.PurchaseItemUpdateOneRequiredWithoutPurchaseReturnItemsNestedInput
   product?: Prisma.ProductUpdateOneRequiredWithoutPurchaseReturnItemsNestedInput
+  purchaseItem?: Prisma.PurchaseItemUpdateOneRequiredWithoutPurchaseReturnItemsNestedInput
+  purchaseReturn?: Prisma.PurchaseReturnUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type PurchaseReturnItemUncheckedUpdateInput = {
@@ -552,8 +552,8 @@ export type PurchaseReturnItemCreateWithoutProductInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseReturn: Prisma.PurchaseReturnCreateNestedOneWithoutItemsInput
   purchaseItem: Prisma.PurchaseItemCreateNestedOneWithoutPurchaseReturnItemsInput
+  purchaseReturn: Prisma.PurchaseReturnCreateNestedOneWithoutItemsInput
 }
 
 export type PurchaseReturnItemUncheckedCreateWithoutProductInput = {
@@ -609,8 +609,8 @@ export type PurchaseReturnItemCreateWithoutPurchaseItemInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseReturn: Prisma.PurchaseReturnCreateNestedOneWithoutItemsInput
   product: Prisma.ProductCreateNestedOneWithoutPurchaseReturnItemsInput
+  purchaseReturn: Prisma.PurchaseReturnCreateNestedOneWithoutItemsInput
 }
 
 export type PurchaseReturnItemUncheckedCreateWithoutPurchaseItemInput = {
@@ -653,8 +653,8 @@ export type PurchaseReturnItemCreateWithoutPurchaseReturnInput = {
   quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   total: runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseItem: Prisma.PurchaseItemCreateNestedOneWithoutPurchaseReturnItemsInput
   product: Prisma.ProductCreateNestedOneWithoutPurchaseReturnItemsInput
+  purchaseItem: Prisma.PurchaseItemCreateNestedOneWithoutPurchaseReturnItemsInput
 }
 
 export type PurchaseReturnItemUncheckedCreateWithoutPurchaseReturnInput = {
@@ -706,8 +706,8 @@ export type PurchaseReturnItemUpdateWithoutProductInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseReturn?: Prisma.PurchaseReturnUpdateOneRequiredWithoutItemsNestedInput
   purchaseItem?: Prisma.PurchaseItemUpdateOneRequiredWithoutPurchaseReturnItemsNestedInput
+  purchaseReturn?: Prisma.PurchaseReturnUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type PurchaseReturnItemUncheckedUpdateWithoutProductInput = {
@@ -742,8 +742,8 @@ export type PurchaseReturnItemUpdateWithoutPurchaseItemInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseReturn?: Prisma.PurchaseReturnUpdateOneRequiredWithoutItemsNestedInput
   product?: Prisma.ProductUpdateOneRequiredWithoutPurchaseReturnItemsNestedInput
+  purchaseReturn?: Prisma.PurchaseReturnUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type PurchaseReturnItemUncheckedUpdateWithoutPurchaseItemInput = {
@@ -778,8 +778,8 @@ export type PurchaseReturnItemUpdateWithoutPurchaseReturnInput = {
   quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   costPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  purchaseItem?: Prisma.PurchaseItemUpdateOneRequiredWithoutPurchaseReturnItemsNestedInput
   product?: Prisma.ProductUpdateOneRequiredWithoutPurchaseReturnItemsNestedInput
+  purchaseItem?: Prisma.PurchaseItemUpdateOneRequiredWithoutPurchaseReturnItemsNestedInput
 }
 
 export type PurchaseReturnItemUncheckedUpdateWithoutPurchaseReturnInput = {
@@ -810,9 +810,9 @@ export type PurchaseReturnItemSelect<ExtArgs extends runtime.Types.Extensions.In
   quantity?: boolean
   costPrice?: boolean
   total?: boolean
-  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
-  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
+  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseReturnItem"]>
 
 export type PurchaseReturnItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -823,9 +823,9 @@ export type PurchaseReturnItemSelectCreateManyAndReturn<ExtArgs extends runtime.
   quantity?: boolean
   costPrice?: boolean
   total?: boolean
-  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
-  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
+  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseReturnItem"]>
 
 export type PurchaseReturnItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -836,9 +836,9 @@ export type PurchaseReturnItemSelectUpdateManyAndReturn<ExtArgs extends runtime.
   quantity?: boolean
   costPrice?: boolean
   total?: boolean
-  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
-  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
+  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["purchaseReturnItem"]>
 
 export type PurchaseReturnItemSelectScalar = {
@@ -853,27 +853,27 @@ export type PurchaseReturnItemSelectScalar = {
 
 export type PurchaseReturnItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "purchaseReturnId" | "purchaseItemId" | "productId" | "quantity" | "costPrice" | "total", ExtArgs["result"]["purchaseReturnItem"]>
 export type PurchaseReturnItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
-  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
+  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
 }
 export type PurchaseReturnItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
-  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
+  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
 }
 export type PurchaseReturnItemIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
-  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  purchaseItem?: boolean | Prisma.PurchaseItemDefaultArgs<ExtArgs>
+  purchaseReturn?: boolean | Prisma.PurchaseReturnDefaultArgs<ExtArgs>
 }
 
 export type $PurchaseReturnItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PurchaseReturnItem"
   objects: {
-    purchaseReturn: Prisma.$PurchaseReturnPayload<ExtArgs>
-    purchaseItem: Prisma.$PurchaseItemPayload<ExtArgs>
     product: Prisma.$ProductPayload<ExtArgs>
+    purchaseItem: Prisma.$PurchaseItemPayload<ExtArgs>
+    purchaseReturn: Prisma.$PurchaseReturnPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1277,9 +1277,9 @@ readonly fields: PurchaseReturnItemFieldRefs;
  */
 export interface Prisma__PurchaseReturnItemClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  purchaseReturn<T extends Prisma.PurchaseReturnDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseReturnDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseReturnClient<runtime.Types.Result.GetResult<Prisma.$PurchaseReturnPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  purchaseItem<T extends Prisma.PurchaseItemDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseItemDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseItemClient<runtime.Types.Result.GetResult<Prisma.$PurchaseItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  purchaseItem<T extends Prisma.PurchaseItemDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseItemDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseItemClient<runtime.Types.Result.GetResult<Prisma.$PurchaseItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  purchaseReturn<T extends Prisma.PurchaseReturnDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PurchaseReturnDefaultArgs<ExtArgs>>): Prisma.Prisma__PurchaseReturnClient<runtime.Types.Result.GetResult<Prisma.$PurchaseReturnPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

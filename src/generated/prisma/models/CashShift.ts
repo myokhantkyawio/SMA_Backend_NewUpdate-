@@ -276,9 +276,9 @@ export type CashShiftWhereInput = {
   openedAt?: Prisma.DateTimeFilter<"CashShift"> | Date | string
   closedAt?: Prisma.DateTimeNullableFilter<"CashShift"> | Date | string | null
   note?: Prisma.StringNullableFilter<"CashShift"> | string | null
+  movements?: Prisma.CashMovementListRelationFilter
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
   cashier?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  movements?: Prisma.CashMovementListRelationFilter
 }
 
 export type CashShiftOrderByWithRelationInput = {
@@ -293,9 +293,9 @@ export type CashShiftOrderByWithRelationInput = {
   openedAt?: Prisma.SortOrder
   closedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
+  movements?: Prisma.CashMovementOrderByRelationAggregateInput
   branch?: Prisma.BranchOrderByWithRelationInput
   cashier?: Prisma.UserOrderByWithRelationInput
-  movements?: Prisma.CashMovementOrderByRelationAggregateInput
 }
 
 export type CashShiftWhereUniqueInput = Prisma.AtLeast<{
@@ -313,9 +313,9 @@ export type CashShiftWhereUniqueInput = Prisma.AtLeast<{
   openedAt?: Prisma.DateTimeFilter<"CashShift"> | Date | string
   closedAt?: Prisma.DateTimeNullableFilter<"CashShift"> | Date | string | null
   note?: Prisma.StringNullableFilter<"CashShift"> | string | null
+  movements?: Prisma.CashMovementListRelationFilter
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
   cashier?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  movements?: Prisma.CashMovementListRelationFilter
 }, "id">
 
 export type CashShiftOrderByWithAggregationInput = {
@@ -364,9 +364,9 @@ export type CashShiftCreateInput = {
   openedAt?: Date | string
   closedAt?: Date | string | null
   note?: string | null
+  movements?: Prisma.CashMovementCreateNestedManyWithoutShiftInput
   branch: Prisma.BranchCreateNestedOneWithoutCashShiftsInput
   cashier: Prisma.UserCreateNestedOneWithoutCashShiftsInput
-  movements?: Prisma.CashMovementCreateNestedManyWithoutShiftInput
 }
 
 export type CashShiftUncheckedCreateInput = {
@@ -394,9 +394,9 @@ export type CashShiftUpdateInput = {
   openedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  movements?: Prisma.CashMovementUpdateManyWithoutShiftNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutCashShiftsNestedInput
   cashier?: Prisma.UserUpdateOneRequiredWithoutCashShiftsNestedInput
-  movements?: Prisma.CashMovementUpdateManyWithoutShiftNestedInput
 }
 
 export type CashShiftUncheckedUpdateInput = {
@@ -633,8 +633,8 @@ export type CashShiftCreateWithoutBranchInput = {
   openedAt?: Date | string
   closedAt?: Date | string | null
   note?: string | null
-  cashier: Prisma.UserCreateNestedOneWithoutCashShiftsInput
   movements?: Prisma.CashMovementCreateNestedManyWithoutShiftInput
+  cashier: Prisma.UserCreateNestedOneWithoutCashShiftsInput
 }
 
 export type CashShiftUncheckedCreateWithoutBranchInput = {
@@ -704,8 +704,8 @@ export type CashShiftCreateWithoutCashierInput = {
   openedAt?: Date | string
   closedAt?: Date | string | null
   note?: string | null
-  branch: Prisma.BranchCreateNestedOneWithoutCashShiftsInput
   movements?: Prisma.CashMovementCreateNestedManyWithoutShiftInput
+  branch: Prisma.BranchCreateNestedOneWithoutCashShiftsInput
 }
 
 export type CashShiftUncheckedCreateWithoutCashierInput = {
@@ -843,8 +843,8 @@ export type CashShiftUpdateWithoutBranchInput = {
   openedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cashier?: Prisma.UserUpdateOneRequiredWithoutCashShiftsNestedInput
   movements?: Prisma.CashMovementUpdateManyWithoutShiftNestedInput
+  cashier?: Prisma.UserUpdateOneRequiredWithoutCashShiftsNestedInput
 }
 
 export type CashShiftUncheckedUpdateWithoutBranchInput = {
@@ -897,8 +897,8 @@ export type CashShiftUpdateWithoutCashierInput = {
   openedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  branch?: Prisma.BranchUpdateOneRequiredWithoutCashShiftsNestedInput
   movements?: Prisma.CashMovementUpdateManyWithoutShiftNestedInput
+  branch?: Prisma.BranchUpdateOneRequiredWithoutCashShiftsNestedInput
 }
 
 export type CashShiftUncheckedUpdateWithoutCashierInput = {
@@ -971,9 +971,9 @@ export type CashShiftSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   openedAt?: boolean
   closedAt?: boolean
   note?: boolean
+  movements?: boolean | Prisma.CashShift$movementsArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   cashier?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  movements?: boolean | Prisma.CashShift$movementsArgs<ExtArgs>
   _count?: boolean | Prisma.CashShiftCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cashShift"]>
 
@@ -1025,9 +1025,9 @@ export type CashShiftSelectScalar = {
 
 export type CashShiftOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "branchId" | "cashierId" | "openingCash" | "closingCash" | "expectedCash" | "difference" | "status" | "openedAt" | "closedAt" | "note", ExtArgs["result"]["cashShift"]>
 export type CashShiftInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  movements?: boolean | Prisma.CashShift$movementsArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
   cashier?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  movements?: boolean | Prisma.CashShift$movementsArgs<ExtArgs>
   _count?: boolean | Prisma.CashShiftCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CashShiftIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1042,9 +1042,9 @@ export type CashShiftIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $CashShiftPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CashShift"
   objects: {
+    movements: Prisma.$CashMovementPayload<ExtArgs>[]
     branch: Prisma.$BranchPayload<ExtArgs>
     cashier: Prisma.$UserPayload<ExtArgs>
-    movements: Prisma.$CashMovementPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1452,9 +1452,9 @@ readonly fields: CashShiftFieldRefs;
  */
 export interface Prisma__CashShiftClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  movements<T extends Prisma.CashShift$movementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CashShift$movementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CashMovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   branch<T extends Prisma.BranchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BranchDefaultArgs<ExtArgs>>): Prisma.Prisma__BranchClient<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   cashier<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  movements<T extends Prisma.CashShift$movementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CashShift$movementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CashMovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

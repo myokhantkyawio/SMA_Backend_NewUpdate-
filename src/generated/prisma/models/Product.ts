@@ -279,11 +279,11 @@ export type ProductWhereInput = {
   category?: Prisma.XOR<Prisma.CategoryNullableScalarRelationFilter, Prisma.CategoryWhereInput> | null
   branches?: Prisma.ProductBranchListRelationFilter
   purchaseItems?: Prisma.PurchaseItemListRelationFilter
+  purchaseReturnItems?: Prisma.PurchaseReturnItemListRelationFilter
   saleItems?: Prisma.SaleItemListRelationFilter
+  saleReturnItems?: Prisma.SaleReturnItemListRelationFilter
   stockMovements?: Prisma.StockMovementListRelationFilter
   transferItems?: Prisma.StockTransferItemListRelationFilter
-  saleReturnItems?: Prisma.SaleReturnItemListRelationFilter
-  purchaseReturnItems?: Prisma.PurchaseReturnItemListRelationFilter
 }
 
 export type ProductOrderByWithRelationInput = {
@@ -302,11 +302,11 @@ export type ProductOrderByWithRelationInput = {
   category?: Prisma.CategoryOrderByWithRelationInput
   branches?: Prisma.ProductBranchOrderByRelationAggregateInput
   purchaseItems?: Prisma.PurchaseItemOrderByRelationAggregateInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemOrderByRelationAggregateInput
   saleItems?: Prisma.SaleItemOrderByRelationAggregateInput
+  saleReturnItems?: Prisma.SaleReturnItemOrderByRelationAggregateInput
   stockMovements?: Prisma.StockMovementOrderByRelationAggregateInput
   transferItems?: Prisma.StockTransferItemOrderByRelationAggregateInput
-  saleReturnItems?: Prisma.SaleReturnItemOrderByRelationAggregateInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemOrderByRelationAggregateInput
 }
 
 export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -328,11 +328,11 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   category?: Prisma.XOR<Prisma.CategoryNullableScalarRelationFilter, Prisma.CategoryWhereInput> | null
   branches?: Prisma.ProductBranchListRelationFilter
   purchaseItems?: Prisma.PurchaseItemListRelationFilter
+  purchaseReturnItems?: Prisma.PurchaseReturnItemListRelationFilter
   saleItems?: Prisma.SaleItemListRelationFilter
+  saleReturnItems?: Prisma.SaleReturnItemListRelationFilter
   stockMovements?: Prisma.StockMovementListRelationFilter
   transferItems?: Prisma.StockTransferItemListRelationFilter
-  saleReturnItems?: Prisma.SaleReturnItemListRelationFilter
-  purchaseReturnItems?: Prisma.PurchaseReturnItemListRelationFilter
 }, "id" | "sku" | "barcode">
 
 export type ProductOrderByWithAggregationInput = {
@@ -388,11 +388,11 @@ export type ProductCreateInput = {
   category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
   branches?: Prisma.ProductBranchCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateInput = {
@@ -410,11 +410,11 @@ export type ProductUncheckedCreateInput = {
   updatedAt?: Date | string
   branches?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductUpdateInput = {
@@ -432,11 +432,11 @@ export type ProductUpdateInput = {
   category?: Prisma.CategoryUpdateOneWithoutProductsNestedInput
   branches?: Prisma.ProductBranchUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateInput = {
@@ -454,11 +454,11 @@ export type ProductUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.ProductBranchUncheckedUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUncheckedUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateManyInput = {
@@ -741,11 +741,11 @@ export type ProductCreateWithoutCategoryInput = {
   updatedAt?: Date | string
   branches?: Prisma.ProductBranchCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutCategoryInput = {
@@ -762,11 +762,11 @@ export type ProductUncheckedCreateWithoutCategoryInput = {
   updatedAt?: Date | string
   branches?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutCategoryInput = {
@@ -827,11 +827,11 @@ export type ProductCreateWithoutBranchesInput = {
   updatedAt?: Date | string
   category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
   purchaseItems?: Prisma.PurchaseItemCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutBranchesInput = {
@@ -848,11 +848,11 @@ export type ProductUncheckedCreateWithoutBranchesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   purchaseItems?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutBranchesInput = {
@@ -885,11 +885,11 @@ export type ProductUpdateWithoutBranchesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneWithoutProductsNestedInput
   purchaseItems?: Prisma.PurchaseItemUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutBranchesInput = {
@@ -906,11 +906,11 @@ export type ProductUncheckedUpdateWithoutBranchesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   purchaseItems?: Prisma.PurchaseItemUncheckedUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateWithoutPurchaseItemsInput = {
@@ -927,11 +927,11 @@ export type ProductCreateWithoutPurchaseItemsInput = {
   updatedAt?: Date | string
   category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
   branches?: Prisma.ProductBranchCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutPurchaseItemsInput = {
@@ -948,11 +948,11 @@ export type ProductUncheckedCreateWithoutPurchaseItemsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   branches?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutPurchaseItemsInput = {
@@ -985,11 +985,11 @@ export type ProductUpdateWithoutPurchaseItemsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneWithoutProductsNestedInput
   branches?: Prisma.ProductBranchUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutPurchaseItemsInput = {
@@ -1006,11 +1006,11 @@ export type ProductUncheckedUpdateWithoutPurchaseItemsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.ProductBranchUncheckedUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateWithoutSaleItemsInput = {
@@ -1028,10 +1028,10 @@ export type ProductCreateWithoutSaleItemsInput = {
   category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
   branches?: Prisma.ProductBranchCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutSaleItemsInput = {
@@ -1049,10 +1049,10 @@ export type ProductUncheckedCreateWithoutSaleItemsInput = {
   updatedAt?: Date | string
   branches?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutSaleItemsInput = {
@@ -1086,10 +1086,10 @@ export type ProductUpdateWithoutSaleItemsInput = {
   category?: Prisma.CategoryUpdateOneWithoutProductsNestedInput
   branches?: Prisma.ProductBranchUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutSaleItemsInput = {
@@ -1107,10 +1107,10 @@ export type ProductUncheckedUpdateWithoutSaleItemsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.ProductBranchUncheckedUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUncheckedUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateWithoutStockMovementsInput = {
@@ -1128,10 +1128,10 @@ export type ProductCreateWithoutStockMovementsInput = {
   category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
   branches?: Prisma.ProductBranchCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemCreateNestedManyWithoutProductInput
-  saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
-  transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
   purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
+  saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
+  transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutStockMovementsInput = {
@@ -1149,10 +1149,10 @@ export type ProductUncheckedCreateWithoutStockMovementsInput = {
   updatedAt?: Date | string
   branches?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutProductInput
-  saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
-  transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
   purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
+  saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
+  transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutStockMovementsInput = {
@@ -1186,10 +1186,10 @@ export type ProductUpdateWithoutStockMovementsInput = {
   category?: Prisma.CategoryUpdateOneWithoutProductsNestedInput
   branches?: Prisma.ProductBranchUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUpdateManyWithoutProductNestedInput
-  saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
-  transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
   purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
+  saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
+  transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutStockMovementsInput = {
@@ -1207,10 +1207,10 @@ export type ProductUncheckedUpdateWithoutStockMovementsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.ProductBranchUncheckedUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUncheckedUpdateManyWithoutProductNestedInput
-  saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
-  transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
   purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
+  saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
+  transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateWithoutTransferItemsInput = {
@@ -1228,10 +1228,10 @@ export type ProductCreateWithoutTransferItemsInput = {
   category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
   branches?: Prisma.ProductBranchCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemCreateNestedManyWithoutProductInput
-  saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
-  stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
   purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
+  saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
+  stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutTransferItemsInput = {
@@ -1249,10 +1249,10 @@ export type ProductUncheckedCreateWithoutTransferItemsInput = {
   updatedAt?: Date | string
   branches?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutProductInput
-  saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
-  stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
   purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
+  saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
+  stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutTransferItemsInput = {
@@ -1286,10 +1286,10 @@ export type ProductUpdateWithoutTransferItemsInput = {
   category?: Prisma.CategoryUpdateOneWithoutProductsNestedInput
   branches?: Prisma.ProductBranchUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUpdateManyWithoutProductNestedInput
-  saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
-  stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
   purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
+  saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
+  stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutTransferItemsInput = {
@@ -1307,10 +1307,10 @@ export type ProductUncheckedUpdateWithoutTransferItemsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.ProductBranchUncheckedUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUncheckedUpdateManyWithoutProductNestedInput
-  saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
-  stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
   purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
+  saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
+  stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateWithoutSaleReturnItemsInput = {
@@ -1328,10 +1328,10 @@ export type ProductCreateWithoutSaleReturnItemsInput = {
   category?: Prisma.CategoryCreateNestedOneWithoutProductsInput
   branches?: Prisma.ProductBranchCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutSaleReturnItemsInput = {
@@ -1349,10 +1349,10 @@ export type ProductUncheckedCreateWithoutSaleReturnItemsInput = {
   updatedAt?: Date | string
   branches?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutProductInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutSaleReturnItemsInput = {
@@ -1386,10 +1386,10 @@ export type ProductUpdateWithoutSaleReturnItemsInput = {
   category?: Prisma.CategoryUpdateOneWithoutProductsNestedInput
   branches?: Prisma.ProductBranchUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutSaleReturnItemsInput = {
@@ -1407,10 +1407,10 @@ export type ProductUncheckedUpdateWithoutSaleReturnItemsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.ProductBranchUncheckedUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUncheckedUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateWithoutPurchaseReturnItemsInput = {
@@ -1429,9 +1429,9 @@ export type ProductCreateWithoutPurchaseReturnItemsInput = {
   branches?: Prisma.ProductBranchCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutPurchaseReturnItemsInput = {
@@ -1450,9 +1450,9 @@ export type ProductUncheckedCreateWithoutPurchaseReturnItemsInput = {
   branches?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutProductInput
   purchaseItems?: Prisma.PurchaseItemUncheckedCreateNestedManyWithoutProductInput
   saleItems?: Prisma.SaleItemUncheckedCreateNestedManyWithoutProductInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutProductInput
   transferItems?: Prisma.StockTransferItemUncheckedCreateNestedManyWithoutProductInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductCreateOrConnectWithoutPurchaseReturnItemsInput = {
@@ -1487,9 +1487,9 @@ export type ProductUpdateWithoutPurchaseReturnItemsInput = {
   branches?: Prisma.ProductBranchUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutPurchaseReturnItemsInput = {
@@ -1508,9 +1508,9 @@ export type ProductUncheckedUpdateWithoutPurchaseReturnItemsInput = {
   branches?: Prisma.ProductBranchUncheckedUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUncheckedUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductCreateManyCategoryInput = {
@@ -1541,11 +1541,11 @@ export type ProductUpdateWithoutCategoryInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.ProductBranchUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateWithoutCategoryInput = {
@@ -1562,11 +1562,11 @@ export type ProductUncheckedUpdateWithoutCategoryInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.ProductBranchUncheckedUpdateManyWithoutProductNestedInput
   purchaseItems?: Prisma.PurchaseItemUncheckedUpdateManyWithoutProductNestedInput
+  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
   saleItems?: Prisma.SaleItemUncheckedUpdateManyWithoutProductNestedInput
+  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutProductNestedInput
   transferItems?: Prisma.StockTransferItemUncheckedUpdateManyWithoutProductNestedInput
-  saleReturnItems?: Prisma.SaleReturnItemUncheckedUpdateManyWithoutProductNestedInput
-  purchaseReturnItems?: Prisma.PurchaseReturnItemUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductUncheckedUpdateManyWithoutCategoryInput = {
@@ -1591,21 +1591,21 @@ export type ProductUncheckedUpdateManyWithoutCategoryInput = {
 export type ProductCountOutputType = {
   branches: number
   purchaseItems: number
+  purchaseReturnItems: number
   saleItems: number
+  saleReturnItems: number
   stockMovements: number
   transferItems: number
-  saleReturnItems: number
-  purchaseReturnItems: number
 }
 
 export type ProductCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   branches?: boolean | ProductCountOutputTypeCountBranchesArgs
   purchaseItems?: boolean | ProductCountOutputTypeCountPurchaseItemsArgs
+  purchaseReturnItems?: boolean | ProductCountOutputTypeCountPurchaseReturnItemsArgs
   saleItems?: boolean | ProductCountOutputTypeCountSaleItemsArgs
+  saleReturnItems?: boolean | ProductCountOutputTypeCountSaleReturnItemsArgs
   stockMovements?: boolean | ProductCountOutputTypeCountStockMovementsArgs
   transferItems?: boolean | ProductCountOutputTypeCountTransferItemsArgs
-  saleReturnItems?: boolean | ProductCountOutputTypeCountSaleReturnItemsArgs
-  purchaseReturnItems?: boolean | ProductCountOutputTypeCountPurchaseReturnItemsArgs
 }
 
 /**
@@ -1635,8 +1635,22 @@ export type ProductCountOutputTypeCountPurchaseItemsArgs<ExtArgs extends runtime
 /**
  * ProductCountOutputType without action
  */
+export type ProductCountOutputTypeCountPurchaseReturnItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchaseReturnItemWhereInput
+}
+
+/**
+ * ProductCountOutputType without action
+ */
 export type ProductCountOutputTypeCountSaleItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SaleItemWhereInput
+}
+
+/**
+ * ProductCountOutputType without action
+ */
+export type ProductCountOutputTypeCountSaleReturnItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SaleReturnItemWhereInput
 }
 
 /**
@@ -1651,20 +1665,6 @@ export type ProductCountOutputTypeCountStockMovementsArgs<ExtArgs extends runtim
  */
 export type ProductCountOutputTypeCountTransferItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.StockTransferItemWhereInput
-}
-
-/**
- * ProductCountOutputType without action
- */
-export type ProductCountOutputTypeCountSaleReturnItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SaleReturnItemWhereInput
-}
-
-/**
- * ProductCountOutputType without action
- */
-export type ProductCountOutputTypeCountPurchaseReturnItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PurchaseReturnItemWhereInput
 }
 
 
@@ -1684,11 +1684,11 @@ export type ProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   category?: boolean | Prisma.Product$categoryArgs<ExtArgs>
   branches?: boolean | Prisma.Product$branchesArgs<ExtArgs>
   purchaseItems?: boolean | Prisma.Product$purchaseItemsArgs<ExtArgs>
+  purchaseReturnItems?: boolean | Prisma.Product$purchaseReturnItemsArgs<ExtArgs>
   saleItems?: boolean | Prisma.Product$saleItemsArgs<ExtArgs>
+  saleReturnItems?: boolean | Prisma.Product$saleReturnItemsArgs<ExtArgs>
   stockMovements?: boolean | Prisma.Product$stockMovementsArgs<ExtArgs>
   transferItems?: boolean | Prisma.Product$transferItemsArgs<ExtArgs>
-  saleReturnItems?: boolean | Prisma.Product$saleReturnItemsArgs<ExtArgs>
-  purchaseReturnItems?: boolean | Prisma.Product$purchaseReturnItemsArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["product"]>
 
@@ -1744,11 +1744,11 @@ export type ProductInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   category?: boolean | Prisma.Product$categoryArgs<ExtArgs>
   branches?: boolean | Prisma.Product$branchesArgs<ExtArgs>
   purchaseItems?: boolean | Prisma.Product$purchaseItemsArgs<ExtArgs>
+  purchaseReturnItems?: boolean | Prisma.Product$purchaseReturnItemsArgs<ExtArgs>
   saleItems?: boolean | Prisma.Product$saleItemsArgs<ExtArgs>
+  saleReturnItems?: boolean | Prisma.Product$saleReturnItemsArgs<ExtArgs>
   stockMovements?: boolean | Prisma.Product$stockMovementsArgs<ExtArgs>
   transferItems?: boolean | Prisma.Product$transferItemsArgs<ExtArgs>
-  saleReturnItems?: boolean | Prisma.Product$saleReturnItemsArgs<ExtArgs>
-  purchaseReturnItems?: boolean | Prisma.Product$purchaseReturnItemsArgs<ExtArgs>
   _count?: boolean | Prisma.ProductCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProductIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1764,11 +1764,11 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     category: Prisma.$CategoryPayload<ExtArgs> | null
     branches: Prisma.$ProductBranchPayload<ExtArgs>[]
     purchaseItems: Prisma.$PurchaseItemPayload<ExtArgs>[]
+    purchaseReturnItems: Prisma.$PurchaseReturnItemPayload<ExtArgs>[]
     saleItems: Prisma.$SaleItemPayload<ExtArgs>[]
+    saleReturnItems: Prisma.$SaleReturnItemPayload<ExtArgs>[]
     stockMovements: Prisma.$StockMovementPayload<ExtArgs>[]
     transferItems: Prisma.$StockTransferItemPayload<ExtArgs>[]
-    saleReturnItems: Prisma.$SaleReturnItemPayload<ExtArgs>[]
-    purchaseReturnItems: Prisma.$PurchaseReturnItemPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2180,11 +2180,11 @@ export interface Prisma__ProductClient<T, Null = never, ExtArgs extends runtime.
   category<T extends Prisma.Product$categoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$categoryArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   branches<T extends Prisma.Product$branchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$branchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductBranchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchaseItems<T extends Prisma.Product$purchaseItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$purchaseItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  purchaseReturnItems<T extends Prisma.Product$purchaseReturnItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$purchaseReturnItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseReturnItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   saleItems<T extends Prisma.Product$saleItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$saleItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SaleItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  saleReturnItems<T extends Prisma.Product$saleReturnItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$saleReturnItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SaleReturnItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   stockMovements<T extends Prisma.Product$stockMovementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$stockMovementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockMovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   transferItems<T extends Prisma.Product$transferItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$transferItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockTransferItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  saleReturnItems<T extends Prisma.Product$saleReturnItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$saleReturnItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SaleReturnItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  purchaseReturnItems<T extends Prisma.Product$purchaseReturnItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Product$purchaseReturnItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseReturnItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2694,6 +2694,30 @@ export type Product$purchaseItemsArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
+ * Product.purchaseReturnItems
+ */
+export type Product$purchaseReturnItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseReturnItem
+   */
+  select?: Prisma.PurchaseReturnItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PurchaseReturnItem
+   */
+  omit?: Prisma.PurchaseReturnItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PurchaseReturnItemInclude<ExtArgs> | null
+  where?: Prisma.PurchaseReturnItemWhereInput
+  orderBy?: Prisma.PurchaseReturnItemOrderByWithRelationInput | Prisma.PurchaseReturnItemOrderByWithRelationInput[]
+  cursor?: Prisma.PurchaseReturnItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PurchaseReturnItemScalarFieldEnum | Prisma.PurchaseReturnItemScalarFieldEnum[]
+}
+
+/**
  * Product.saleItems
  */
 export type Product$saleItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2715,6 +2739,30 @@ export type Product$saleItemsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.SaleItemScalarFieldEnum | Prisma.SaleItemScalarFieldEnum[]
+}
+
+/**
+ * Product.saleReturnItems
+ */
+export type Product$saleReturnItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SaleReturnItem
+   */
+  select?: Prisma.SaleReturnItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SaleReturnItem
+   */
+  omit?: Prisma.SaleReturnItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SaleReturnItemInclude<ExtArgs> | null
+  where?: Prisma.SaleReturnItemWhereInput
+  orderBy?: Prisma.SaleReturnItemOrderByWithRelationInput | Prisma.SaleReturnItemOrderByWithRelationInput[]
+  cursor?: Prisma.SaleReturnItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SaleReturnItemScalarFieldEnum | Prisma.SaleReturnItemScalarFieldEnum[]
 }
 
 /**
@@ -2763,54 +2811,6 @@ export type Product$transferItemsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.StockTransferItemScalarFieldEnum | Prisma.StockTransferItemScalarFieldEnum[]
-}
-
-/**
- * Product.saleReturnItems
- */
-export type Product$saleReturnItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SaleReturnItem
-   */
-  select?: Prisma.SaleReturnItemSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SaleReturnItem
-   */
-  omit?: Prisma.SaleReturnItemOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SaleReturnItemInclude<ExtArgs> | null
-  where?: Prisma.SaleReturnItemWhereInput
-  orderBy?: Prisma.SaleReturnItemOrderByWithRelationInput | Prisma.SaleReturnItemOrderByWithRelationInput[]
-  cursor?: Prisma.SaleReturnItemWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SaleReturnItemScalarFieldEnum | Prisma.SaleReturnItemScalarFieldEnum[]
-}
-
-/**
- * Product.purchaseReturnItems
- */
-export type Product$purchaseReturnItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PurchaseReturnItem
-   */
-  select?: Prisma.PurchaseReturnItemSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the PurchaseReturnItem
-   */
-  omit?: Prisma.PurchaseReturnItemOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PurchaseReturnItemInclude<ExtArgs> | null
-  where?: Prisma.PurchaseReturnItemWhereInput
-  orderBy?: Prisma.PurchaseReturnItemOrderByWithRelationInput | Prisma.PurchaseReturnItemOrderByWithRelationInput[]
-  cursor?: Prisma.PurchaseReturnItemWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PurchaseReturnItemScalarFieldEnum | Prisma.PurchaseReturnItemScalarFieldEnum[]
 }
 
 /**

@@ -248,8 +248,8 @@ export type CustomerPaymentWhereInput = {
   reference?: Prisma.StringNullableFilter<"CustomerPayment"> | string | null
   note?: Prisma.StringNullableFilter<"CustomerPayment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CustomerPayment"> | Date | string
-  customer?: Prisma.XOR<Prisma.CustomerScalarRelationFilter, Prisma.CustomerWhereInput>
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
+  customer?: Prisma.XOR<Prisma.CustomerScalarRelationFilter, Prisma.CustomerWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -263,8 +263,8 @@ export type CustomerPaymentOrderByWithRelationInput = {
   reference?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  customer?: Prisma.CustomerOrderByWithRelationInput
   branch?: Prisma.BranchOrderByWithRelationInput
+  customer?: Prisma.CustomerOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -281,8 +281,8 @@ export type CustomerPaymentWhereUniqueInput = Prisma.AtLeast<{
   reference?: Prisma.StringNullableFilter<"CustomerPayment"> | string | null
   note?: Prisma.StringNullableFilter<"CustomerPayment"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CustomerPayment"> | Date | string
-  customer?: Prisma.XOR<Prisma.CustomerScalarRelationFilter, Prisma.CustomerWhereInput>
   branch?: Prisma.XOR<Prisma.BranchScalarRelationFilter, Prisma.BranchWhereInput>
+  customer?: Prisma.XOR<Prisma.CustomerScalarRelationFilter, Prisma.CustomerWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
@@ -325,8 +325,8 @@ export type CustomerPaymentCreateInput = {
   reference?: string | null
   note?: string | null
   createdAt?: Date | string
-  customer: Prisma.CustomerCreateNestedOneWithoutPaymentsInput
   branch: Prisma.BranchCreateNestedOneWithoutCustomerPaymentsInput
+  customer: Prisma.CustomerCreateNestedOneWithoutPaymentsInput
   user: Prisma.UserCreateNestedOneWithoutCustomerPaymentsInput
 }
 
@@ -349,8 +349,8 @@ export type CustomerPaymentUpdateInput = {
   reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutCustomerPaymentsNestedInput
+  customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerPaymentsNestedInput
 }
 
@@ -653,8 +653,8 @@ export type CustomerPaymentCreateWithoutUserInput = {
   reference?: string | null
   note?: string | null
   createdAt?: Date | string
-  customer: Prisma.CustomerCreateNestedOneWithoutPaymentsInput
   branch: Prisma.BranchCreateNestedOneWithoutCustomerPaymentsInput
+  customer: Prisma.CustomerCreateNestedOneWithoutPaymentsInput
 }
 
 export type CustomerPaymentUncheckedCreateWithoutUserInput = {
@@ -804,8 +804,8 @@ export type CustomerPaymentUpdateWithoutUserInput = {
   reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentsNestedInput
   branch?: Prisma.BranchUpdateOneRequiredWithoutCustomerPaymentsNestedInput
+  customer?: Prisma.CustomerUpdateOneRequiredWithoutPaymentsNestedInput
 }
 
 export type CustomerPaymentUncheckedUpdateWithoutUserInput = {
@@ -886,8 +886,8 @@ export type CustomerPaymentSelect<ExtArgs extends runtime.Types.Extensions.Inter
   reference?: boolean
   note?: boolean
   createdAt?: boolean
-  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["customerPayment"]>
 
@@ -901,8 +901,8 @@ export type CustomerPaymentSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   reference?: boolean
   note?: boolean
   createdAt?: boolean
-  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["customerPayment"]>
 
@@ -916,8 +916,8 @@ export type CustomerPaymentSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   reference?: boolean
   note?: boolean
   createdAt?: boolean
-  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["customerPayment"]>
 
@@ -935,26 +935,26 @@ export type CustomerPaymentSelectScalar = {
 
 export type CustomerPaymentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerId" | "branchId" | "userId" | "amount" | "paymentMethod" | "reference" | "note" | "createdAt", ExtArgs["result"]["customerPayment"]>
 export type CustomerPaymentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type CustomerPaymentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type CustomerPaymentIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   branch?: boolean | Prisma.BranchDefaultArgs<ExtArgs>
+  customer?: boolean | Prisma.CustomerDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $CustomerPaymentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CustomerPayment"
   objects: {
-    customer: Prisma.$CustomerPayload<ExtArgs>
     branch: Prisma.$BranchPayload<ExtArgs>
+    customer: Prisma.$CustomerPayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1361,8 +1361,8 @@ readonly fields: CustomerPaymentFieldRefs;
  */
 export interface Prisma__CustomerPaymentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  customer<T extends Prisma.CustomerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerDefaultArgs<ExtArgs>>): Prisma.Prisma__CustomerClient<runtime.Types.Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   branch<T extends Prisma.BranchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BranchDefaultArgs<ExtArgs>>): Prisma.Prisma__BranchClient<runtime.Types.Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  customer<T extends Prisma.CustomerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerDefaultArgs<ExtArgs>>): Prisma.Prisma__CustomerClient<runtime.Types.Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.

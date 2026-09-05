@@ -206,22 +206,22 @@ export type BranchWhereInput = {
   isActive?: Prisma.BoolFilter<"Branch"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  cashMovements?: Prisma.CashMovementListRelationFilter
+  cashShifts?: Prisma.CashShiftListRelationFilter
+  cashierShifts?: Prisma.CashierShiftListRelationFilter
   customerPayments?: Prisma.CustomerPaymentListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
   products?: Prisma.ProductBranchListRelationFilter
   purchases?: Prisma.PurchaseListRelationFilter
-  purchaseReturns?: Prisma.PurchaseReturnListRelationFilter
   purchasePayments?: Prisma.PurchasePaymentListRelationFilter
+  purchaseReturns?: Prisma.PurchaseReturnListRelationFilter
   sales?: Prisma.SaleListRelationFilter
+  saleReturns?: Prisma.SaleReturnListRelationFilter
   stockMovements?: Prisma.StockMovementListRelationFilter
   transfersFrom?: Prisma.StockTransferListRelationFilter
   transfersTo?: Prisma.StockTransferListRelationFilter
   users?: Prisma.UserListRelationFilter
-  cashierShifts?: Prisma.CashierShiftListRelationFilter
-  saleReturns?: Prisma.SaleReturnListRelationFilter
-  cashShifts?: Prisma.CashShiftListRelationFilter
-  cashMovements?: Prisma.CashMovementListRelationFilter
-  auditLogs?: Prisma.AuditLogListRelationFilter
 }
 
 export type BranchOrderByWithRelationInput = {
@@ -233,22 +233,22 @@ export type BranchOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  cashMovements?: Prisma.CashMovementOrderByRelationAggregateInput
+  cashShifts?: Prisma.CashShiftOrderByRelationAggregateInput
+  cashierShifts?: Prisma.CashierShiftOrderByRelationAggregateInput
   customerPayments?: Prisma.CustomerPaymentOrderByRelationAggregateInput
   expenses?: Prisma.ExpenseOrderByRelationAggregateInput
   products?: Prisma.ProductBranchOrderByRelationAggregateInput
   purchases?: Prisma.PurchaseOrderByRelationAggregateInput
-  purchaseReturns?: Prisma.PurchaseReturnOrderByRelationAggregateInput
   purchasePayments?: Prisma.PurchasePaymentOrderByRelationAggregateInput
+  purchaseReturns?: Prisma.PurchaseReturnOrderByRelationAggregateInput
   sales?: Prisma.SaleOrderByRelationAggregateInput
+  saleReturns?: Prisma.SaleReturnOrderByRelationAggregateInput
   stockMovements?: Prisma.StockMovementOrderByRelationAggregateInput
   transfersFrom?: Prisma.StockTransferOrderByRelationAggregateInput
   transfersTo?: Prisma.StockTransferOrderByRelationAggregateInput
   users?: Prisma.UserOrderByRelationAggregateInput
-  cashierShifts?: Prisma.CashierShiftOrderByRelationAggregateInput
-  saleReturns?: Prisma.SaleReturnOrderByRelationAggregateInput
-  cashShifts?: Prisma.CashShiftOrderByRelationAggregateInput
-  cashMovements?: Prisma.CashMovementOrderByRelationAggregateInput
-  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
 }
 
 export type BranchWhereUniqueInput = Prisma.AtLeast<{
@@ -263,22 +263,22 @@ export type BranchWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Branch"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Branch"> | Date | string
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  cashMovements?: Prisma.CashMovementListRelationFilter
+  cashShifts?: Prisma.CashShiftListRelationFilter
+  cashierShifts?: Prisma.CashierShiftListRelationFilter
   customerPayments?: Prisma.CustomerPaymentListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
   products?: Prisma.ProductBranchListRelationFilter
   purchases?: Prisma.PurchaseListRelationFilter
-  purchaseReturns?: Prisma.PurchaseReturnListRelationFilter
   purchasePayments?: Prisma.PurchasePaymentListRelationFilter
+  purchaseReturns?: Prisma.PurchaseReturnListRelationFilter
   sales?: Prisma.SaleListRelationFilter
+  saleReturns?: Prisma.SaleReturnListRelationFilter
   stockMovements?: Prisma.StockMovementListRelationFilter
   transfersFrom?: Prisma.StockTransferListRelationFilter
   transfersTo?: Prisma.StockTransferListRelationFilter
   users?: Prisma.UserListRelationFilter
-  cashierShifts?: Prisma.CashierShiftListRelationFilter
-  saleReturns?: Prisma.SaleReturnListRelationFilter
-  cashShifts?: Prisma.CashShiftListRelationFilter
-  cashMovements?: Prisma.CashMovementListRelationFilter
-  auditLogs?: Prisma.AuditLogListRelationFilter
 }, "id" | "code">
 
 export type BranchOrderByWithAggregationInput = {
@@ -318,22 +318,22 @@ export type BranchCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateInput = {
@@ -345,22 +345,22 @@ export type BranchUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUpdateInput = {
@@ -372,22 +372,22 @@ export type BranchUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateInput = {
@@ -399,22 +399,22 @@ export type BranchUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateManyInput = {
@@ -746,21 +746,21 @@ export type BranchCreateWithoutUsersInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutUsersInput = {
@@ -772,21 +772,21 @@ export type BranchUncheckedCreateWithoutUsersInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutUsersInput = {
@@ -814,21 +814,21 @@ export type BranchUpdateWithoutUsersInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutUsersInput = {
@@ -840,21 +840,21 @@ export type BranchUncheckedUpdateWithoutUsersInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutProductsInput = {
@@ -866,21 +866,21 @@ export type BranchCreateWithoutProductsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutProductsInput = {
@@ -892,21 +892,21 @@ export type BranchUncheckedCreateWithoutProductsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutProductsInput = {
@@ -934,21 +934,21 @@ export type BranchUpdateWithoutProductsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutProductsInput = {
@@ -960,21 +960,21 @@ export type BranchUncheckedUpdateWithoutProductsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutPurchasesInput = {
@@ -986,21 +986,21 @@ export type BranchCreateWithoutPurchasesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutPurchasesInput = {
@@ -1012,21 +1012,21 @@ export type BranchUncheckedCreateWithoutPurchasesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutPurchasesInput = {
@@ -1054,21 +1054,21 @@ export type BranchUpdateWithoutPurchasesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutPurchasesInput = {
@@ -1080,21 +1080,21 @@ export type BranchUncheckedUpdateWithoutPurchasesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutSalesInput = {
@@ -1106,21 +1106,21 @@ export type BranchCreateWithoutSalesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutSalesInput = {
@@ -1132,21 +1132,21 @@ export type BranchUncheckedCreateWithoutSalesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutSalesInput = {
@@ -1174,21 +1174,21 @@ export type BranchUpdateWithoutSalesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutSalesInput = {
@@ -1200,21 +1200,21 @@ export type BranchUncheckedUpdateWithoutSalesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutStockMovementsInput = {
@@ -1226,21 +1226,21 @@ export type BranchCreateWithoutStockMovementsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutStockMovementsInput = {
@@ -1252,21 +1252,21 @@ export type BranchUncheckedCreateWithoutStockMovementsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutStockMovementsInput = {
@@ -1294,21 +1294,21 @@ export type BranchUpdateWithoutStockMovementsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutStockMovementsInput = {
@@ -1320,21 +1320,21 @@ export type BranchUncheckedUpdateWithoutStockMovementsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutTransfersFromInput = {
@@ -1346,21 +1346,21 @@ export type BranchCreateWithoutTransfersFromInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutTransfersFromInput = {
@@ -1372,21 +1372,21 @@ export type BranchUncheckedCreateWithoutTransfersFromInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutTransfersFromInput = {
@@ -1403,21 +1403,21 @@ export type BranchCreateWithoutTransfersToInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutTransfersToInput = {
@@ -1429,21 +1429,21 @@ export type BranchUncheckedCreateWithoutTransfersToInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutTransfersToInput = {
@@ -1471,21 +1471,21 @@ export type BranchUpdateWithoutTransfersFromInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutTransfersFromInput = {
@@ -1497,21 +1497,21 @@ export type BranchUncheckedUpdateWithoutTransfersFromInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUpsertWithoutTransfersToInput = {
@@ -1534,21 +1534,21 @@ export type BranchUpdateWithoutTransfersToInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutTransfersToInput = {
@@ -1560,21 +1560,21 @@ export type BranchUncheckedUpdateWithoutTransfersToInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutExpensesInput = {
@@ -1586,21 +1586,21 @@ export type BranchCreateWithoutExpensesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutExpensesInput = {
@@ -1612,21 +1612,21 @@ export type BranchUncheckedCreateWithoutExpensesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutExpensesInput = {
@@ -1654,21 +1654,21 @@ export type BranchUpdateWithoutExpensesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutExpensesInput = {
@@ -1680,21 +1680,21 @@ export type BranchUncheckedUpdateWithoutExpensesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutCashierShiftsInput = {
@@ -1706,21 +1706,21 @@ export type BranchCreateWithoutCashierShiftsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutCashierShiftsInput = {
@@ -1732,21 +1732,21 @@ export type BranchUncheckedCreateWithoutCashierShiftsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutCashierShiftsInput = {
@@ -1774,21 +1774,21 @@ export type BranchUpdateWithoutCashierShiftsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutCashierShiftsInput = {
@@ -1800,21 +1800,21 @@ export type BranchUncheckedUpdateWithoutCashierShiftsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutSaleReturnsInput = {
@@ -1826,21 +1826,21 @@ export type BranchCreateWithoutSaleReturnsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutSaleReturnsInput = {
@@ -1852,21 +1852,21 @@ export type BranchUncheckedCreateWithoutSaleReturnsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutSaleReturnsInput = {
@@ -1894,21 +1894,21 @@ export type BranchUpdateWithoutSaleReturnsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutSaleReturnsInput = {
@@ -1920,21 +1920,21 @@ export type BranchUncheckedUpdateWithoutSaleReturnsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutPurchaseReturnsInput = {
@@ -1946,21 +1946,21 @@ export type BranchCreateWithoutPurchaseReturnsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutPurchaseReturnsInput = {
@@ -1972,21 +1972,21 @@ export type BranchUncheckedCreateWithoutPurchaseReturnsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutPurchaseReturnsInput = {
@@ -2014,21 +2014,21 @@ export type BranchUpdateWithoutPurchaseReturnsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutPurchaseReturnsInput = {
@@ -2040,21 +2040,21 @@ export type BranchUncheckedUpdateWithoutPurchaseReturnsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutPurchasePaymentsInput = {
@@ -2066,21 +2066,21 @@ export type BranchCreateWithoutPurchasePaymentsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
   purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutPurchasePaymentsInput = {
@@ -2092,21 +2092,21 @@ export type BranchUncheckedCreateWithoutPurchasePaymentsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
   purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutPurchasePaymentsInput = {
@@ -2134,21 +2134,21 @@ export type BranchUpdateWithoutPurchasePaymentsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
   purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutPurchasePaymentsInput = {
@@ -2160,21 +2160,21 @@ export type BranchUncheckedUpdateWithoutPurchasePaymentsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
   purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutCustomerPaymentsInput = {
@@ -2186,21 +2186,21 @@ export type BranchCreateWithoutCustomerPaymentsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutCustomerPaymentsInput = {
@@ -2212,21 +2212,21 @@ export type BranchUncheckedCreateWithoutCustomerPaymentsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutCustomerPaymentsInput = {
@@ -2254,21 +2254,21 @@ export type BranchUpdateWithoutCustomerPaymentsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutCustomerPaymentsInput = {
@@ -2280,21 +2280,21 @@ export type BranchUncheckedUpdateWithoutCustomerPaymentsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutCashShiftsInput = {
@@ -2306,21 +2306,21 @@ export type BranchCreateWithoutCashShiftsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutCashShiftsInput = {
@@ -2332,21 +2332,21 @@ export type BranchUncheckedCreateWithoutCashShiftsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutCashShiftsInput = {
@@ -2374,21 +2374,21 @@ export type BranchUpdateWithoutCashShiftsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutCashShiftsInput = {
@@ -2400,21 +2400,21 @@ export type BranchUncheckedUpdateWithoutCashShiftsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutCashMovementsInput = {
@@ -2426,21 +2426,21 @@ export type BranchCreateWithoutCashMovementsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutCashMovementsInput = {
@@ -2452,21 +2452,21 @@ export type BranchUncheckedCreateWithoutCashMovementsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutCashMovementsInput = {
@@ -2494,21 +2494,21 @@ export type BranchUpdateWithoutCashMovementsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutCashMovementsInput = {
@@ -2520,21 +2520,21 @@ export type BranchUncheckedUpdateWithoutCashMovementsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchCreateWithoutAuditLogsInput = {
@@ -2546,21 +2546,21 @@ export type BranchCreateWithoutAuditLogsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementCreateNestedManyWithoutBranchInput
 }
 
 export type BranchUncheckedCreateWithoutAuditLogsInput = {
@@ -2572,21 +2572,21 @@ export type BranchUncheckedCreateWithoutAuditLogsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
+  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
+  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
   customerPayments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutBranchInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBranchInput
   products?: Prisma.ProductBranchUncheckedCreateNestedManyWithoutBranchInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutBranchInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedCreateNestedManyWithoutBranchInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedCreateNestedManyWithoutBranchInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutBranchInput
+  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
   stockMovements?: Prisma.StockMovementUncheckedCreateNestedManyWithoutBranchInput
   transfersFrom?: Prisma.StockTransferUncheckedCreateNestedManyWithoutFromBranchInput
   transfersTo?: Prisma.StockTransferUncheckedCreateNestedManyWithoutToBranchInput
   users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-  cashierShifts?: Prisma.CashierShiftUncheckedCreateNestedManyWithoutBranchInput
-  saleReturns?: Prisma.SaleReturnUncheckedCreateNestedManyWithoutBranchInput
-  cashShifts?: Prisma.CashShiftUncheckedCreateNestedManyWithoutBranchInput
-  cashMovements?: Prisma.CashMovementUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BranchCreateOrConnectWithoutAuditLogsInput = {
@@ -2614,21 +2614,21 @@ export type BranchUpdateWithoutAuditLogsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUpdateManyWithoutBranchNestedInput
 }
 
 export type BranchUncheckedUpdateWithoutAuditLogsInput = {
@@ -2640,21 +2640,21 @@ export type BranchUncheckedUpdateWithoutAuditLogsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
+  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
+  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
   customerPayments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutBranchNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBranchNestedInput
   products?: Prisma.ProductBranchUncheckedUpdateManyWithoutBranchNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutBranchNestedInput
-  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   purchasePayments?: Prisma.PurchasePaymentUncheckedUpdateManyWithoutBranchNestedInput
+  purchaseReturns?: Prisma.PurchaseReturnUncheckedUpdateManyWithoutBranchNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutBranchNestedInput
+  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
   stockMovements?: Prisma.StockMovementUncheckedUpdateManyWithoutBranchNestedInput
   transfersFrom?: Prisma.StockTransferUncheckedUpdateManyWithoutFromBranchNestedInput
   transfersTo?: Prisma.StockTransferUncheckedUpdateManyWithoutToBranchNestedInput
   users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-  cashierShifts?: Prisma.CashierShiftUncheckedUpdateManyWithoutBranchNestedInput
-  saleReturns?: Prisma.SaleReturnUncheckedUpdateManyWithoutBranchNestedInput
-  cashShifts?: Prisma.CashShiftUncheckedUpdateManyWithoutBranchNestedInput
-  cashMovements?: Prisma.CashMovementUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 
@@ -2663,41 +2663,41 @@ export type BranchUncheckedUpdateWithoutAuditLogsInput = {
  */
 
 export type BranchCountOutputType = {
+  auditLogs: number
+  cashMovements: number
+  cashShifts: number
+  cashierShifts: number
   customerPayments: number
   expenses: number
   products: number
   purchases: number
-  purchaseReturns: number
   purchasePayments: number
+  purchaseReturns: number
   sales: number
+  saleReturns: number
   stockMovements: number
   transfersFrom: number
   transfersTo: number
   users: number
-  cashierShifts: number
-  saleReturns: number
-  cashShifts: number
-  cashMovements: number
-  auditLogs: number
 }
 
 export type BranchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  auditLogs?: boolean | BranchCountOutputTypeCountAuditLogsArgs
+  cashMovements?: boolean | BranchCountOutputTypeCountCashMovementsArgs
+  cashShifts?: boolean | BranchCountOutputTypeCountCashShiftsArgs
+  cashierShifts?: boolean | BranchCountOutputTypeCountCashierShiftsArgs
   customerPayments?: boolean | BranchCountOutputTypeCountCustomerPaymentsArgs
   expenses?: boolean | BranchCountOutputTypeCountExpensesArgs
   products?: boolean | BranchCountOutputTypeCountProductsArgs
   purchases?: boolean | BranchCountOutputTypeCountPurchasesArgs
-  purchaseReturns?: boolean | BranchCountOutputTypeCountPurchaseReturnsArgs
   purchasePayments?: boolean | BranchCountOutputTypeCountPurchasePaymentsArgs
+  purchaseReturns?: boolean | BranchCountOutputTypeCountPurchaseReturnsArgs
   sales?: boolean | BranchCountOutputTypeCountSalesArgs
+  saleReturns?: boolean | BranchCountOutputTypeCountSaleReturnsArgs
   stockMovements?: boolean | BranchCountOutputTypeCountStockMovementsArgs
   transfersFrom?: boolean | BranchCountOutputTypeCountTransfersFromArgs
   transfersTo?: boolean | BranchCountOutputTypeCountTransfersToArgs
   users?: boolean | BranchCountOutputTypeCountUsersArgs
-  cashierShifts?: boolean | BranchCountOutputTypeCountCashierShiftsArgs
-  saleReturns?: boolean | BranchCountOutputTypeCountSaleReturnsArgs
-  cashShifts?: boolean | BranchCountOutputTypeCountCashShiftsArgs
-  cashMovements?: boolean | BranchCountOutputTypeCountCashMovementsArgs
-  auditLogs?: boolean | BranchCountOutputTypeCountAuditLogsArgs
 }
 
 /**
@@ -2708,6 +2708,34 @@ export type BranchCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
    * Select specific fields to fetch from the BranchCountOutputType
    */
   select?: Prisma.BranchCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountCashMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CashMovementWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountCashShiftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CashShiftWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountCashierShiftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CashierShiftWhereInput
 }
 
 /**
@@ -2741,13 +2769,6 @@ export type BranchCountOutputTypeCountPurchasesArgs<ExtArgs extends runtime.Type
 /**
  * BranchCountOutputType without action
  */
-export type BranchCountOutputTypeCountPurchaseReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PurchaseReturnWhereInput
-}
-
-/**
- * BranchCountOutputType without action
- */
 export type BranchCountOutputTypeCountPurchasePaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PurchasePaymentWhereInput
 }
@@ -2755,8 +2776,22 @@ export type BranchCountOutputTypeCountPurchasePaymentsArgs<ExtArgs extends runti
 /**
  * BranchCountOutputType without action
  */
+export type BranchCountOutputTypeCountPurchaseReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PurchaseReturnWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
 export type BranchCountOutputTypeCountSalesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SaleWhereInput
+}
+
+/**
+ * BranchCountOutputType without action
+ */
+export type BranchCountOutputTypeCountSaleReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SaleReturnWhereInput
 }
 
 /**
@@ -2787,41 +2822,6 @@ export type BranchCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.UserWhereInput
 }
 
-/**
- * BranchCountOutputType without action
- */
-export type BranchCountOutputTypeCountCashierShiftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CashierShiftWhereInput
-}
-
-/**
- * BranchCountOutputType without action
- */
-export type BranchCountOutputTypeCountSaleReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SaleReturnWhereInput
-}
-
-/**
- * BranchCountOutputType without action
- */
-export type BranchCountOutputTypeCountCashShiftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CashShiftWhereInput
-}
-
-/**
- * BranchCountOutputType without action
- */
-export type BranchCountOutputTypeCountCashMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CashMovementWhereInput
-}
-
-/**
- * BranchCountOutputType without action
- */
-export type BranchCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.AuditLogWhereInput
-}
-
 
 export type BranchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2832,22 +2832,22 @@ export type BranchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  auditLogs?: boolean | Prisma.Branch$auditLogsArgs<ExtArgs>
+  cashMovements?: boolean | Prisma.Branch$cashMovementsArgs<ExtArgs>
+  cashShifts?: boolean | Prisma.Branch$cashShiftsArgs<ExtArgs>
+  cashierShifts?: boolean | Prisma.Branch$cashierShiftsArgs<ExtArgs>
   customerPayments?: boolean | Prisma.Branch$customerPaymentsArgs<ExtArgs>
   expenses?: boolean | Prisma.Branch$expensesArgs<ExtArgs>
   products?: boolean | Prisma.Branch$productsArgs<ExtArgs>
   purchases?: boolean | Prisma.Branch$purchasesArgs<ExtArgs>
-  purchaseReturns?: boolean | Prisma.Branch$purchaseReturnsArgs<ExtArgs>
   purchasePayments?: boolean | Prisma.Branch$purchasePaymentsArgs<ExtArgs>
+  purchaseReturns?: boolean | Prisma.Branch$purchaseReturnsArgs<ExtArgs>
   sales?: boolean | Prisma.Branch$salesArgs<ExtArgs>
+  saleReturns?: boolean | Prisma.Branch$saleReturnsArgs<ExtArgs>
   stockMovements?: boolean | Prisma.Branch$stockMovementsArgs<ExtArgs>
   transfersFrom?: boolean | Prisma.Branch$transfersFromArgs<ExtArgs>
   transfersTo?: boolean | Prisma.Branch$transfersToArgs<ExtArgs>
   users?: boolean | Prisma.Branch$usersArgs<ExtArgs>
-  cashierShifts?: boolean | Prisma.Branch$cashierShiftsArgs<ExtArgs>
-  saleReturns?: boolean | Prisma.Branch$saleReturnsArgs<ExtArgs>
-  cashShifts?: boolean | Prisma.Branch$cashShiftsArgs<ExtArgs>
-  cashMovements?: boolean | Prisma.Branch$cashMovementsArgs<ExtArgs>
-  auditLogs?: boolean | Prisma.Branch$auditLogsArgs<ExtArgs>
   _count?: boolean | Prisma.BranchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["branch"]>
 
@@ -2886,22 +2886,22 @@ export type BranchSelectScalar = {
 
 export type BranchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "code" | "address" | "phone" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["branch"]>
 export type BranchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  auditLogs?: boolean | Prisma.Branch$auditLogsArgs<ExtArgs>
+  cashMovements?: boolean | Prisma.Branch$cashMovementsArgs<ExtArgs>
+  cashShifts?: boolean | Prisma.Branch$cashShiftsArgs<ExtArgs>
+  cashierShifts?: boolean | Prisma.Branch$cashierShiftsArgs<ExtArgs>
   customerPayments?: boolean | Prisma.Branch$customerPaymentsArgs<ExtArgs>
   expenses?: boolean | Prisma.Branch$expensesArgs<ExtArgs>
   products?: boolean | Prisma.Branch$productsArgs<ExtArgs>
   purchases?: boolean | Prisma.Branch$purchasesArgs<ExtArgs>
-  purchaseReturns?: boolean | Prisma.Branch$purchaseReturnsArgs<ExtArgs>
   purchasePayments?: boolean | Prisma.Branch$purchasePaymentsArgs<ExtArgs>
+  purchaseReturns?: boolean | Prisma.Branch$purchaseReturnsArgs<ExtArgs>
   sales?: boolean | Prisma.Branch$salesArgs<ExtArgs>
+  saleReturns?: boolean | Prisma.Branch$saleReturnsArgs<ExtArgs>
   stockMovements?: boolean | Prisma.Branch$stockMovementsArgs<ExtArgs>
   transfersFrom?: boolean | Prisma.Branch$transfersFromArgs<ExtArgs>
   transfersTo?: boolean | Prisma.Branch$transfersToArgs<ExtArgs>
   users?: boolean | Prisma.Branch$usersArgs<ExtArgs>
-  cashierShifts?: boolean | Prisma.Branch$cashierShiftsArgs<ExtArgs>
-  saleReturns?: boolean | Prisma.Branch$saleReturnsArgs<ExtArgs>
-  cashShifts?: boolean | Prisma.Branch$cashShiftsArgs<ExtArgs>
-  cashMovements?: boolean | Prisma.Branch$cashMovementsArgs<ExtArgs>
-  auditLogs?: boolean | Prisma.Branch$auditLogsArgs<ExtArgs>
   _count?: boolean | Prisma.BranchCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BranchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2910,22 +2910,22 @@ export type BranchIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type $BranchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Branch"
   objects: {
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    cashMovements: Prisma.$CashMovementPayload<ExtArgs>[]
+    cashShifts: Prisma.$CashShiftPayload<ExtArgs>[]
+    cashierShifts: Prisma.$CashierShiftPayload<ExtArgs>[]
     customerPayments: Prisma.$CustomerPaymentPayload<ExtArgs>[]
     expenses: Prisma.$ExpensePayload<ExtArgs>[]
     products: Prisma.$ProductBranchPayload<ExtArgs>[]
     purchases: Prisma.$PurchasePayload<ExtArgs>[]
-    purchaseReturns: Prisma.$PurchaseReturnPayload<ExtArgs>[]
     purchasePayments: Prisma.$PurchasePaymentPayload<ExtArgs>[]
+    purchaseReturns: Prisma.$PurchaseReturnPayload<ExtArgs>[]
     sales: Prisma.$SalePayload<ExtArgs>[]
+    saleReturns: Prisma.$SaleReturnPayload<ExtArgs>[]
     stockMovements: Prisma.$StockMovementPayload<ExtArgs>[]
     transfersFrom: Prisma.$StockTransferPayload<ExtArgs>[]
     transfersTo: Prisma.$StockTransferPayload<ExtArgs>[]
     users: Prisma.$UserPayload<ExtArgs>[]
-    cashierShifts: Prisma.$CashierShiftPayload<ExtArgs>[]
-    saleReturns: Prisma.$SaleReturnPayload<ExtArgs>[]
-    cashShifts: Prisma.$CashShiftPayload<ExtArgs>[]
-    cashMovements: Prisma.$CashMovementPayload<ExtArgs>[]
-    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3330,22 +3330,22 @@ readonly fields: BranchFieldRefs;
  */
 export interface Prisma__BranchClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  auditLogs<T extends Prisma.Branch$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cashMovements<T extends Prisma.Branch$cashMovementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$cashMovementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CashMovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cashShifts<T extends Prisma.Branch$cashShiftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$cashShiftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CashShiftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cashierShifts<T extends Prisma.Branch$cashierShiftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$cashierShiftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CashierShiftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   customerPayments<T extends Prisma.Branch$customerPaymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$customerPaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomerPaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   expenses<T extends Prisma.Branch$expensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$expensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   products<T extends Prisma.Branch$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductBranchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchases<T extends Prisma.Branch$purchasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$purchasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  purchaseReturns<T extends Prisma.Branch$purchaseReturnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$purchaseReturnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseReturnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   purchasePayments<T extends Prisma.Branch$purchasePaymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$purchasePaymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchasePaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  purchaseReturns<T extends Prisma.Branch$purchaseReturnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$purchaseReturnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchaseReturnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sales<T extends Prisma.Branch$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  saleReturns<T extends Prisma.Branch$saleReturnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$saleReturnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SaleReturnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   stockMovements<T extends Prisma.Branch$stockMovementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$stockMovementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockMovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   transfersFrom<T extends Prisma.Branch$transfersFromArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$transfersFromArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockTransferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   transfersTo<T extends Prisma.Branch$transfersToArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$transfersToArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StockTransferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   users<T extends Prisma.Branch$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  cashierShifts<T extends Prisma.Branch$cashierShiftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$cashierShiftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CashierShiftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  saleReturns<T extends Prisma.Branch$saleReturnsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$saleReturnsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SaleReturnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  cashShifts<T extends Prisma.Branch$cashShiftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$cashShiftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CashShiftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  cashMovements<T extends Prisma.Branch$cashMovementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$cashMovementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CashMovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  auditLogs<T extends Prisma.Branch$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Branch$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3776,6 +3776,102 @@ export type BranchDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
+ * Branch.auditLogs
+ */
+export type Branch$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * Branch.cashMovements
+ */
+export type Branch$cashMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CashMovement
+   */
+  select?: Prisma.CashMovementSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CashMovement
+   */
+  omit?: Prisma.CashMovementOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CashMovementInclude<ExtArgs> | null
+  where?: Prisma.CashMovementWhereInput
+  orderBy?: Prisma.CashMovementOrderByWithRelationInput | Prisma.CashMovementOrderByWithRelationInput[]
+  cursor?: Prisma.CashMovementWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CashMovementScalarFieldEnum | Prisma.CashMovementScalarFieldEnum[]
+}
+
+/**
+ * Branch.cashShifts
+ */
+export type Branch$cashShiftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CashShift
+   */
+  select?: Prisma.CashShiftSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CashShift
+   */
+  omit?: Prisma.CashShiftOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CashShiftInclude<ExtArgs> | null
+  where?: Prisma.CashShiftWhereInput
+  orderBy?: Prisma.CashShiftOrderByWithRelationInput | Prisma.CashShiftOrderByWithRelationInput[]
+  cursor?: Prisma.CashShiftWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CashShiftScalarFieldEnum | Prisma.CashShiftScalarFieldEnum[]
+}
+
+/**
+ * Branch.cashierShifts
+ */
+export type Branch$cashierShiftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CashierShift
+   */
+  select?: Prisma.CashierShiftSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CashierShift
+   */
+  omit?: Prisma.CashierShiftOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CashierShiftInclude<ExtArgs> | null
+  where?: Prisma.CashierShiftWhereInput
+  orderBy?: Prisma.CashierShiftOrderByWithRelationInput | Prisma.CashierShiftOrderByWithRelationInput[]
+  cursor?: Prisma.CashierShiftWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CashierShiftScalarFieldEnum | Prisma.CashierShiftScalarFieldEnum[]
+}
+
+/**
  * Branch.customerPayments
  */
 export type Branch$customerPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3872,30 +3968,6 @@ export type Branch$purchasesArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
- * Branch.purchaseReturns
- */
-export type Branch$purchaseReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PurchaseReturn
-   */
-  select?: Prisma.PurchaseReturnSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the PurchaseReturn
-   */
-  omit?: Prisma.PurchaseReturnOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PurchaseReturnInclude<ExtArgs> | null
-  where?: Prisma.PurchaseReturnWhereInput
-  orderBy?: Prisma.PurchaseReturnOrderByWithRelationInput | Prisma.PurchaseReturnOrderByWithRelationInput[]
-  cursor?: Prisma.PurchaseReturnWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PurchaseReturnScalarFieldEnum | Prisma.PurchaseReturnScalarFieldEnum[]
-}
-
-/**
  * Branch.purchasePayments
  */
 export type Branch$purchasePaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3920,6 +3992,30 @@ export type Branch$purchasePaymentsArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 /**
+ * Branch.purchaseReturns
+ */
+export type Branch$purchaseReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PurchaseReturn
+   */
+  select?: Prisma.PurchaseReturnSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PurchaseReturn
+   */
+  omit?: Prisma.PurchaseReturnOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PurchaseReturnInclude<ExtArgs> | null
+  where?: Prisma.PurchaseReturnWhereInput
+  orderBy?: Prisma.PurchaseReturnOrderByWithRelationInput | Prisma.PurchaseReturnOrderByWithRelationInput[]
+  cursor?: Prisma.PurchaseReturnWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PurchaseReturnScalarFieldEnum | Prisma.PurchaseReturnScalarFieldEnum[]
+}
+
+/**
  * Branch.sales
  */
 export type Branch$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3941,6 +4037,30 @@ export type Branch$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.SaleScalarFieldEnum | Prisma.SaleScalarFieldEnum[]
+}
+
+/**
+ * Branch.saleReturns
+ */
+export type Branch$saleReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SaleReturn
+   */
+  select?: Prisma.SaleReturnSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SaleReturn
+   */
+  omit?: Prisma.SaleReturnOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SaleReturnInclude<ExtArgs> | null
+  where?: Prisma.SaleReturnWhereInput
+  orderBy?: Prisma.SaleReturnOrderByWithRelationInput | Prisma.SaleReturnOrderByWithRelationInput[]
+  cursor?: Prisma.SaleReturnWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SaleReturnScalarFieldEnum | Prisma.SaleReturnScalarFieldEnum[]
 }
 
 /**
@@ -4037,126 +4157,6 @@ export type Branch$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
-}
-
-/**
- * Branch.cashierShifts
- */
-export type Branch$cashierShiftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CashierShift
-   */
-  select?: Prisma.CashierShiftSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CashierShift
-   */
-  omit?: Prisma.CashierShiftOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CashierShiftInclude<ExtArgs> | null
-  where?: Prisma.CashierShiftWhereInput
-  orderBy?: Prisma.CashierShiftOrderByWithRelationInput | Prisma.CashierShiftOrderByWithRelationInput[]
-  cursor?: Prisma.CashierShiftWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CashierShiftScalarFieldEnum | Prisma.CashierShiftScalarFieldEnum[]
-}
-
-/**
- * Branch.saleReturns
- */
-export type Branch$saleReturnsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SaleReturn
-   */
-  select?: Prisma.SaleReturnSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SaleReturn
-   */
-  omit?: Prisma.SaleReturnOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SaleReturnInclude<ExtArgs> | null
-  where?: Prisma.SaleReturnWhereInput
-  orderBy?: Prisma.SaleReturnOrderByWithRelationInput | Prisma.SaleReturnOrderByWithRelationInput[]
-  cursor?: Prisma.SaleReturnWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SaleReturnScalarFieldEnum | Prisma.SaleReturnScalarFieldEnum[]
-}
-
-/**
- * Branch.cashShifts
- */
-export type Branch$cashShiftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CashShift
-   */
-  select?: Prisma.CashShiftSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CashShift
-   */
-  omit?: Prisma.CashShiftOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CashShiftInclude<ExtArgs> | null
-  where?: Prisma.CashShiftWhereInput
-  orderBy?: Prisma.CashShiftOrderByWithRelationInput | Prisma.CashShiftOrderByWithRelationInput[]
-  cursor?: Prisma.CashShiftWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CashShiftScalarFieldEnum | Prisma.CashShiftScalarFieldEnum[]
-}
-
-/**
- * Branch.cashMovements
- */
-export type Branch$cashMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CashMovement
-   */
-  select?: Prisma.CashMovementSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CashMovement
-   */
-  omit?: Prisma.CashMovementOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CashMovementInclude<ExtArgs> | null
-  where?: Prisma.CashMovementWhereInput
-  orderBy?: Prisma.CashMovementOrderByWithRelationInput | Prisma.CashMovementOrderByWithRelationInput[]
-  cursor?: Prisma.CashMovementWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CashMovementScalarFieldEnum | Prisma.CashMovementScalarFieldEnum[]
-}
-
-/**
- * Branch.auditLogs
- */
-export type Branch$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the AuditLog
-   */
-  select?: Prisma.AuditLogSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the AuditLog
-   */
-  omit?: Prisma.AuditLogOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.AuditLogInclude<ExtArgs> | null
-  where?: Prisma.AuditLogWhereInput
-  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
-  cursor?: Prisma.AuditLogWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
 }
 
 /**

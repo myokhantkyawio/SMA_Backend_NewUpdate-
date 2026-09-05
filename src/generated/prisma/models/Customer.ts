@@ -248,8 +248,8 @@ export type CustomerWhereInput = {
   isActive?: Prisma.BoolFilter<"Customer"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
-  sales?: Prisma.SaleListRelationFilter
   payments?: Prisma.CustomerPaymentListRelationFilter
+  sales?: Prisma.SaleListRelationFilter
 }
 
 export type CustomerOrderByWithRelationInput = {
@@ -262,8 +262,8 @@ export type CustomerOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  sales?: Prisma.SaleOrderByRelationAggregateInput
   payments?: Prisma.CustomerPaymentOrderByRelationAggregateInput
+  sales?: Prisma.SaleOrderByRelationAggregateInput
 }
 
 export type CustomerWhereUniqueInput = Prisma.AtLeast<{
@@ -279,8 +279,8 @@ export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Customer"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
-  sales?: Prisma.SaleListRelationFilter
   payments?: Prisma.CustomerPaymentListRelationFilter
+  sales?: Prisma.SaleListRelationFilter
 }, "id" | "phone">
 
 export type CustomerOrderByWithAggregationInput = {
@@ -325,8 +325,8 @@ export type CustomerCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  sales?: Prisma.SaleCreateNestedManyWithoutCustomerInput
   payments?: Prisma.CustomerPaymentCreateNestedManyWithoutCustomerInput
+  sales?: Prisma.SaleCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateInput = {
@@ -339,8 +339,8 @@ export type CustomerUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutCustomerInput
   payments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutCustomerInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUpdateInput = {
@@ -353,8 +353,8 @@ export type CustomerUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sales?: Prisma.SaleUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.CustomerPaymentUpdateManyWithoutCustomerNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateInput = {
@@ -367,8 +367,8 @@ export type CustomerUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  sales?: Prisma.SaleUncheckedUpdateManyWithoutCustomerNestedInput
   payments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutCustomerNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateManyInput = {
@@ -633,13 +633,13 @@ export type CustomerUncheckedUpdateWithoutPaymentsInput = {
  */
 
 export type CustomerCountOutputType = {
-  sales: number
   payments: number
+  sales: number
 }
 
 export type CustomerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  sales?: boolean | CustomerCountOutputTypeCountSalesArgs
   payments?: boolean | CustomerCountOutputTypeCountPaymentsArgs
+  sales?: boolean | CustomerCountOutputTypeCountSalesArgs
 }
 
 /**
@@ -655,15 +655,15 @@ export type CustomerCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
 /**
  * CustomerCountOutputType without action
  */
-export type CustomerCountOutputTypeCountSalesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SaleWhereInput
+export type CustomerCountOutputTypeCountPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CustomerPaymentWhereInput
 }
 
 /**
  * CustomerCountOutputType without action
  */
-export type CustomerCountOutputTypeCountPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CustomerPaymentWhereInput
+export type CustomerCountOutputTypeCountSalesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SaleWhereInput
 }
 
 
@@ -677,8 +677,8 @@ export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  sales?: boolean | Prisma.Customer$salesArgs<ExtArgs>
   payments?: boolean | Prisma.Customer$paymentsArgs<ExtArgs>
+  sales?: boolean | Prisma.Customer$salesArgs<ExtArgs>
   _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["customer"]>
 
@@ -720,8 +720,8 @@ export type CustomerSelectScalar = {
 
 export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phone" | "email" | "address" | "creditLimit" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"]>
 export type CustomerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  sales?: boolean | Prisma.Customer$salesArgs<ExtArgs>
   payments?: boolean | Prisma.Customer$paymentsArgs<ExtArgs>
+  sales?: boolean | Prisma.Customer$salesArgs<ExtArgs>
   _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CustomerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -730,8 +730,8 @@ export type CustomerIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Customer"
   objects: {
-    sales: Prisma.$SalePayload<ExtArgs>[]
     payments: Prisma.$CustomerPaymentPayload<ExtArgs>[]
+    sales: Prisma.$SalePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1137,8 +1137,8 @@ readonly fields: CustomerFieldRefs;
  */
 export interface Prisma__CustomerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  sales<T extends Prisma.Customer$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   payments<T extends Prisma.Customer$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomerPaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sales<T extends Prisma.Customer$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1570,30 +1570,6 @@ export type CustomerDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Customer.sales
- */
-export type Customer$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Sale
-   */
-  select?: Prisma.SaleSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Sale
-   */
-  omit?: Prisma.SaleOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SaleInclude<ExtArgs> | null
-  where?: Prisma.SaleWhereInput
-  orderBy?: Prisma.SaleOrderByWithRelationInput | Prisma.SaleOrderByWithRelationInput[]
-  cursor?: Prisma.SaleWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SaleScalarFieldEnum | Prisma.SaleScalarFieldEnum[]
-}
-
-/**
  * Customer.payments
  */
 export type Customer$paymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1615,6 +1591,30 @@ export type Customer$paymentsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.CustomerPaymentScalarFieldEnum | Prisma.CustomerPaymentScalarFieldEnum[]
+}
+
+/**
+ * Customer.sales
+ */
+export type Customer$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sale
+   */
+  select?: Prisma.SaleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sale
+   */
+  omit?: Prisma.SaleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SaleInclude<ExtArgs> | null
+  where?: Prisma.SaleWhereInput
+  orderBy?: Prisma.SaleOrderByWithRelationInput | Prisma.SaleOrderByWithRelationInput[]
+  cursor?: Prisma.SaleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SaleScalarFieldEnum | Prisma.SaleScalarFieldEnum[]
 }
 
 /**

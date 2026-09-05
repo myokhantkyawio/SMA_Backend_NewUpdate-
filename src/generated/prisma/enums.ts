@@ -52,9 +52,9 @@ export type PurchasePaymentMethod = (typeof PurchasePaymentMethod)[keyof typeof 
 
 export const SaleStatus = {
   COMPLETED: 'COMPLETED',
-  PARTIALLY_REFUNDED: 'PARTIALLY_REFUNDED',
   VOIDED: 'VOIDED',
-  REFUNDED: 'REFUNDED'
+  REFUNDED: 'REFUNDED',
+  PARTIALLY_REFUNDED: 'PARTIALLY_REFUNDED'
 } as const
 
 export type SaleStatus = (typeof SaleStatus)[keyof typeof SaleStatus]
