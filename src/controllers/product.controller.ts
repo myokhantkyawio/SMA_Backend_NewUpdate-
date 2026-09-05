@@ -555,3 +555,56 @@ export async function deleteProduct(
     });
   }
 }
+
+export async function updateProductStock(
+  req: AuthRequest,
+  res: Response
+) {
+  try {
+    const id = getId(req);
+    const { stock } = req.body;
+
+    // Validate stock
+    const stockValue = Number(stock);
+
+    if (!Number.isInteger(stockValue) || stockValue < 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Stock must be a valid number greater than or equal to 0",
+      });
+    }
+
+    // Check product
+    const existingProduct = await prisma.product.findUnique({
+      where: { id },
+    });
+
+    if (!existingProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    // Update only stock
+    const product = await prisma.product.update({
+      where: { id },
+      data: {
+        stock: stockValue,
+      },
+    });
+
+    return res.json({
+      success: true,
+      message: "Stock updated successfully",
+      data: product,
+    });
+  } catch (error) {
+    console.error("Update product stock error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to update stock",
+    });
+  }
+}

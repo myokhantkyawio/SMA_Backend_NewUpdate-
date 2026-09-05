@@ -5,6 +5,7 @@ import {
   getProducts,
   getProductById,
   updateProduct,
+  updateProductStock,
   updateProductStatus,
   deleteProduct,
 } from "../controllers/product.controller";
@@ -14,33 +15,31 @@ import { auth, authorize } from "../middleware/auth";
 const router = Router();
 
 /* =========================================================
-   CREATE PRODUCT
+   CREATE
 ========================================================= */
 
 router.post("/", auth, authorize("OWNER", "ADMIN", "MANAGER"), createProduct);
 
 /* =========================================================
-   GET PRODUCTS
+   GET ALL
 ========================================================= */
 
 router.get("/", auth, getProducts);
 
 /* =========================================================
-   GET PRODUCT BY ID
+   GET BY ID
 ========================================================= */
 
 router.get("/:id", auth, getProductById);
 
 /* =========================================================
-   UPDATE PRODUCT
-   PUT = Full product update
+   FULL PRODUCT UPDATE
 ========================================================= */
 
 router.put("/:id", auth, authorize("OWNER", "ADMIN", "MANAGER"), updateProduct);
 
 /* =========================================================
-   UPDATE PRODUCT
-   PATCH = Partial update
+   STOCK UPDATE
    Used by Stock Management
 ========================================================= */
 
@@ -48,11 +47,11 @@ router.patch(
   "/:id",
   auth,
   authorize("OWNER", "ADMIN", "MANAGER"),
-  updateProduct,
+  updateProductStock,
 );
 
 /* =========================================================
-   UPDATE PRODUCT STATUS
+   STATUS UPDATE
 ========================================================= */
 
 router.patch(
@@ -63,7 +62,7 @@ router.patch(
 );
 
 /* =========================================================
-   DELETE PRODUCT
+   DELETE
 ========================================================= */
 
 router.delete("/:id", auth, authorize("OWNER", "ADMIN"), deleteProduct);
