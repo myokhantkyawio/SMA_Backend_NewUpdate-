@@ -113,6 +113,47 @@ model Product {
   transferItems       StockTransferItem[]
   saleReturnItems     SaleReturnItem[]
   purchaseReturnItems PurchaseReturnItem[]
+  orderItems          OrderItem[]
+}
+
+model Order {
+  id String @id @default(cuid())
+
+  customerId      String?
+  customerName    String?
+  customerPhone   String?
+  customerAddress String?
+
+  subtotal Float
+  discount Float @default(0)
+  total    Float
+
+  paymentMethod String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id String @id @default(cuid())
+
+  orderId   String
+  productId String
+
+  name     String
+  price    Float
+  quantity Int
+  amount   Float
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([productId])
 }
 
 model ProductBranch {
