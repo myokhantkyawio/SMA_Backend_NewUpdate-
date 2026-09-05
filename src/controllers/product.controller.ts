@@ -501,105 +501,57 @@ export async function deleteProduct(
   res: Response
 ) {
   try {
-    const id = getId(req);
+    const { id } = req.params;
 
-    /* =====================================================
-       CHECK PRODUCT
-    ===================================================== */
-
-    const product =
-      await prisma.product.findUnique({
-        where: {
-          id,
-        },
-      });
-
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-
-        message:
-          "Product not found",
-      });
-    }
-
-    /* =====================================================
-       CHECK TRANSACTION HISTORY
-    ===================================================== */
-
-    const [
-      saleItemCount,
-      purchaseItemCount,
-      stockMovementCount,
-      transferItemCount,
-    ] = await Promise.all([
-      prisma.saleItem.count({
-        where: {
-          productId: id,
-        },
-      }),
-
-      prisma.purchaseItem.count({
-        where: {
-          productId: id,
-        },
-      }),
-
-      prisma.stockMovement.count({
-        where: {
-          productId: id,
-        },
-      }),
-
-      prisma.stockTransferItem.count({
-        where: {
-          productId: id,
-        },
-      }),
-    ]);
-
-    const hasHistory =
-      saleItemCount > 0 ||
-      purchaseItemCount > 0 ||
-      stockMovementCount > 0 ||
-      transferItemCount > 0;
-
-    if (hasHistory) {
+    if (!id) {
       return res.status(400).json({
         success: false,
-
-        message:
-          "Product cannot be deleted because transaction history exists. Set it to INACTIVE instead.",
+        message: "Product ID is required",
       });
     }
 
-    /* =====================================================
-       DELETE
-    ===================================================== */
+    const existingProduct =
+      await prisma.product.findUnique({
+        where: {
+          id: String(id),
+        },
+      });
+
+    if (!existingProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
 
     await prisma.product.delete({
       where: {
-        id,
+        id: String(id),
       },
     });
 
     return res.status(200).json({
       success: true,
-
-      message:
-        "Product deleted successfully",
+      message: "Product deleted successfully",
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error(
       "Delete product error:",
       error
     );
 
+    // Related records ရှိလို့ delete မရတာ
+    if (error?.code === "P2003") {
+      return res.status(409).json({
+        success: false,
+        message:
+          "This product cannot be deleted because it is already used in sales, purchases, or other records.",
+      });
+    }
+
     return res.status(500).json({
       success: false,
-
-      message:
-        "Internal server error",
+      message: "Internal server error",
     });
   }
 }
