@@ -1,3 +1,4 @@
+
 import { Response } from "express";
 import prisma from "../config/prisma";
 import { AuthRequest } from "../middleware/auth";
@@ -18,11 +19,6 @@ function getId(req: AuthRequest): string {
 
 /* =========================================================
    CREATE PRODUCT
-   Fields:
-   - name
-   - barcode
-   - sellingPrice
-   - stock
 ========================================================= */
 
 export async function createProduct(
@@ -35,7 +31,6 @@ export async function createProduct(
       barcode,
       sellingPrice,
       stock,
-      branchId,
     } = req.body;
 
     /* =====================================================
@@ -82,7 +77,7 @@ export async function createProduct(
     }
 
     /* =====================================================
-       CONVERT NUMBERS
+       NUMBER VALIDATION
     ===================================================== */
 
     const price = Number(sellingPrice);
@@ -109,7 +104,7 @@ export async function createProduct(
     }
 
     /* =====================================================
-       CHECK BARCODE
+       BARCODE DUPLICATE
     ===================================================== */
 
     const existingBarcode =
@@ -129,24 +124,36 @@ export async function createProduct(
     }
 
     /* =====================================================
-       BRANCH CHECK
-       branchId က ပေးထားရင်သာ check
+       GET USER BRANCH
     ===================================================== */
 
-    if (branchId) {
-      const branch =
-        await prisma.branch.findUnique({
-          where: {
-            id: String(branchId),
-          },
-        });
+    const userBranchId =
+      req.user?.branchId;
 
-      if (!branch) {
-        return res.status(404).json({
-          success: false,
-          message: "Branch not found",
-        });
-      }
+    if (!userBranchId) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Your account is not assigned to a branch",
+      });
+    }
+
+    /* =====================================================
+       CHECK BRANCH
+    ===================================================== */
+
+    const branch =
+      await prisma.branch.findUnique({
+        where: {
+          id: String(userBranchId),
+        },
+      });
+
+    if (!branch) {
+      return res.status(404).json({
+        success: false,
+        message: "Branch not found",
+      });
     }
 
     /* =====================================================
@@ -156,30 +163,27 @@ export async function createProduct(
     const product =
       await prisma.product.create({
         data: {
-          name: String(name).trim(),
+  name: String(name).trim(),
 
-          barcode:
-            String(barcode).trim(),
+  barcode: String(barcode).trim(),
 
-          sellingPrice: price,
+  costPrice: 0,
 
-          /*
-             ProductBranch relation က
-             branchId လိုအပ်တဲ့ schema ဖြစ်ရင်
-             branchId ပေးထားတဲ့အချိန်မှာပဲ create လုပ်မယ်။
-          */
+  sellingPrice: price,
 
-          branches: branchId
-            ? {
-                create: {
-                  branchId:
-                    String(branchId),
+  stock: stockValue,
 
-                  stock: stockValue,
-                },
-              }
-            : undefined,
-        },
+  status: "ACTIVE",
+
+  branches: {
+    create: {
+      branchId: String(userBranchId),
+      stock: stockValue,
+      minStock: 0,
+      maxStock: null,
+    },
+  },
+},
 
         include: {
           branches: {
@@ -267,7 +271,6 @@ export async function getProducts(
 
     return res.status(200).json({
       success: true,
-
       data: products,
     });
   } catch (error) {
@@ -278,7 +281,6 @@ export async function getProducts(
 
     return res.status(500).json({
       success: false,
-
       message:
         "Internal server error",
     });
@@ -321,7 +323,6 @@ export async function getProductById(
 
     return res.status(200).json({
       success: true,
-
       data: product,
     });
   } catch (error) {
@@ -332,7 +333,6 @@ export async function getProductById(
 
     return res.status(500).json({
       success: false,
-
       message:
         "Internal server error",
     });
@@ -374,7 +374,6 @@ export async function updateProduct(
     if (!existingProduct) {
       return res.status(404).json({
         success: false,
-
         message:
           "Product not found",
       });
@@ -390,7 +389,6 @@ export async function updateProduct(
     ) {
       return res.status(400).json({
         success: false,
-
         message:
           "Product name cannot be empty",
       });
@@ -402,7 +400,6 @@ export async function updateProduct(
     ) {
       return res.status(400).json({
         success: false,
-
         message:
           "Barcode cannot be empty",
       });
@@ -410,8 +407,8 @@ export async function updateProduct(
 
     if (
       sellingPrice !== undefined &&
-      sellingPrice !== null &&
-      sellingPrice !== ""
+      sellingPrice !== "" &&
+      sellingPrice !== null
     ) {
       const price =
         Number(sellingPrice);
@@ -422,7 +419,6 @@ export async function updateProduct(
       ) {
         return res.status(400).json({
           success: false,
-
           message:
             "Invalid selling price",
         });
@@ -430,20 +426,20 @@ export async function updateProduct(
     }
 
     /* =====================================================
-       CHECK BARCODE DUPLICATE
+       BARCODE DUPLICATE
     ===================================================== */
 
     if (
       barcode !== undefined &&
       barcode
     ) {
-      const barcodeValue =
-        String(barcode).trim();
-
       const barcodeExists =
         await prisma.product.findFirst({
           where: {
-            barcode: barcodeValue,
+            barcode:
+              String(
+                barcode
+              ).trim(),
 
             NOT: {
               id,
@@ -454,7 +450,6 @@ export async function updateProduct(
       if (barcodeExists) {
         return res.status(409).json({
           success: false,
-
           message:
             "Barcode already exists",
         });
@@ -462,7 +457,7 @@ export async function updateProduct(
     }
 
     /* =====================================================
-       UPDATE PRODUCT
+       UPDATE
     ===================================================== */
 
     const product =
@@ -479,13 +474,20 @@ export async function updateProduct(
 
           ...(barcode !== undefined && {
             barcode:
-              String(barcode).trim(),
+              String(
+                barcode
+              ).trim(),
           }),
 
           ...(sellingPrice !==
-            undefined && {
+            undefined &&
+            sellingPrice !==
+              null &&
+            sellingPrice !== "" && {
             sellingPrice:
-              Number(sellingPrice),
+              Number(
+                sellingPrice
+              ),
           }),
         },
 
@@ -540,7 +542,6 @@ export async function updateProductStatus(
     ) {
       return res.status(400).json({
         success: false,
-
         message:
           "Status must be ACTIVE or INACTIVE",
       });
@@ -556,7 +557,6 @@ export async function updateProductStatus(
     if (!product) {
       return res.status(404).json({
         success: false,
-
         message:
           "Product not found",
       });
@@ -589,7 +589,6 @@ export async function updateProductStatus(
 
     return res.status(500).json({
       success: false,
-
       message:
         "Internal server error",
     });

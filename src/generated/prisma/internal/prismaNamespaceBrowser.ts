@@ -152,15 +152,12 @@ export type SupplierScalarFieldEnum = (typeof SupplierScalarFieldEnum)[keyof typ
 
 export const ProductScalarFieldEnum = {
   id: 'id',
-  sku: 'sku',
-  barcode: 'barcode',
   name: 'name',
-  description: 'description',
+  barcode: 'barcode',
   costPrice: 'costPrice',
   sellingPrice: 'sellingPrice',
-  unit: 'unit',
+  stock: 'stock',
   status: 'status',
-  categoryId: 'categoryId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
