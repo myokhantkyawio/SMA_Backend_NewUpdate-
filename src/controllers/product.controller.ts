@@ -44,10 +44,7 @@ export async function createProduct(
       });
     }
 
-    if (
-      !barcode ||
-      !String(barcode).trim()
-    ) {
+    if (!barcode || !String(barcode).trim()) {
       return res.status(400).json({
         success: false,
         message: "Barcode is required",
@@ -83,20 +80,14 @@ export async function createProduct(
     const price = Number(sellingPrice);
     const stockValue = Number(stock);
 
-    if (
-      !Number.isFinite(price) ||
-      price < 0
-    ) {
+    if (!Number.isFinite(price) || price < 0) {
       return res.status(400).json({
         success: false,
         message: "Invalid selling price",
       });
     }
 
-    if (
-      !Number.isFinite(stockValue) ||
-      stockValue < 0
-    ) {
+    if (!Number.isFinite(stockValue) || stockValue < 0) {
       return res.status(400).json({
         success: false,
         message: "Invalid stock",
@@ -110,9 +101,7 @@ export async function createProduct(
     const existingBarcode =
       await prisma.product.findUnique({
         where: {
-          barcode: String(
-            barcode
-          ).trim(),
+          barcode: String(barcode).trim(),
         },
       });
 
@@ -124,81 +113,31 @@ export async function createProduct(
     }
 
     /* =====================================================
-       GET USER BRANCH
-    ===================================================== */
-
-    const userBranchId =
-      req.user?.branchId;
-
-    if (!userBranchId) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Your account is not assigned to a branch",
-      });
-    }
-
-    /* =====================================================
-       CHECK BRANCH
-    ===================================================== */
-
-    const branch =
-      await prisma.branch.findUnique({
-        where: {
-          id: String(userBranchId),
-        },
-      });
-
-    if (!branch) {
-      return res.status(404).json({
-        success: false,
-        message: "Branch not found",
-      });
-    }
-
-    /* =====================================================
        CREATE PRODUCT
+       No branch required
     ===================================================== */
 
     const product =
       await prisma.product.create({
         data: {
-  name: String(name).trim(),
+          name: String(name).trim(),
 
-  barcode: String(barcode).trim(),
+          barcode: String(barcode).trim(),
 
-  costPrice: 0,
+          costPrice: 0,
 
-  sellingPrice: price,
+          sellingPrice: price,
 
-  stock: stockValue,
+          stock: stockValue,
 
-  status: "ACTIVE",
-
-  branches: {
-    create: {
-      branchId: String(userBranchId),
-      stock: stockValue,
-      minStock: 0,
-      maxStock: null,
-    },
-  },
-},
-
-        include: {
-          branches: {
-            include: {
-              branch: true,
-            },
-          },
+          status: "ACTIVE",
         },
       });
 
     return res.status(201).json({
       success: true,
 
-      message:
-        "Product created successfully",
+      message: "Product created successfully",
 
       data: product,
     });
@@ -211,8 +150,7 @@ export async function createProduct(
     return res.status(500).json({
       success: false,
 
-      message:
-        "Internal server error",
+      message: "Internal server error",
     });
   }
 }
