@@ -270,3 +270,57 @@ export async function getOrders(
     });
   }
 }
+
+/* =========================================================
+   DELETE ORDER
+========================================================= */
+
+export async function deleteOrder(
+  req: AuthRequest,
+  res: Response
+) {
+  try {
+    const id = String(req.params.id);
+
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message: "Order ID is required",
+      });
+    }
+
+    const order = await prisma.order.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: "Order not found",
+      });
+    }
+
+    await prisma.order.delete({
+      where: {
+        id,
+      },
+    });
+
+    return res.json({
+      success: true,
+      message: "Order deleted successfully",
+    });
+  } catch (error) {
+    console.error(
+      "Delete order error:",
+      error
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete order",
+    });
+  }
+}
