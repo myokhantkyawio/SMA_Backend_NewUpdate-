@@ -2,6 +2,10 @@ import { Response } from "express";
 import prisma from "../config/prisma";
 import { AuthRequest } from "../middleware/auth";
 
+/* =========================================================
+   GET ID
+========================================================= */
+
 function getId(req: AuthRequest): string {
   const id = req.params.id;
 
@@ -12,6 +16,14 @@ function getId(req: AuthRequest): string {
   return id;
 }
 
+/* =========================================================
+   CREATE PRODUCT
+   Fields:
+   - name
+   - barcode
+   - sellingPrice
+   - stock
+========================================================= */
 
 export async function createProduct(
   req: AuthRequest,
@@ -20,55 +32,106 @@ export async function createProduct(
   try {
     const {
       name,
-      costPrice,
+      barcode,
       sellingPrice,
-      unit,
-      categoryId,
-      branchId,
       stock,
-      minStock,
-      maxStock,
+      branchId,
     } = req.body;
 
-    /* =================================
+    /* =====================================================
        VALIDATION
-    ================================= */
+    ===================================================== */
 
-    if (
-      !name ||
-      costPrice === undefined ||
-      sellingPrice === undefined
-    ) {
+    if (!name || !String(name).trim()) {
       return res.status(400).json({
         success: false,
-        message:
-          "Name, costPrice and sellingPrice are required",
+        message: "Product name is required",
       });
     }
 
-    /* =================================
-       CHECK CATEGORY
-    ================================= */
-
-    if (categoryId) {
-      const category =
-        await prisma.category.findUnique({
-          where: {
-            id: String(categoryId),
-          },
-        });
-
-      if (!category) {
-        return res.status(404).json({
-          success: false,
-          message: "Category not found",
-        });
-      }
+    if (
+      !barcode ||
+      !String(barcode).trim()
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Barcode is required",
+      });
     }
 
-    /* =================================
-       CHECK BRANCH
-    ================================= */
+    if (
+      sellingPrice === undefined ||
+      sellingPrice === null ||
+      sellingPrice === ""
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Selling price is required",
+      });
+    }
+
+    if (
+      stock === undefined ||
+      stock === null ||
+      stock === ""
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Stock is required",
+      });
+    }
+
+    /* =====================================================
+       CONVERT NUMBERS
+    ===================================================== */
+
+    const price = Number(sellingPrice);
+    const stockValue = Number(stock);
+
+    if (
+      !Number.isFinite(price) ||
+      price < 0
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid selling price",
+      });
+    }
+
+    if (
+      !Number.isFinite(stockValue) ||
+      stockValue < 0
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid stock",
+      });
+    }
+
+    /* =====================================================
+       CHECK BARCODE
+    ===================================================== */
+
+    const existingBarcode =
+      await prisma.product.findUnique({
+        where: {
+          barcode: String(
+            barcode
+          ).trim(),
+        },
+      });
+
+    if (existingBarcode) {
+      return res.status(409).json({
+        success: false,
+        message: "Barcode already exists",
+      });
+    }
+
+    /* =====================================================
+       BRANCH CHECK
+       branchId က ပေးထားရင်သာ check
+    ===================================================== */
 
     if (branchId) {
       const branch =
@@ -86,28 +149,25 @@ export async function createProduct(
       }
     }
 
-    /* =================================
+    /* =====================================================
        CREATE PRODUCT
-    ================================= */
+    ===================================================== */
 
     const product =
       await prisma.product.create({
         data: {
           name: String(name).trim(),
 
-          costPrice: Number(costPrice),
+          barcode:
+            String(barcode).trim(),
 
-          sellingPrice: Number(
-            sellingPrice
-          ),
+          sellingPrice: price,
 
-          unit: unit
-            ? String(unit).trim()
-            : "pcs",
-
-          categoryId: categoryId
-            ? String(categoryId)
-            : null,
+          /*
+             ProductBranch relation က
+             branchId လိုအပ်တဲ့ schema ဖြစ်ရင်
+             branchId ပေးထားတဲ့အချိန်မှာပဲ create လုပ်မယ်။
+          */
 
           branches: branchId
             ? {
@@ -115,31 +175,13 @@ export async function createProduct(
                   branchId:
                     String(branchId),
 
-                  stock:
-                    stock !== undefined &&
-                    stock !== ""
-                      ? Number(stock)
-                      : 0,
-
-                  minStock:
-                    minStock !== undefined &&
-                    minStock !== ""
-                      ? Number(minStock)
-                      : 0,
-
-                  maxStock:
-                    maxStock !== undefined &&
-                    maxStock !== ""
-                      ? Number(maxStock)
-                      : null,
+                  stock: stockValue,
                 },
               }
             : undefined,
         },
 
         include: {
-          category: true,
-
           branches: {
             include: {
               branch: true,
@@ -147,10 +189,6 @@ export async function createProduct(
           },
         },
       });
-
-    /* =================================
-       SUCCESS
-    ================================= */
 
     return res.status(201).json({
       success: true,
@@ -174,77 +212,51 @@ export async function createProduct(
     });
   }
 }
-// GET ALL PRODUCTS
+
+/* =========================================================
+   GET ALL PRODUCTS
+   Search:
+   - name
+   - barcode
+========================================================= */
+
 export async function getProducts(
   req: AuthRequest,
   res: Response
 ) {
   try {
-    const {
-      search,
-      categoryId,
-      branchId,
-      status,
-    } = req.query;
+    const { search } = req.query;
+
+    const keyword = search
+      ? String(search).trim()
+      : "";
 
     const products =
       await prisma.product.findMany({
-        where: {
-          ...(search
-            ? {
-                OR: [
-                  {
-                    name: {
-                      contains: String(search),
-                      mode: "insensitive",
-                    },
-                  },
-                  {
-                    sku: {
-                      contains: String(search),
-                      mode: "insensitive",
-                    },
-                  },
-                  {
-                    barcode: {
-                      contains: String(search),
-                      mode: "insensitive",
-                    },
-                  },
-                ],
-              }
-            : {}),
-
-          ...(categoryId
-            ? {
-                categoryId: String(categoryId),
-              }
-            : {}),
-
-          ...(status
-            ? {
-                status: status as any,
-              }
-            : {}),
-
-          ...(branchId
-            ? {
-                branches: {
-                  some: {
-                    branchId: String(branchId),
+        where: keyword
+          ? {
+              OR: [
+                {
+                  name: {
+                    contains: keyword,
+                    mode: "insensitive",
                   },
                 },
-              }
-            : {}),
-        },
+                {
+                  barcode: {
+                    contains: keyword,
+                    mode: "insensitive",
+                  },
+                },
+              ],
+            }
+          : undefined,
 
         orderBy: {
           createdAt: "desc",
         },
 
         include: {
-          category: true,
-
           branches: {
             include: {
               branch: true,
@@ -255,19 +267,28 @@ export async function getProducts(
 
     return res.status(200).json({
       success: true,
+
       data: products,
     });
   } catch (error) {
-    console.error("Get products error:", error);
+    console.error(
+      "Get products error:",
+      error
+    );
 
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
+
+      message:
+        "Internal server error",
     });
   }
 }
 
-// GET PRODUCT BY ID
+/* =========================================================
+   GET PRODUCT BY ID
+========================================================= */
+
 export async function getProductById(
   req: AuthRequest,
   res: Response
@@ -282,8 +303,6 @@ export async function getProductById(
         },
 
         include: {
-          category: true,
-
           branches: {
             include: {
               branch: true,
@@ -295,12 +314,14 @@ export async function getProductById(
     if (!product) {
       return res.status(404).json({
         success: false,
-        message: "Product not found",
+        message:
+          "Product not found",
       });
     }
 
     return res.status(200).json({
       success: true,
+
       data: product,
     });
   } catch (error) {
@@ -311,12 +332,21 @@ export async function getProductById(
 
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
+
+      message:
+        "Internal server error",
     });
   }
 }
 
-// UPDATE PRODUCT
+/* =========================================================
+   UPDATE PRODUCT
+   Fields:
+   - name
+   - barcode
+   - sellingPrice
+========================================================= */
+
 export async function updateProduct(
   req: AuthRequest,
   res: Response
@@ -325,15 +355,14 @@ export async function updateProduct(
     const id = getId(req);
 
     const {
-      sku,
-      barcode,
       name,
-      description,
-      costPrice,
+      barcode,
       sellingPrice,
-      unit,
-      categoryId,
     } = req.body;
+
+    /* =====================================================
+       CHECK PRODUCT
+    ===================================================== */
 
     const existingProduct =
       await prisma.product.findUnique({
@@ -345,47 +374,96 @@ export async function updateProduct(
     if (!existingProduct) {
       return res.status(404).json({
         success: false,
-        message: "Product not found",
+
+        message:
+          "Product not found",
       });
     }
 
-    if (sku !== undefined) {
-      const skuExists =
-        await prisma.product.findFirst({
-          where: {
-            sku: String(sku).trim(),
-          },
-        });
+    /* =====================================================
+       VALIDATION
+    ===================================================== */
+
+    if (
+      name !== undefined &&
+      !String(name).trim()
+    ) {
+      return res.status(400).json({
+        success: false,
+
+        message:
+          "Product name cannot be empty",
+      });
+    }
+
+    if (
+      barcode !== undefined &&
+      !String(barcode).trim()
+    ) {
+      return res.status(400).json({
+        success: false,
+
+        message:
+          "Barcode cannot be empty",
+      });
+    }
+
+    if (
+      sellingPrice !== undefined &&
+      sellingPrice !== null &&
+      sellingPrice !== ""
+    ) {
+      const price =
+        Number(sellingPrice);
 
       if (
-        skuExists &&
-        skuExists.id !== id
+        !Number.isFinite(price) ||
+        price < 0
       ) {
-        return res.status(409).json({
+        return res.status(400).json({
           success: false,
-          message: "SKU already exists",
+
+          message:
+            "Invalid selling price",
         });
       }
     }
 
-    if (barcode !== undefined && barcode) {
+    /* =====================================================
+       CHECK BARCODE DUPLICATE
+    ===================================================== */
+
+    if (
+      barcode !== undefined &&
+      barcode
+    ) {
+      const barcodeValue =
+        String(barcode).trim();
+
       const barcodeExists =
         await prisma.product.findFirst({
           where: {
-            barcode: String(barcode).trim(),
+            barcode: barcodeValue,
+
+            NOT: {
+              id,
+            },
           },
         });
 
-      if (
-        barcodeExists &&
-        barcodeExists.id !== id
-      ) {
+      if (barcodeExists) {
         return res.status(409).json({
           success: false,
-          message: "Barcode already exists",
+
+          message:
+            "Barcode already exists",
         });
       }
     }
+
+    /* =====================================================
+       UPDATE PRODUCT
+    ===================================================== */
 
     const product =
       await prisma.product.update({
@@ -394,47 +472,24 @@ export async function updateProduct(
         },
 
         data: {
-          ...(sku !== undefined && {
-            sku: String(sku).trim(),
+          ...(name !== undefined && {
+            name:
+              String(name).trim(),
           }),
 
           ...(barcode !== undefined && {
-            barcode: barcode
-              ? String(barcode).trim()
-              : null,
+            barcode:
+              String(barcode).trim(),
           }),
 
-          ...(name !== undefined && {
-            name: String(name).trim(),
-          }),
-
-          ...(description !== undefined && {
-            description: description
-              ? String(description).trim()
-              : null,
-          }),
-
-          ...(costPrice !== undefined && {
-            costPrice: Number(costPrice),
-          }),
-
-          ...(sellingPrice !== undefined && {
-            sellingPrice: Number(sellingPrice),
-          }),
-
-          ...(unit !== undefined && {
-            unit: String(unit).trim(),
-          }),
-
-          ...(categoryId !== undefined && {
-            categoryId: categoryId
-              ? String(categoryId)
-              : null,
+          ...(sellingPrice !==
+            undefined && {
+            sellingPrice:
+              Number(sellingPrice),
           }),
         },
 
         include: {
-          category: true,
           branches: {
             include: {
               branch: true,
@@ -445,7 +500,10 @@ export async function updateProduct(
 
     return res.status(200).json({
       success: true,
-      message: "Product updated successfully",
+
+      message:
+        "Product updated successfully",
+
       data: product,
     });
   } catch (error) {
@@ -456,18 +514,24 @@ export async function updateProduct(
 
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
+
+      message:
+        "Internal server error",
     });
   }
 }
 
-// UPDATE STATUS
+/* =========================================================
+   UPDATE PRODUCT STATUS
+========================================================= */
+
 export async function updateProductStatus(
   req: AuthRequest,
   res: Response
 ) {
   try {
     const id = getId(req);
+
     const { status } = req.body;
 
     if (
@@ -476,6 +540,7 @@ export async function updateProductStatus(
     ) {
       return res.status(400).json({
         success: false,
+
         message:
           "Status must be ACTIVE or INACTIVE",
       });
@@ -491,7 +556,9 @@ export async function updateProductStatus(
     if (!product) {
       return res.status(404).json({
         success: false,
-        message: "Product not found",
+
+        message:
+          "Product not found",
       });
     }
 
@@ -500,6 +567,7 @@ export async function updateProductStatus(
         where: {
           id,
         },
+
         data: {
           status,
         },
@@ -507,7 +575,10 @@ export async function updateProductStatus(
 
     return res.status(200).json({
       success: true,
-      message: "Product status updated",
+
+      message:
+        "Product status updated",
+
       data: updated,
     });
   } catch (error) {
@@ -518,18 +589,27 @@ export async function updateProductStatus(
 
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
+
+      message:
+        "Internal server error",
     });
   }
 }
 
-// DELETE PRODUCT
+/* =========================================================
+   DELETE PRODUCT
+========================================================= */
+
 export async function deleteProduct(
   req: AuthRequest,
   res: Response
 ) {
   try {
     const id = getId(req);
+
+    /* =====================================================
+       CHECK PRODUCT
+    ===================================================== */
 
     const product =
       await prisma.product.findUnique({
@@ -541,9 +621,15 @@ export async function deleteProduct(
     if (!product) {
       return res.status(404).json({
         success: false,
-        message: "Product not found",
+
+        message:
+          "Product not found",
       });
     }
+
+    /* =====================================================
+       CHECK TRANSACTION HISTORY
+    ===================================================== */
 
     const [
       saleItemCount,
@@ -585,10 +671,15 @@ export async function deleteProduct(
     if (hasHistory) {
       return res.status(400).json({
         success: false,
+
         message:
           "Product cannot be deleted because transaction history exists. Set it to INACTIVE instead.",
       });
     }
+
+    /* =====================================================
+       DELETE
+    ===================================================== */
 
     await prisma.product.delete({
       where: {
@@ -598,7 +689,9 @@ export async function deleteProduct(
 
     return res.status(200).json({
       success: true,
-      message: "Product deleted successfully",
+
+      message:
+        "Product deleted successfully",
     });
   } catch (error) {
     console.error(
@@ -608,7 +701,9 @@ export async function deleteProduct(
 
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
+
+      message:
+        "Internal server error",
     });
   }
 }
