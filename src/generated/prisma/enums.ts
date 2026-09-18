@@ -9,6 +9,16 @@
 * 🟢 You can import this file directly.
 */
 
+export const StockMovementType = {
+  STOCK_IN: 'STOCK_IN',
+  SALE: 'SALE',
+  RETURN: 'RETURN',
+  ADJUSTMENT: 'ADJUSTMENT'
+} as const
+
+export type StockMovementType = (typeof StockMovementType)[keyof typeof StockMovementType]
+
+
 export const UserRole = {
   OWNER: 'OWNER',
   ADMIN: 'ADMIN',
@@ -58,20 +68,6 @@ export const SaleStatus = {
 } as const
 
 export type SaleStatus = (typeof SaleStatus)[keyof typeof SaleStatus]
-
-
-export const StockMovementType = {
-  PURCHASE: 'PURCHASE',
-  SALE: 'SALE',
-  SALE_RETURN: 'SALE_RETURN',
-  PURCHASE_RETURN: 'PURCHASE_RETURN',
-  ADJUSTMENT_IN: 'ADJUSTMENT_IN',
-  ADJUSTMENT_OUT: 'ADJUSTMENT_OUT',
-  TRANSFER_IN: 'TRANSFER_IN',
-  TRANSFER_OUT: 'TRANSFER_OUT'
-} as const
-
-export type StockMovementType = (typeof StockMovementType)[keyof typeof StockMovementType]
 
 
 export const PurchaseStatus = {

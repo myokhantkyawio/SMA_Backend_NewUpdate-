@@ -154,14 +154,14 @@ export type SupplierScalarFieldEnum = (typeof SupplierScalarFieldEnum)[keyof typ
 
 export const ProductScalarFieldEnum = {
   id: 'id',
-  name: 'name',
   barcode: 'barcode',
+  name: 'name',
   costPrice: 'costPrice',
   sellingPrice: 'sellingPrice',
-  stock: 'stock',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  stock: 'stock'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -287,9 +287,12 @@ export const StockMovementScalarFieldEnum = {
   branchId: 'branchId',
   type: 'type',
   quantity: 'quantity',
-  referenceId: 'referenceId',
   note: 'note',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  createdById: 'createdById',
+  receivedDate: 'receivedDate',
+  supplier: 'supplier',
+  updatedAt: 'updatedAt'
 } as const
 
 export type StockMovementScalarFieldEnum = (typeof StockMovementScalarFieldEnum)[keyof typeof StockMovementScalarFieldEnum]

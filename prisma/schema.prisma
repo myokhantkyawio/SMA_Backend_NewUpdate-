@@ -96,61 +96,51 @@ model Supplier {
 }
 
 model Product {
-  id           String        @id @default(cuid())
-  name         String
-  barcode      String?       @unique
-  costPrice    Decimal       @default(0) @db.Decimal(12, 2)
-  sellingPrice Decimal       @db.Decimal(12, 2)
-  stock        Int           @default(0)
-  status       ProductStatus @default(ACTIVE)
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-
+  id                  String               @id @default(cuid())
+  barcode             String?              @unique
+  name                String
+  costPrice           Decimal              @default(0) @db.Decimal(12, 2)
+  sellingPrice        Decimal              @db.Decimal(12, 2)
+  status              ProductStatus        @default(ACTIVE)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  stock               Int                  @default(0)
+  orderItems          OrderItem[]
   branches            ProductBranch[]
   purchaseItems       PurchaseItem[]
+  purchaseReturnItems PurchaseReturnItem[]
   saleItems           SaleItem[]
+  saleReturnItems     SaleReturnItem[]
   stockMovements      StockMovement[]
   transferItems       StockTransferItem[]
-  saleReturnItems     SaleReturnItem[]
-  purchaseReturnItems PurchaseReturnItem[]
-  orderItems          OrderItem[]
 }
 
 model Order {
-  id String @id @default(cuid())
-
+  id              String      @id @default(cuid())
   customerId      String?
   customerName    String?
   customerPhone   String?
   customerAddress String?
-
-  subtotal Float
-  discount Float @default(0)
-  total    Float
-
-  paymentMethod String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  items OrderItem[]
+  subtotal        Float
+  discount        Float       @default(0)
+  total           Float
+  paymentMethod   String
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  items           OrderItem[]
 }
 
 model OrderItem {
-  id String @id @default(cuid())
-
+  id        String   @id @default(cuid())
   orderId   String
   productId String
-
-  name     String
-  price    Float
-  quantity Int
-  amount   Float
-
-  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  product Product @relation(fields: [productId], references: [id])
-
+  name      String
+  price     Float
+  quantity  Int
+  amount    Float
   createdAt DateTime @default(now())
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id])
 
   @@index([orderId])
   @@index([productId])
@@ -260,21 +250,22 @@ model SaleItem {
 }
 
 model StockMovement {
-  id          String            @id @default(cuid())
-  productId   String
-  branchId    String
-  type        StockMovementType
-  quantity    Decimal           @db.Decimal(12, 2)
-  referenceId String?
-  note        String?
-  createdAt   DateTime          @default(now())
-  branch      Branch            @relation(fields: [branchId], references: [id])
-  product     Product           @relation(fields: [productId], references: [id])
+  id           String            @id @default(cuid())
+  productId    String
+  branchId     String?
+  type         StockMovementType
+  quantity     Int
+  note         String?
+  createdAt    DateTime          @default(now())
+  createdById  String?
+  receivedDate DateTime?
+  supplier     String?
+  updatedAt    DateTime          @updatedAt
+  branch       Branch?           @relation(fields: [branchId], references: [id])
+  product      Product           @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId])
-  @@index([branchId])
   @@index([type])
-  @@index([referenceId])
   @@index([createdAt])
 }
 
@@ -571,6 +562,13 @@ model SystemSetting {
   @@index([createdAt])
 }
 
+enum StockMovementType {
+  STOCK_IN
+  SALE
+  RETURN
+  ADJUSTMENT
+}
+
 enum UserRole {
   OWNER
   ADMIN
@@ -605,17 +603,6 @@ enum SaleStatus {
   VOIDED
   REFUNDED
   PARTIALLY_REFUNDED
-}
-
-enum StockMovementType {
-  PURCHASE
-  SALE
-  SALE_RETURN
-  PURCHASE_RETURN
-  ADJUSTMENT_IN
-  ADJUSTMENT_OUT
-  TRANSFER_IN
-  TRANSFER_OUT
 }
 
 enum PurchaseStatus {

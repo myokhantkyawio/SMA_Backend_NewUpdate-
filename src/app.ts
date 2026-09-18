@@ -27,6 +27,8 @@ import stockTransferRoutes from "./routes/stockTransfer.routes";
 import auditRoutes from "./routes/audit.routes";
 import settingRoutes from "./routes/setting.routes";
 import prisma from "./config/prisma";
+import stockRoutes from "./routes/stock.routes";
+
 const app = express();
 
 app.use(
@@ -60,7 +62,7 @@ app.use("/api/purchasereturns", purchaseReturnRoutes);
 app.use("/api/purchase-payments", purchasePaymentRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/customer-payments", customerPaymentRoutes);
-
+app.use("/api/stock", stockRoutes);
 app.use("/api/cash-shifts", cashShiftRoutes);
 app.use("/api/stock-transfers", stockTransferRoutes);
 app.use("/api/audit-logs", auditRoutes);

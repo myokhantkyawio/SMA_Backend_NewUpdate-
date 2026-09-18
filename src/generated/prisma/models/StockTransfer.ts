@@ -463,10 +463,6 @@ export type EnumTransferStatusFieldUpdateOperationsInput = {
   set?: $Enums.TransferStatus
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type StockTransferCreateNestedOneWithoutItemsInput = {
   create?: Prisma.XOR<Prisma.StockTransferCreateWithoutItemsInput, Prisma.StockTransferUncheckedCreateWithoutItemsInput>
   connectOrCreate?: Prisma.StockTransferCreateOrConnectWithoutItemsInput

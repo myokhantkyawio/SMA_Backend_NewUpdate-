@@ -573,10 +573,12 @@ export type BranchCreateNestedOneWithoutStockMovementsInput = {
   connect?: Prisma.BranchWhereUniqueInput
 }
 
-export type BranchUpdateOneRequiredWithoutStockMovementsNestedInput = {
+export type BranchUpdateOneWithoutStockMovementsNestedInput = {
   create?: Prisma.XOR<Prisma.BranchCreateWithoutStockMovementsInput, Prisma.BranchUncheckedCreateWithoutStockMovementsInput>
   connectOrCreate?: Prisma.BranchCreateOrConnectWithoutStockMovementsInput
   upsert?: Prisma.BranchUpsertWithoutStockMovementsInput
+  disconnect?: Prisma.BranchWhereInput | boolean
+  delete?: Prisma.BranchWhereInput | boolean
   connect?: Prisma.BranchWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.BranchUpdateToOneWithWhereWithoutStockMovementsInput, Prisma.BranchUpdateWithoutStockMovementsInput>, Prisma.BranchUncheckedUpdateWithoutStockMovementsInput>
 }
