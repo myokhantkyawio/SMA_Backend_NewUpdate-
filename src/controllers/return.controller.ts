@@ -1,48 +1,54 @@
+
 import { Response } from "express";
 
 import prisma from "../config/prisma";
 import { AuthRequest } from "../middleware/auth";
 
-/**
- * GET /api/returns
- *
- * Get all returns
- */
+/*
+|--------------------------------------------------------------------------
+| GET /api/returns
+|--------------------------------------------------------------------------
+*/
+
 export async function getReturns(
   req: AuthRequest,
   res: Response
 ) {
   try {
+    console.log(
+      "GET /api/returns"
+    );
+
     const {
       status,
       productId,
       saleId,
     } = req.query;
 
+    const where = {};
+
+    if (status) {
+      where.status = String(status);
+    }
+
+    if (productId) {
+      where.productId =
+        String(productId);
+    }
+
+    if (saleId) {
+      where.saleId =
+        String(saleId);
+    }
+
+    console.log(
+      "Return query:",
+      where
+    );
+
     const returns =
       await prisma.return.findMany({
-        where: {
-          ...(status
-            ? {
-                status:
-                  String(status) as any,
-              }
-            : {}),
-
-          ...(productId
-            ? {
-                productId:
-                  String(productId),
-              }
-            : {}),
-
-          ...(saleId
-            ? {
-                saleId:
-                  String(saleId),
-              }
-            : {}),
-        },
+        where,
 
         orderBy: {
           createdAt: "desc",
@@ -53,36 +59,48 @@ export async function getReturns(
         },
       });
 
+    console.log(
+      "Returns found:",
+      returns.length
+    );
+
     return res.status(200).json({
       success: true,
       data: returns,
     });
   } catch (error) {
     console.error(
-      "Get returns error:",
-      error
+      "GET RETURNS ERROR:"
     );
+
+    console.error(error);
 
     return res.status(500).json({
       success: false,
+
       message:
-        "Internal server error",
+        error instanceof Error
+          ? error.message
+          : "Internal server error",
     });
   }
 }
 
 
-/**
- * GET /api/returns/:id
- *
- * Get single return
- */
+/*
+|--------------------------------------------------------------------------
+| GET /api/returns/:id
+|--------------------------------------------------------------------------
+*/
+
 export async function getReturnById(
   req: AuthRequest,
   res: Response
 ) {
   try {
-    const id = Array.isArray(req.params.id)
+    const id = Array.isArray(
+      req.params.id
+    )
       ? req.params.id[0]
       : req.params.id;
 
@@ -119,30 +137,27 @@ export async function getReturnById(
     });
   } catch (error) {
     console.error(
-      "Get return error:",
+      "GET RETURN ERROR:",
       error
     );
 
     return res.status(500).json({
       success: false,
       message:
-        "Internal server error",
+        error instanceof Error
+          ? error.message
+          : "Internal server error",
     });
   }
 }
 
 
-/**
- * POST /api/returns
- *
- * Create new return
- *
- * IMPORTANT:
- * Creating a return does NOT change stock.
- *
- * Stock is restored only when
- * the return is COMPLETED.
- */
+/*
+|--------------------------------------------------------------------------
+| POST /api/returns
+|--------------------------------------------------------------------------
+*/
+
 export async function createReturn(
   req: AuthRequest,
   res: Response
@@ -220,9 +235,6 @@ export async function createReturn(
       });
     }
 
-    /**
-     * Check product
-     */
     const product =
       await prisma.product.findUnique({
         where: {
@@ -238,11 +250,6 @@ export async function createReturn(
       });
     }
 
-    /**
-     * Create pending return
-     *
-     * Do NOT increase stock here.
-     */
     const returnItem =
       await prisma.return.create({
         data: {
@@ -290,7 +297,7 @@ export async function createReturn(
     });
   } catch (error) {
     console.error(
-      "Create return error:",
+      "CREATE RETURN ERROR:",
       error
     );
 
@@ -305,21 +312,12 @@ export async function createReturn(
 }
 
 
-/**
- * POST /api/returns/:id/complete
- *
- * Complete return
- *
- * This will:
- *
- * 1. Check return
- * 2. Check pending status
- * 3. Increase product stock
- * 4. Create StockMovement RETURN
- * 5. Change return status to COMPLETED
- *
- * Everything happens inside one transaction.
- */
+/*
+|--------------------------------------------------------------------------
+| POST /api/returns/:id/complete
+|--------------------------------------------------------------------------
+*/
+
 export async function completeReturn(
   req: AuthRequest,
   res: Response
@@ -333,7 +331,9 @@ export async function completeReturn(
       });
     }
 
-    const id = Array.isArray(req.params.id)
+    const id = Array.isArray(
+      req.params.id
+    )
       ? req.params.id[0]
       : req.params.id;
 
@@ -345,9 +345,6 @@ export async function completeReturn(
       });
     }
 
-    /**
-     * Get return first
-     */
     const existingReturn =
       await prisma.return.findUnique({
         where: {
@@ -363,9 +360,6 @@ export async function completeReturn(
       });
     }
 
-    /**
-     * Only PENDING return can be completed
-     */
     if (
       existingReturn.status !==
       "PENDING"
@@ -373,21 +367,14 @@ export async function completeReturn(
       return res.status(400).json({
         success: false,
         message:
-          `Return is already ${existingReturn.status.toLowerCase()}`,
+          `Return is already ${existingReturn.status}`,
       });
     }
 
-    /**
-     * Transaction
-     */
     const result =
       await prisma.$transaction(
         async (tx) => {
 
-          /**
-           * Check product again
-           * inside transaction
-           */
           const product =
             await tx.product.findUnique({
               where: {
@@ -402,9 +389,6 @@ export async function completeReturn(
             );
           }
 
-          /**
-           * Increase stock
-           */
           const updatedProduct =
             await tx.product.update({
               where: {
@@ -420,9 +404,6 @@ export async function completeReturn(
               },
             });
 
-          /**
-           * Create stock movement
-           */
           const movement =
             await tx.stockMovement.create({
               data: {
@@ -439,14 +420,10 @@ export async function completeReturn(
                   `Product return ${existingReturn.id}`,
 
                 createdById:
-                  req.user?.userId ||
-                  null,
+                  req.user.userId,
               },
             });
 
-          /**
-           * Update return status
-           */
           const updatedReturn =
             await tx.return.update({
               where: {
@@ -478,16 +455,16 @@ export async function completeReturn(
     return res.status(200).json({
       success: true,
       message:
-        "Return completed successfully. Stock has been restored.",
+        "Return completed successfully",
       data: result,
     });
   } catch (error) {
     console.error(
-      "Complete return error:",
+      "COMPLETE RETURN ERROR:",
       error
     );
 
-    return res.status(400).json({
+    return res.status(500).json({
       success: false,
       message:
         error instanceof Error
@@ -498,11 +475,12 @@ export async function completeReturn(
 }
 
 
-/**
- * POST /api/returns/:id/cancel
- *
- * Cancel pending return
- */
+/*
+|--------------------------------------------------------------------------
+| POST /api/returns/:id/cancel
+|--------------------------------------------------------------------------
+*/
+
 export async function cancelReturn(
   req: AuthRequest,
   res: Response
@@ -516,7 +494,9 @@ export async function cancelReturn(
       });
     }
 
-    const id = Array.isArray(req.params.id)
+    const id = Array.isArray(
+      req.params.id
+    )
       ? req.params.id[0]
       : req.params.id;
 
@@ -550,7 +530,7 @@ export async function cancelReturn(
       return res.status(400).json({
         success: false,
         message:
-          `Cannot cancel ${existingReturn.status.toLowerCase()} return`,
+          `Cannot cancel ${existingReturn.status} return`,
       });
     }
 
@@ -578,7 +558,7 @@ export async function cancelReturn(
     });
   } catch (error) {
     console.error(
-      "Cancel return error:",
+      "CANCEL RETURN ERROR:",
       error
     );
 
@@ -591,3 +571,4 @@ export async function cancelReturn(
     });
   }
 }
+

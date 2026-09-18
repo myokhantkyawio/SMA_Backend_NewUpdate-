@@ -96,6 +96,15 @@ export const ExpenseStatus = {
 export type ExpenseStatus = (typeof ExpenseStatus)[keyof typeof ExpenseStatus]
 
 
+export const ReturnStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ReturnStatus = (typeof ReturnStatus)[keyof typeof ReturnStatus]
+
+
 export const ShiftStatus = {
   OPEN: 'OPEN',
   CLOSED: 'CLOSED'

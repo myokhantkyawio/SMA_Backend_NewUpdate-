@@ -157,3 +157,8 @@ export type AuditLog = Prisma.AuditLogModel
  * 
  */
 export type SystemSetting = Prisma.SystemSettingModel
+/**
+ * Model Return
+ * 
+ */
+export type Return = Prisma.ReturnModel
