@@ -15,52 +15,19 @@ export async function getReturns(
   res: Response
 ) {
   try {
-    console.log(
-      "GET /api/returns"
-    );
+    console.log("GET /api/returns");
 
-    const {
-      status,
-      productId,
-      saleId,
-    } = req.query;
-
-    const where = {};
-
-    if (status) {
-      where.status = String(status);
-    }
-
-    if (productId) {
-      where.productId =
-        String(productId);
-    }
-
-    if (saleId) {
-      where.saleId =
-        String(saleId);
-    }
+    const returns = await prisma.return.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      include: {
+        product: true,
+      },
+    });
 
     console.log(
-      "Return query:",
-      where
-    );
-
-    const returns =
-      await prisma.return.findMany({
-        where,
-
-        orderBy: {
-          createdAt: "desc",
-        },
-
-        include: {
-          product: true,
-        },
-      });
-
-    console.log(
-      "Returns found:",
+      "RETURNS FOUND:",
       returns.length
     );
 
@@ -70,18 +37,20 @@ export async function getReturns(
     });
   } catch (error) {
     console.error(
-      "GET RETURNS ERROR:"
+      "GET RETURNS ERROR:",
+      error
     );
-
-    console.error(error);
 
     return res.status(500).json({
       success: false,
-
       message:
         error instanceof Error
           ? error.message
           : "Internal server error",
+      error:
+        process.env.NODE_ENV !== "production"
+          ? error
+          : undefined,
     });
   }
 }
