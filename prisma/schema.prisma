@@ -113,6 +113,7 @@ model Product {
   saleReturnItems     SaleReturnItem[]
   stockMovements      StockMovement[]
   transferItems       StockTransferItem[]
+  returns Return[]
 }
 
 model Order {
@@ -620,6 +621,39 @@ enum TransferStatus {
 enum ExpenseStatus {
   ACTIVE
   VOIDED
+}
+model Return {
+  id          String   @id @default(cuid())
+
+  saleId      String?
+  productId   String
+
+  customerName String?
+
+  quantity    Int
+  amount      Float
+
+  reason      String
+
+  status      ReturnStatus @default(PENDING)
+
+  createdById String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  product     Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@index([saleId])
+  @@index([productId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum ReturnStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
 }
 
 enum ShiftStatus {

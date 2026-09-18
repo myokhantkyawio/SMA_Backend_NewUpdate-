@@ -8,7 +8,7 @@ import categoryRoutes from "./routes/category.routes";
 import supplierRoutes from "./routes/supplier.routes";
 import purchaseRoutes from "./routes/purchase.routes";
 import saleRoutes from "./routes/sale.routes";
-import stockRoutes from "./routes/stock.routes";
+// import stockRoutes from "./routes/stock.routes";
 import expenseRoutes from "./routes/expense.routes";
 import userRoutes from "./routes/user.routes";
 import dashboardRoutes from "./routes/dashboard.routes";
@@ -28,6 +28,7 @@ import auditRoutes from "./routes/audit.routes";
 import settingRoutes from "./routes/setting.routes";
 import prisma from "./config/prisma";
 import stockRoutes from "./routes/stock.routes";
+import returnRoutes from "./routes/return.routes";
 
 const app = express();
 
@@ -59,6 +60,10 @@ app.use("/api/salereturns", saleReturnRoutes);
 
 app.use("/api/purchasereturns", purchaseReturnRoutes);
 
+app.use(
+  "/api/returns",
+  returnRoutes
+);
 app.use("/api/purchase-payments", purchasePaymentRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/customer-payments", customerPaymentRoutes);
