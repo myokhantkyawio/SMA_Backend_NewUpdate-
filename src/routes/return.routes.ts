@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import {
   getReturns,
   getReturnById,
@@ -15,39 +16,18 @@ import {
 
 const router = Router();
 
-
-/**
- * GET
- * /api/returns
- *
- * All authenticated users
- */
 router.get(
   "/",
   auth,
   getReturns
 );
 
-
-/**
- * GET
- * /api/returns/:id
- *
- * Return detail
- */
 router.get(
   "/:id",
   auth,
   getReturnById
 );
 
-
-/**
- * POST
- * /api/returns
- *
- * Cashier can create return
- */
 router.post(
   "/",
   auth,
@@ -60,13 +40,6 @@ router.post(
   createReturn
 );
 
-
-/**
- * POST
- * /api/returns/:id/complete
- *
- * Only management can approve
- */
 router.post(
   "/:id/complete",
   auth,
@@ -78,13 +51,6 @@ router.post(
   completeReturn
 );
 
-
-/**
- * POST
- * /api/returns/:id/cancel
- *
- * Only management can cancel
- */
 router.post(
   "/:id/cancel",
   auth,
@@ -96,12 +62,6 @@ router.post(
   cancelReturn
 );
 
-/**
- * DELETE
- * /api/returns/:id
- *
- * Only management can delete
- */
 router.delete(
   "/:id",
   auth,

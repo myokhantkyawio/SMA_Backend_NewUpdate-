@@ -1,4 +1,3 @@
-
 import { Response } from "express";
 
 import prisma from "../config/prisma";
@@ -541,32 +540,94 @@ export async function cancelReturn(
   }
 }
 
-export const deleteReturn = async (req, res) => {
+
+/*
+|--------------------------------------------------------------------------
+| DELETE /api/returns/:id
+|--------------------------------------------------------------------------
+*/
+
+export async function deleteReturn(
+  req: AuthRequest,
+  res: Response
+) {
   try {
-    const { id } = req.params;
-
-    const returnRecord = await Return.findByPk(id);
-
-    if (!returnRecord) {
-      return res.status(404).json({
+    if (!req.user) {
+      return res.status(401).json({
         success: false,
-        message: "Return not found",
+        message:
+          "Authentication required",
       });
     }
 
-    await returnRecord.destroy();
+    const id = Array.isArray(
+      req.params.id
+    )
+      ? req.params.id[0]
+      : req.params.id;
+
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Return ID is required",
+      });
+    }
+
+    console.log(
+      "DELETE /api/returns/:id",
+      id
+    );
+
+    const existingReturn =
+      await prisma.return.findUnique({
+        where: {
+          id,
+        },
+      });
+
+    if (!existingReturn) {
+      return res.status(404).json({
+        success: false,
+        message:
+          "Return not found",
+      });
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Delete return record
+    |--------------------------------------------------------------------------
+    */
+
+    await prisma.return.delete({
+      where: {
+        id,
+      },
+    });
+
+    console.log(
+      "RETURN DELETED:",
+      id
+    );
 
     return res.status(200).json({
       success: true,
-      message: "Return deleted successfully",
+      message:
+        "Return deleted successfully",
     });
   } catch (error) {
-    console.error("Delete return error:", error);
+    console.error(
+      "DELETE RETURN ERROR:",
+      error
+    );
 
     return res.status(500).json({
       success: false,
-      message: "Failed to delete return",
+      message:
+        error instanceof Error
+          ? error.message
+          : "Unable to delete return",
     });
   }
-};
-
+}
