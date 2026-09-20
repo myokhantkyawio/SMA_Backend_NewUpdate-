@@ -541,3 +541,32 @@ export async function cancelReturn(
   }
 }
 
+export const deleteReturn = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const returnRecord = await Return.findByPk(id);
+
+    if (!returnRecord) {
+      return res.status(404).json({
+        success: false,
+        message: "Return not found",
+      });
+    }
+
+    await returnRecord.destroy();
+
+    return res.status(200).json({
+      success: true,
+      message: "Return deleted successfully",
+    });
+  } catch (error) {
+    console.error("Delete return error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete return",
+    });
+  }
+};
+

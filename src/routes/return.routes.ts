@@ -1,11 +1,11 @@
 import { Router } from "express";
-
 import {
   getReturns,
   getReturnById,
   createReturn,
   completeReturn,
   cancelReturn,
+  deleteReturn,
 } from "../controllers/return.controller";
 
 import {
@@ -96,5 +96,21 @@ router.post(
   cancelReturn
 );
 
+/**
+ * DELETE
+ * /api/returns/:id
+ *
+ * Only management can delete
+ */
+router.delete(
+  "/:id",
+  auth,
+  authorize(
+    "OWNER",
+    "ADMIN",
+    "MANAGER"
+  ),
+  deleteReturn
+);
 
 export default router;
