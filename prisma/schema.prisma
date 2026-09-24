@@ -98,6 +98,8 @@ model Supplier {
 model Product {
   id                  String               @id @default(cuid())
   barcode             String?              @unique
+  productCode String @default("")
+  unit String @default("PCS") 
   name                String
   costPrice           Decimal              @default(0) @db.Decimal(12, 2)
   sellingPrice        Decimal              @db.Decimal(12, 2)

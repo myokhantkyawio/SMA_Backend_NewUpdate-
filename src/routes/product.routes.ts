@@ -10,61 +10,114 @@ import {
   deleteProduct,
 } from "../controllers/product.controller";
 
-import { auth, authorize } from "../middleware/auth";
+import {
+  auth,
+  authorize,
+} from "../middleware/auth";
 
 const router = Router();
 
 /* =========================================================
-   CREATE
+   CREATE PRODUCT
 ========================================================= */
 
-router.post("/", auth, authorize("OWNER", "ADMIN", "MANAGER"), createProduct);
+router.post(
+  "/",
+  auth,
+  authorize(
+    "OWNER",
+    "ADMIN",
+    "MANAGER"
+  ),
+  createProduct
+);
 
 /* =========================================================
-   GET ALL
+   GET ALL PRODUCTS
 ========================================================= */
 
-router.get("/", auth, getProducts);
+router.get(
+  "/",
+  auth,
+  getProducts
+);
 
 /* =========================================================
-   GET BY ID
+   GET PRODUCT BY ID
 ========================================================= */
 
-router.get("/:id", auth, getProductById);
+router.get(
+  "/:id",
+  auth,
+  getProductById
+);
 
 /* =========================================================
-   FULL PRODUCT UPDATE
+   UPDATE PRODUCT
+
+   Name
+   Product Code
+   Unit
+   Selling Price
+
+   Stock CANNOT be changed here.
 ========================================================= */
 
-router.put("/:id", auth, authorize("OWNER", "ADMIN", "MANAGER"), updateProduct);
+router.put(
+  "/:id",
+  auth,
+  authorize(
+    "OWNER",
+    "ADMIN",
+    "MANAGER"
+  ),
+  updateProduct
+);
 
 /* =========================================================
-   STOCK UPDATE
-   Used by Stock Management
+   UPDATE STOCK
+
+   Stock Management only
 ========================================================= */
 
 router.patch(
   "/:id",
   auth,
-  authorize("OWNER", "ADMIN", "MANAGER"),
-  updateProductStock,
+  authorize(
+    "OWNER",
+    "ADMIN",
+    "MANAGER"
+  ),
+  updateProductStock
 );
 
 /* =========================================================
-   STATUS UPDATE
+   UPDATE STATUS
 ========================================================= */
 
 router.patch(
   "/:id/status",
   auth,
-  authorize("OWNER", "ADMIN", "MANAGER"),
-  updateProductStatus,
+  authorize(
+    "OWNER",
+    "ADMIN",
+    "MANAGER"
+  ),
+  updateProductStatus
 );
 
 /* =========================================================
-   DELETE
+   DELETE PRODUCT
 ========================================================= */
 
-router.delete("/:id", auth, authorize("OWNER", "ADMIN"), deleteProduct);
+router.delete(
+  "/:id",
+  auth,
+  authorize(
+    "OWNER",
+    "ADMIN"
+  ),
+  deleteProduct
+);
 
 export default router;

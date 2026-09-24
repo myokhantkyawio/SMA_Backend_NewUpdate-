@@ -39,6 +39,7 @@ WITH numbered_customers AS (
   FROM "Customer"
   WHERE "customerNo" IS NULL
 )
+
 UPDATE "Customer" c
 SET "customerNo" = numbered_customers.row_number
 FROM numbered_customers
@@ -51,11 +52,10 @@ WHERE c.id = numbered_customers.id;
 
 SELECT setval(
   'customer_no_seq',
-  COALESCE(
-    (SELECT MAX("customerNo") FROM "Customer"),
-    0
-  )
-);
+  GREATEST(COALESCE(MAX("customerNo"), 1), 1),
+  true
+)
+FROM "Customer";
 
 
 -- ============================================
@@ -93,8 +93,18 @@ ON "Customer" ("isActive");
 CREATE INDEX IF NOT EXISTS "Customer_createdAt_idx"
 ON "Customer" ("createdAt");
 
+
+-- ============================================
+-- Sequence ownership
+-- ============================================
+
 ALTER SEQUENCE customer_no_seq
 OWNED BY "Customer"."customerNo";
+
+
+-- ============================================
+-- Default customer number
+-- ============================================
 
 ALTER TABLE "Customer"
 ALTER COLUMN "customerNo"
