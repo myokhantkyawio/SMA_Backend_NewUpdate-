@@ -372,33 +372,23 @@ export async function updateCustomer(
    DELETE CUSTOMER
 ========================================================= */
 
-export async function deleteCustomer(
-  req: Request,
-  res: Response
-) {
+export async function deleteCustomer(req: Request, res: Response) {
   try {
     const id = getParam(req.params.id);
 
-    await prisma.customer.update({
+    const customer = await prisma.customer.delete({
       where: {
         id,
-      },
-
-      data: {
-        isActive: false,
       },
     });
 
     return res.json({
       success: true,
-      message:
-        "Customer deactivated successfully",
+      message: "Customer deleted successfully",
+      data: customer,
     });
   } catch (error: any) {
-    console.error(
-      "DELETE CUSTOMER ERROR:",
-      error
-    );
+    console.error("DELETE CUSTOMER ERROR:", error);
 
     if (error?.code === "P2025") {
       return res.status(404).json({
