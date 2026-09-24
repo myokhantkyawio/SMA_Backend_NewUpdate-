@@ -2974,7 +2974,13 @@ export const CustomerScalarFieldEnum = {
   creditLimit: 'creditLimit',
   isActive: 'isActive',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  customerNo: 'customerNo',
+  contactPersonName: 'contactPersonName',
+  region: 'region',
+  regionCode: 'regionCode',
+  township: 'township',
+  townshipCode: 'townshipCode'
 } as const
 
 export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]

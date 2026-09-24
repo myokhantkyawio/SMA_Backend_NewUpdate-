@@ -28,10 +28,12 @@ export type AggregateCustomer = {
 
 export type CustomerAvgAggregateOutputType = {
   creditLimit: runtime.Decimal | null
+  customerNo: number | null
 }
 
 export type CustomerSumAggregateOutputType = {
   creditLimit: runtime.Decimal | null
+  customerNo: number | null
 }
 
 export type CustomerMinAggregateOutputType = {
@@ -44,6 +46,12 @@ export type CustomerMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  customerNo: number | null
+  contactPersonName: string | null
+  region: string | null
+  regionCode: string | null
+  township: string | null
+  townshipCode: string | null
 }
 
 export type CustomerMaxAggregateOutputType = {
@@ -56,6 +64,12 @@ export type CustomerMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  customerNo: number | null
+  contactPersonName: string | null
+  region: string | null
+  regionCode: string | null
+  township: string | null
+  townshipCode: string | null
 }
 
 export type CustomerCountAggregateOutputType = {
@@ -68,16 +82,24 @@ export type CustomerCountAggregateOutputType = {
   isActive: number
   createdAt: number
   updatedAt: number
+  customerNo: number
+  contactPersonName: number
+  region: number
+  regionCode: number
+  township: number
+  townshipCode: number
   _all: number
 }
 
 
 export type CustomerAvgAggregateInputType = {
   creditLimit?: true
+  customerNo?: true
 }
 
 export type CustomerSumAggregateInputType = {
   creditLimit?: true
+  customerNo?: true
 }
 
 export type CustomerMinAggregateInputType = {
@@ -90,6 +112,12 @@ export type CustomerMinAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  customerNo?: true
+  contactPersonName?: true
+  region?: true
+  regionCode?: true
+  township?: true
+  townshipCode?: true
 }
 
 export type CustomerMaxAggregateInputType = {
@@ -102,6 +130,12 @@ export type CustomerMaxAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  customerNo?: true
+  contactPersonName?: true
+  region?: true
+  regionCode?: true
+  township?: true
+  townshipCode?: true
 }
 
 export type CustomerCountAggregateInputType = {
@@ -114,6 +148,12 @@ export type CustomerCountAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  customerNo?: true
+  contactPersonName?: true
+  region?: true
+  regionCode?: true
+  township?: true
+  townshipCode?: true
   _all?: true
 }
 
@@ -213,6 +253,12 @@ export type CustomerGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
+  customerNo: number
+  contactPersonName: string | null
+  region: string | null
+  regionCode: string | null
+  township: string | null
+  townshipCode: string | null
   _count: CustomerCountAggregateOutputType | null
   _avg: CustomerAvgAggregateOutputType | null
   _sum: CustomerSumAggregateOutputType | null
@@ -248,6 +294,12 @@ export type CustomerWhereInput = {
   isActive?: Prisma.BoolFilter<"Customer"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
+  customerNo?: Prisma.IntFilter<"Customer"> | number
+  contactPersonName?: Prisma.StringNullableFilter<"Customer"> | string | null
+  region?: Prisma.StringNullableFilter<"Customer"> | string | null
+  regionCode?: Prisma.StringNullableFilter<"Customer"> | string | null
+  township?: Prisma.StringNullableFilter<"Customer"> | string | null
+  townshipCode?: Prisma.StringNullableFilter<"Customer"> | string | null
   payments?: Prisma.CustomerPaymentListRelationFilter
   sales?: Prisma.SaleListRelationFilter
 }
@@ -262,6 +314,12 @@ export type CustomerOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  customerNo?: Prisma.SortOrder
+  contactPersonName?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  regionCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  township?: Prisma.SortOrderInput | Prisma.SortOrder
+  townshipCode?: Prisma.SortOrderInput | Prisma.SortOrder
   payments?: Prisma.CustomerPaymentOrderByRelationAggregateInput
   sales?: Prisma.SaleOrderByRelationAggregateInput
 }
@@ -269,6 +327,7 @@ export type CustomerOrderByWithRelationInput = {
 export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   phone?: string
+  customerNo?: number
   AND?: Prisma.CustomerWhereInput | Prisma.CustomerWhereInput[]
   OR?: Prisma.CustomerWhereInput[]
   NOT?: Prisma.CustomerWhereInput | Prisma.CustomerWhereInput[]
@@ -279,9 +338,14 @@ export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Customer"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
+  contactPersonName?: Prisma.StringNullableFilter<"Customer"> | string | null
+  region?: Prisma.StringNullableFilter<"Customer"> | string | null
+  regionCode?: Prisma.StringNullableFilter<"Customer"> | string | null
+  township?: Prisma.StringNullableFilter<"Customer"> | string | null
+  townshipCode?: Prisma.StringNullableFilter<"Customer"> | string | null
   payments?: Prisma.CustomerPaymentListRelationFilter
   sales?: Prisma.SaleListRelationFilter
-}, "id" | "phone">
+}, "id" | "phone" | "customerNo">
 
 export type CustomerOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -293,6 +357,12 @@ export type CustomerOrderByWithAggregationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  customerNo?: Prisma.SortOrder
+  contactPersonName?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  regionCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  township?: Prisma.SortOrderInput | Prisma.SortOrder
+  townshipCode?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CustomerCountOrderByAggregateInput
   _avg?: Prisma.CustomerAvgOrderByAggregateInput
   _max?: Prisma.CustomerMaxOrderByAggregateInput
@@ -313,6 +383,12 @@ export type CustomerScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"Customer"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Customer"> | Date | string
+  customerNo?: Prisma.IntWithAggregatesFilter<"Customer"> | number
+  contactPersonName?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  region?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  regionCode?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  township?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
+  townshipCode?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
 }
 
 export type CustomerCreateInput = {
@@ -325,6 +401,12 @@ export type CustomerCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  customerNo?: number
+  contactPersonName?: string | null
+  region?: string | null
+  regionCode?: string | null
+  township?: string | null
+  townshipCode?: string | null
   payments?: Prisma.CustomerPaymentCreateNestedManyWithoutCustomerInput
   sales?: Prisma.SaleCreateNestedManyWithoutCustomerInput
 }
@@ -339,6 +421,12 @@ export type CustomerUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  customerNo?: number
+  contactPersonName?: string | null
+  region?: string | null
+  regionCode?: string | null
+  township?: string | null
+  townshipCode?: string | null
   payments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutCustomerInput
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutCustomerInput
 }
@@ -353,6 +441,11 @@ export type CustomerUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contactPersonName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  township?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  townshipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payments?: Prisma.CustomerPaymentUpdateManyWithoutCustomerNestedInput
   sales?: Prisma.SaleUpdateManyWithoutCustomerNestedInput
 }
@@ -367,6 +460,12 @@ export type CustomerUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  customerNo?: Prisma.IntFieldUpdateOperationsInput | number
+  contactPersonName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  township?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  townshipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutCustomerNestedInput
   sales?: Prisma.SaleUncheckedUpdateManyWithoutCustomerNestedInput
 }
@@ -381,6 +480,12 @@ export type CustomerCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  customerNo?: number
+  contactPersonName?: string | null
+  region?: string | null
+  regionCode?: string | null
+  township?: string | null
+  townshipCode?: string | null
 }
 
 export type CustomerUpdateManyMutationInput = {
@@ -393,6 +498,11 @@ export type CustomerUpdateManyMutationInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contactPersonName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  township?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  townshipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CustomerUncheckedUpdateManyInput = {
@@ -405,6 +515,12 @@ export type CustomerUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  customerNo?: Prisma.IntFieldUpdateOperationsInput | number
+  contactPersonName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  township?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  townshipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CustomerNullableScalarRelationFilter = {
@@ -422,10 +538,17 @@ export type CustomerCountOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  customerNo?: Prisma.SortOrder
+  contactPersonName?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  regionCode?: Prisma.SortOrder
+  township?: Prisma.SortOrder
+  townshipCode?: Prisma.SortOrder
 }
 
 export type CustomerAvgOrderByAggregateInput = {
   creditLimit?: Prisma.SortOrder
+  customerNo?: Prisma.SortOrder
 }
 
 export type CustomerMaxOrderByAggregateInput = {
@@ -438,6 +561,12 @@ export type CustomerMaxOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  customerNo?: Prisma.SortOrder
+  contactPersonName?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  regionCode?: Prisma.SortOrder
+  township?: Prisma.SortOrder
+  townshipCode?: Prisma.SortOrder
 }
 
 export type CustomerMinOrderByAggregateInput = {
@@ -450,10 +579,17 @@ export type CustomerMinOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  customerNo?: Prisma.SortOrder
+  contactPersonName?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  regionCode?: Prisma.SortOrder
+  township?: Prisma.SortOrder
+  townshipCode?: Prisma.SortOrder
 }
 
 export type CustomerSumOrderByAggregateInput = {
   creditLimit?: Prisma.SortOrder
+  customerNo?: Prisma.SortOrder
 }
 
 export type CustomerScalarRelationFilter = {
@@ -501,6 +637,12 @@ export type CustomerCreateWithoutSalesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  customerNo?: number
+  contactPersonName?: string | null
+  region?: string | null
+  regionCode?: string | null
+  township?: string | null
+  townshipCode?: string | null
   payments?: Prisma.CustomerPaymentCreateNestedManyWithoutCustomerInput
 }
 
@@ -514,6 +656,12 @@ export type CustomerUncheckedCreateWithoutSalesInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  customerNo?: number
+  contactPersonName?: string | null
+  region?: string | null
+  regionCode?: string | null
+  township?: string | null
+  townshipCode?: string | null
   payments?: Prisma.CustomerPaymentUncheckedCreateNestedManyWithoutCustomerInput
 }
 
@@ -543,6 +691,11 @@ export type CustomerUpdateWithoutSalesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contactPersonName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  township?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  townshipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payments?: Prisma.CustomerPaymentUpdateManyWithoutCustomerNestedInput
 }
 
@@ -556,6 +709,12 @@ export type CustomerUncheckedUpdateWithoutSalesInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  customerNo?: Prisma.IntFieldUpdateOperationsInput | number
+  contactPersonName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  township?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  townshipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   payments?: Prisma.CustomerPaymentUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
@@ -569,6 +728,12 @@ export type CustomerCreateWithoutPaymentsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  customerNo?: number
+  contactPersonName?: string | null
+  region?: string | null
+  regionCode?: string | null
+  township?: string | null
+  townshipCode?: string | null
   sales?: Prisma.SaleCreateNestedManyWithoutCustomerInput
 }
 
@@ -582,6 +747,12 @@ export type CustomerUncheckedCreateWithoutPaymentsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  customerNo?: number
+  contactPersonName?: string | null
+  region?: string | null
+  regionCode?: string | null
+  township?: string | null
+  townshipCode?: string | null
   sales?: Prisma.SaleUncheckedCreateNestedManyWithoutCustomerInput
 }
 
@@ -611,6 +782,11 @@ export type CustomerUpdateWithoutPaymentsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contactPersonName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  township?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  townshipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sales?: Prisma.SaleUpdateManyWithoutCustomerNestedInput
 }
 
@@ -624,6 +800,12 @@ export type CustomerUncheckedUpdateWithoutPaymentsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  customerNo?: Prisma.IntFieldUpdateOperationsInput | number
+  contactPersonName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  regionCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  township?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  townshipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sales?: Prisma.SaleUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
@@ -677,6 +859,12 @@ export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  customerNo?: boolean
+  contactPersonName?: boolean
+  region?: boolean
+  regionCode?: boolean
+  township?: boolean
+  townshipCode?: boolean
   payments?: boolean | Prisma.Customer$paymentsArgs<ExtArgs>
   sales?: boolean | Prisma.Customer$salesArgs<ExtArgs>
   _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs>
@@ -692,6 +880,12 @@ export type CustomerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  customerNo?: boolean
+  contactPersonName?: boolean
+  region?: boolean
+  regionCode?: boolean
+  township?: boolean
+  townshipCode?: boolean
 }, ExtArgs["result"]["customer"]>
 
 export type CustomerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -704,6 +898,12 @@ export type CustomerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  customerNo?: boolean
+  contactPersonName?: boolean
+  region?: boolean
+  regionCode?: boolean
+  township?: boolean
+  townshipCode?: boolean
 }, ExtArgs["result"]["customer"]>
 
 export type CustomerSelectScalar = {
@@ -716,9 +916,15 @@ export type CustomerSelectScalar = {
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  customerNo?: boolean
+  contactPersonName?: boolean
+  region?: boolean
+  regionCode?: boolean
+  township?: boolean
+  townshipCode?: boolean
 }
 
-export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phone" | "email" | "address" | "creditLimit" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"]>
+export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phone" | "email" | "address" | "creditLimit" | "isActive" | "createdAt" | "updatedAt" | "customerNo" | "contactPersonName" | "region" | "regionCode" | "township" | "townshipCode", ExtArgs["result"]["customer"]>
 export type CustomerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   payments?: boolean | Prisma.Customer$paymentsArgs<ExtArgs>
   sales?: boolean | Prisma.Customer$salesArgs<ExtArgs>
@@ -743,6 +949,12 @@ export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     isActive: boolean
     createdAt: Date
     updatedAt: Date
+    customerNo: number
+    contactPersonName: string | null
+    region: string | null
+    regionCode: string | null
+    township: string | null
+    townshipCode: string | null
   }, ExtArgs["result"]["customer"]>
   composites: {}
 }
@@ -1177,6 +1389,12 @@ export interface CustomerFieldRefs {
   readonly isActive: Prisma.FieldRef<"Customer", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Customer", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Customer", 'DateTime'>
+  readonly customerNo: Prisma.FieldRef<"Customer", 'Int'>
+  readonly contactPersonName: Prisma.FieldRef<"Customer", 'String'>
+  readonly region: Prisma.FieldRef<"Customer", 'String'>
+  readonly regionCode: Prisma.FieldRef<"Customer", 'String'>
+  readonly township: Prisma.FieldRef<"Customer", 'String'>
+  readonly townshipCode: Prisma.FieldRef<"Customer", 'String'>
 }
     
 

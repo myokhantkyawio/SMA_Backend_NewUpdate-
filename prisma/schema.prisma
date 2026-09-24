@@ -109,11 +109,11 @@ model Product {
   branches            ProductBranch[]
   purchaseItems       PurchaseItem[]
   purchaseReturnItems PurchaseReturnItem[]
+  returns             Return[]
   saleItems           SaleItem[]
   saleReturnItems     SaleReturnItem[]
   stockMovements      StockMovement[]
   transferItems       StockTransferItem[]
-  returns Return[]
 }
 
 model Order {
@@ -450,20 +450,31 @@ model PurchasePayment {
 }
 
 model Customer {
-  id          String            @id @default(cuid())
-  name        String
-  phone       String?           @unique
-  email       String?
-  address     String?
-  creditLimit Decimal           @default(0) @db.Decimal(12, 2)
-  isActive    Boolean           @default(true)
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
-  payments    CustomerPayment[]
-  sales       Sale[]
+  id                String            @id @default(cuid())
+  name              String
+  phone             String?           @unique
+  email             String?
+  address           String?
+  creditLimit       Decimal           @default(0) @db.Decimal(12, 2)
+  isActive          Boolean           @default(true)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  customerNo        Int               @unique @default(autoincrement())
+  contactPersonName String?
+  region            String?
+  regionCode        String?
+  township          String?
+  townshipCode      String?
+  payments          CustomerPayment[]
+  sales             Sale[]
 
   @@index([name])
   @@index([phone])
+  @@index([regionCode])
+  @@index([townshipCode])
+  @@index([isActive])
+  @@index([createdAt])
+  @@index([customerNo])
 }
 
 model CustomerPayment {
@@ -563,6 +574,26 @@ model SystemSetting {
   @@index([createdAt])
 }
 
+model Return {
+  id           String       @id @default(cuid())
+  saleId       String?
+  productId    String
+  customerName String?
+  quantity     Int
+  amount       Float
+  reason       String
+  status       ReturnStatus @default(PENDING)
+  createdById  String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  product      Product      @relation(fields: [productId], references: [id])
+
+  @@index([saleId])
+  @@index([productId])
+  @@index([status])
+  @@index([createdAt])
+}
+
 enum StockMovementType {
   STOCK_IN
   SALE
@@ -621,33 +652,6 @@ enum TransferStatus {
 enum ExpenseStatus {
   ACTIVE
   VOIDED
-}
-model Return {
-  id          String   @id @default(cuid())
-
-  saleId      String?
-  productId   String
-
-  customerName String?
-
-  quantity    Int
-  amount      Float
-
-  reason      String
-
-  status      ReturnStatus @default(PENDING)
-
-  createdById String?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  product     Product @relation(fields: [productId], references: [id], onDelete: Restrict)
-
-  @@index([saleId])
-  @@index([productId])
-  @@index([status])
-  @@index([createdAt])
 }
 
 enum ReturnStatus {

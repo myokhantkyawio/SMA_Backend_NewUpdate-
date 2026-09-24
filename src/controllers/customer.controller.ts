@@ -116,44 +116,43 @@ export async function createCustomer(
    GET CUSTOMERS
 ========================================================= */
 
-export async function getCustomers(
-  req: Request,
-  res: Response
-) {
+export async function getCustomers(req: Request, res: Response) {
   try {
-    const customers =
-      await prisma.customer.findMany({
-        where: {
-          isActive: true,
+    const customers = await prisma.customer.findMany({
+      where: {
+        isActive: true,
+      },
+      orderBy: [
+        {
+          customerNo: "asc",
         },
+        {
+          createdAt: "asc",
+        },
+      ],
+    });
 
-        orderBy: [
-          {
-            customerNo: "asc",
-          },
-          {
-            createdAt: "asc",
-          },
-        ],
-      });
-
-    return res.json({
+    return res.status(200).json({
       success: true,
       data: customers,
     });
-  } catch (error) {
-    console.error(
-      "GET CUSTOMERS ERROR:",
-      error
-    );
+  } catch (error: any) {
+    console.error("=================================");
+    console.error("GET CUSTOMERS ERROR");
+    console.error(error);
+    console.error("MESSAGE:", error?.message);
+    console.error("CODE:", error?.code);
+    console.error("META:", error?.meta);
+    console.error("=================================");
 
     return res.status(500).json({
       success: false,
-      message: "Failed to get customers",
+      message:
+        error?.message ||
+        "Failed to get customers",
     });
   }
 }
-
 /* =========================================================
    GET SINGLE CUSTOMER
 ========================================================= */

@@ -12,14 +12,34 @@ import { auth } from "../middleware/auth";
 
 const router = Router();
 
-router.post("/", auth, createCustomer);
+router.post(
+  "/",
+  auth,
+  createCustomer
+);
 
-router.get("/", auth, getCustomers);
+router.get(
+  "/",
+  auth,
+  getCustomers
+);
 
-router.get("/:id", auth, getCustomer);
+router.get(
+  "/:id",
+  auth,
+  getCustomer
+);
 
-router.patch("/:id", auth, updateCustomer);
+router.patch(
+  "/:id",
+  auth,
+  updateCustomer
+);
 
-router.delete("/:id", auth, deleteCustomer);
+router.delete(
+  "/:id",
+  auth,
+  deleteCustomer
+);
 
 export default router;
