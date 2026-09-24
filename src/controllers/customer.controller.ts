@@ -1,13 +1,15 @@
 import { Request, Response } from "express";
 import prisma from "../config/prisma";
 
-function getParam(
-  value: string | string[] | undefined
-): string {
+function getParam(value: string | string[] | undefined): string {
   return Array.isArray(value)
     ? value[0] ?? ""
     : value ?? "";
 }
+
+/* =========================================================
+   CREATE CUSTOMER
+========================================================= */
 
 export async function createCustomer(
   req: Request,
@@ -16,13 +18,18 @@ export async function createCustomer(
   try {
     const {
       name,
+      contactPersonName,
       phone,
       email,
       address,
+      region,
+      regionCode,
+      township,
+      townshipCode,
       creditLimit,
     } = req.body;
 
-    if (!name) {
+    if (!name || !String(name).trim()) {
       return res.status(400).json({
         success: false,
         message: "Customer name is required",
@@ -32,10 +39,48 @@ export async function createCustomer(
     const customer =
       await prisma.customer.create({
         data: {
-          name,
-          phone,
-          email,
-          address,
+          name: String(name).trim(),
+
+          contactPersonName:
+            contactPersonName
+              ? String(contactPersonName).trim()
+              : null,
+
+          phone:
+            phone
+              ? String(phone).trim()
+              : null,
+
+          email:
+            email
+              ? String(email).trim()
+              : null,
+
+          address:
+            address
+              ? String(address).trim()
+              : null,
+
+          region:
+            region
+              ? String(region).trim()
+              : null,
+
+          regionCode:
+            regionCode
+              ? String(regionCode).trim()
+              : null,
+
+          township:
+            township
+              ? String(township).trim()
+              : null,
+
+          townshipCode:
+            townshipCode
+              ? String(townshipCode).trim()
+              : null,
+
           creditLimit:
             Number(creditLimit ?? 0),
         },
@@ -46,8 +91,19 @@ export async function createCustomer(
       message: "Customer created successfully",
       data: customer,
     });
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error(
+      "CREATE CUSTOMER ERROR:",
+      error
+    );
+
+    if (error?.code === "P2002") {
+      return res.status(409).json({
+        success: false,
+        message:
+          "A customer with this phone number already exists",
+      });
+    }
 
     return res.status(500).json({
       success: false,
@@ -55,6 +111,10 @@ export async function createCustomer(
     });
   }
 }
+
+/* =========================================================
+   GET CUSTOMERS
+========================================================= */
 
 export async function getCustomers(
   req: Request,
@@ -66,9 +126,15 @@ export async function getCustomers(
         where: {
           isActive: true,
         },
-        orderBy: {
-          createdAt: "desc",
-        },
+
+        orderBy: [
+          {
+            customerNo: "asc",
+          },
+          {
+            createdAt: "asc",
+          },
+        ],
       });
 
     return res.json({
@@ -76,7 +142,10 @@ export async function getCustomers(
       data: customers,
     });
   } catch (error) {
-    console.error(error);
+    console.error(
+      "GET CUSTOMERS ERROR:",
+      error
+    );
 
     return res.status(500).json({
       success: false,
@@ -84,6 +153,10 @@ export async function getCustomers(
     });
   }
 }
+
+/* =========================================================
+   GET SINGLE CUSTOMER
+========================================================= */
 
 export async function getCustomer(
   req: Request,
@@ -94,13 +167,17 @@ export async function getCustomer(
 
     const customer =
       await prisma.customer.findUnique({
-        where: { id },
+        where: {
+          id,
+        },
+
         include: {
           sales: {
             orderBy: {
               createdAt: "desc",
             },
           },
+
           payments: {
             orderBy: {
               createdAt: "desc",
@@ -144,6 +221,7 @@ export async function getCustomer(
 
     return res.json({
       success: true,
+
       data: {
         customer,
         totalSales,
@@ -153,7 +231,10 @@ export async function getCustomer(
       },
     });
   } catch (error) {
-    console.error(error);
+    console.error(
+      "GET CUSTOMER ERROR:",
+      error
+    );
 
     return res.status(500).json({
       success: false,
@@ -161,6 +242,10 @@ export async function getCustomer(
     });
   }
 }
+
+/* =========================================================
+   UPDATE CUSTOMER
+========================================================= */
 
 export async function updateCustomer(
   req: Request,
@@ -171,26 +256,83 @@ export async function updateCustomer(
 
     const {
       name,
+      contactPersonName,
       phone,
       email,
       address,
+      region,
+      regionCode,
+      township,
+      townshipCode,
       creditLimit,
       isActive,
     } = req.body;
 
+    if (!name || !String(name).trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Customer name is required",
+      });
+    }
+
     const customer =
       await prisma.customer.update({
-        where: { id },
+        where: {
+          id,
+        },
+
         data: {
-          name,
-          phone,
-          email,
-          address,
+          name: String(name).trim(),
+
+          contactPersonName:
+            contactPersonName
+              ? String(contactPersonName).trim()
+              : null,
+
+          phone:
+            phone
+              ? String(phone).trim()
+              : null,
+
+          email:
+            email
+              ? String(email).trim()
+              : null,
+
+          address:
+            address
+              ? String(address).trim()
+              : null,
+
+          region:
+            region
+              ? String(region).trim()
+              : null,
+
+          regionCode:
+            regionCode
+              ? String(regionCode).trim()
+              : null,
+
+          township:
+            township
+              ? String(township).trim()
+              : null,
+
+          townshipCode:
+            townshipCode
+              ? String(townshipCode).trim()
+              : null,
+
           creditLimit:
             creditLimit !== undefined
               ? Number(creditLimit)
               : undefined,
-          isActive,
+
+          isActive:
+            isActive !== undefined
+              ? Boolean(isActive)
+              : undefined,
         },
       });
 
@@ -199,8 +341,26 @@ export async function updateCustomer(
       message: "Customer updated successfully",
       data: customer,
     });
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error(
+      "UPDATE CUSTOMER ERROR:",
+      error
+    );
+
+    if (error?.code === "P2002") {
+      return res.status(409).json({
+        success: false,
+        message:
+          "A customer with this phone number already exists",
+      });
+    }
+
+    if (error?.code === "P2025") {
+      return res.status(404).json({
+        success: false,
+        message: "Customer not found",
+      });
+    }
 
     return res.status(500).json({
       success: false,
@@ -208,6 +368,10 @@ export async function updateCustomer(
     });
   }
 }
+
+/* =========================================================
+   DELETE CUSTOMER
+========================================================= */
 
 export async function deleteCustomer(
   req: Request,
@@ -217,7 +381,10 @@ export async function deleteCustomer(
     const id = getParam(req.params.id);
 
     await prisma.customer.update({
-      where: { id },
+      where: {
+        id,
+      },
+
       data: {
         isActive: false,
       },
@@ -225,10 +392,21 @@ export async function deleteCustomer(
 
     return res.json({
       success: true,
-      message: "Customer deactivated successfully",
+      message:
+        "Customer deactivated successfully",
     });
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error(
+      "DELETE CUSTOMER ERROR:",
+      error
+    );
+
+    if (error?.code === "P2025") {
+      return res.status(404).json({
+        success: false,
+        message: "Customer not found",
+      });
+    }
 
     return res.status(500).json({
       success: false,
