@@ -20,23 +20,21 @@ function getId(req: AuthRequest): string {
    CREATE PRODUCT
 ========================================================= */
 
-export async function createProduct(
-  req: AuthRequest,
-  res: Response
-) {
+export const createProduct = async (req, res) => {
   try {
     const {
       name,
       productCode,
       unit,
       sellingPrice,
+      stock,
     } = req.body;
 
-    /* =====================================================
-       VALIDATION
-    ===================================================== */
+    // =========================
+    // REQUIRED FIELDS
+    // =========================
 
-    if (!name || !String(name).trim()) {
+    if (!name || !name.trim()) {
       return res.status(400).json({
         success: false,
         message: "Product name is required",
@@ -45,7 +43,7 @@ export async function createProduct(
 
     if (
       !productCode ||
-      !String(productCode).trim()
+      !productCode.trim()
     ) {
       return res.status(400).json({
         success: false,
@@ -53,62 +51,81 @@ export async function createProduct(
       });
     }
 
-    if (!unit) {
-      return res.status(400).json({
-        success: false,
-        message: "Product unit is required",
-      });
-    }
+    // =========================
+    // UNIT
+    // =========================
 
-    if (
-      unit !== "PCS" &&
-      unit !== "BOX" &&
-      unit !== "OTHER"
-    ) {
+    const allowedUnits = [
+      "PCS",
+      "BOX",
+      "OTHER",
+    ];
+
+    if (!allowedUnits.includes(unit)) {
       return res.status(400).json({
         success: false,
         message:
-          "Unit must be PCS, BOX or OTHER",
+          "Unit must be PCS, BOX, or OTHER",
       });
     }
 
-    if (
-      sellingPrice === undefined ||
-      sellingPrice === null ||
-      sellingPrice === ""
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "Selling price is required",
-      });
-    }
-
-    /* =====================================================
-       NUMBER VALIDATION
-    ===================================================== */
+    // =========================
+    // SELLING PRICE
+    // =========================
 
     const price = Number(sellingPrice);
 
-    if (!Number.isFinite(price) || price < 0) {
+    if (
+      !Number.isFinite(price) ||
+      price < 0
+    ) {
       return res.status(400).json({
         success: false,
         message: "Invalid selling price",
       });
     }
 
-    /* =====================================================
-       PRODUCT CODE DUPLICATE
-    ===================================================== */
+    // =========================
+    // STOCK
+    // =========================
 
-    const existingProductCode =
+    const initialStock = Number(stock);
+
+    if (
+      stock === undefined ||
+      stock === null ||
+      stock === ""
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Stock is required",
+      });
+    }
+
+    if (
+      !Number.isInteger(initialStock) ||
+      initialStock < 0
+    ) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Stock must be a whole number 0 or greater",
+      });
+    }
+
+    // =========================
+    // CHECK DUPLICATE PRODUCT CODE
+    // =========================
+
+    const existingProduct =
       await prisma.product.findFirst({
         where: {
           productCode:
-            String(productCode).trim(),
+            productCode.trim(),
         },
       });
 
-    if (existingProductCode) {
+    if (existingProduct) {
       return res.status(409).json({
         success: false,
         message:
@@ -116,20 +133,17 @@ export async function createProduct(
       });
     }
 
-    /* =====================================================
-       CREATE PRODUCT
-
-       Stock is NOT accepted from frontend.
-       New product starts with stock = 0.
-    ===================================================== */
+    // =========================
+    // CREATE PRODUCT
+    // =========================
 
     const product =
       await prisma.product.create({
         data: {
-          name: String(name).trim(),
+          name: name.trim(),
 
           productCode:
-            String(productCode).trim(),
+            productCode.trim(),
 
           unit,
 
@@ -137,16 +151,22 @@ export async function createProduct(
 
           sellingPrice: price,
 
-          stock: 0,
+          // ⭐ STOCK GOES TO DATABASE
+          stock: initialStock,
 
           status: "ACTIVE",
         },
       });
 
+    // =========================
+    // RESPONSE
+    // =========================
+
     return res.status(201).json({
       success: true,
       message:
         "Product created successfully",
+
       data: product,
     });
   } catch (error) {
@@ -158,10 +178,15 @@ export async function createProduct(
     return res.status(500).json({
       success: false,
       message:
-        "Internal server error",
+        "Failed to create product",
+      error:
+        process.env.NODE_ENV ===
+        "development"
+          ? error.message
+          : undefined,
     });
   }
-}
+};
 
 /* =========================================================
    GET ALL PRODUCTS
@@ -299,12 +324,9 @@ export async function getProductById(
    - stock
 ========================================================= */
 
-export async function updateProduct(
-  req: AuthRequest,
-  res: Response
-) {
+export const updateProduct = async (req, res) => {
   try {
-    const id = getId(req);
+    const { id } = req.params;
 
     const {
       name,
@@ -313,103 +335,86 @@ export async function updateProduct(
       sellingPrice,
     } = req.body;
 
-    /* =====================================================
-       ID
-    ===================================================== */
+    // =========================
+    // REQUIRED
+    // =========================
 
-    if (!id) {
+    if (!name || !name.trim()) {
       return res.status(400).json({
         success: false,
-        message:
-          "Product ID is required",
-      });
-    }
-
-    /* =====================================================
-       VALIDATION
-    ===================================================== */
-
-    if (!name || !String(name).trim()) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Product name is required",
+        message: "Product name is required",
       });
     }
 
     if (
       !productCode ||
-      !String(productCode).trim()
+      !productCode.trim()
     ) {
       return res.status(400).json({
         success: false,
-        message:
-          "Product code is required",
+        message: "Product code is required",
       });
     }
 
-    if (
-      unit !== "PCS" &&
-      unit !== "BOX" &&
-      unit !== "OTHER"
-    ) {
+    // =========================
+    // UNIT
+    // =========================
+
+    const allowedUnits = [
+      "PCS",
+      "BOX",
+      "OTHER",
+    ];
+
+    if (!allowedUnits.includes(unit)) {
       return res.status(400).json({
         success: false,
         message:
-          "Unit must be PCS, BOX or OTHER",
+          "Unit must be PCS, BOX, or OTHER",
       });
     }
 
-    if (
-      sellingPrice === undefined ||
-      sellingPrice === null ||
-      sellingPrice === ""
-    ) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Selling price is required",
-      });
-    }
+    // =========================
+    // PRICE
+    // =========================
 
     const price = Number(sellingPrice);
 
-    if (!Number.isFinite(price) || price < 0) {
+    if (
+      !Number.isFinite(price) ||
+      price < 0
+    ) {
       return res.status(400).json({
         success: false,
-        message:
-          "Invalid selling price",
+        message: "Invalid selling price",
       });
     }
 
-    /* =====================================================
-       CHECK PRODUCT
-    ===================================================== */
+    // =========================
+    // FIND PRODUCT
+    // =========================
 
-    const existingProduct =
+    const product =
       await prisma.product.findUnique({
-        where: {
-          id,
-        },
+        where: { id },
       });
 
-    if (!existingProduct) {
+    if (!product) {
       return res.status(404).json({
         success: false,
-        message:
-          "Product not found",
+        message: "Product not found",
       });
     }
 
-    /* =====================================================
-       PRODUCT CODE DUPLICATE
-    ===================================================== */
+    // =========================
+    // DUPLICATE CODE
+    // =========================
 
-    const existingProductCode =
+    const existingProduct =
       await prisma.product.findFirst({
         where: {
           productCode:
-            String(productCode).trim(),
+            productCode.trim(),
 
           NOT: {
             id,
@@ -417,7 +422,7 @@ export async function updateProduct(
         },
       });
 
-    if (existingProductCode) {
+    if (existingProduct) {
       return res.status(409).json({
         success: false,
         message:
@@ -425,30 +430,32 @@ export async function updateProduct(
       });
     }
 
-    /* =====================================================
-       UPDATE
+    // =========================
+    // UPDATE
+    // =========================
 
-       IMPORTANT:
-       stock is NOT included here.
-       Existing stock remains unchanged.
-    ===================================================== */
-
-    const product =
+    const updatedProduct =
       await prisma.product.update({
-        where: {
-          id,
-        },
+        where: { id },
 
         data: {
-          name:
-            String(name).trim(),
+          name: name.trim(),
 
           productCode:
-            String(productCode).trim(),
+            productCode.trim(),
 
           unit,
 
           sellingPrice: price,
+
+          /*
+           * IMPORTANT
+           *
+           * stock is intentionally NOT here.
+           *
+           * Therefore Edit Product
+           * cannot change stock.
+           */
         },
       });
 
@@ -456,7 +463,8 @@ export async function updateProduct(
       success: true,
       message:
         "Product updated successfully",
-      data: product,
+
+      data: updatedProduct,
     });
   } catch (error) {
     console.error(
@@ -467,11 +475,15 @@ export async function updateProduct(
     return res.status(500).json({
       success: false,
       message:
-        "Internal server error",
+        "Failed to update product",
+      error:
+        process.env.NODE_ENV ===
+        "development"
+          ? error.message
+          : undefined,
     });
   }
-}
-
+};
 /* =========================================================
    UPDATE PRODUCT STOCK
 
