@@ -11,7 +11,7 @@ import {
 } from "../controllers/product.controller";
 
 import {
-  auth,
+  authenticate,
   authorize,
 } from "../middleware/auth";
 
@@ -19,67 +19,60 @@ const router = Router();
 
 /*
 |--------------------------------------------------------------------------
-| CREATE PRODUCT
+| CREATE
+|--------------------------------------------------------------------------
+| POST /api/products
 |--------------------------------------------------------------------------
 */
 
 router.post(
   "/",
-  auth,
-  authorize(
-    "OWNER",
-    "ADMIN",
-    "MANAGER"
-  ),
+  authenticate,
+  authorize("OWNER", "ADMIN", "MANAGER"),
   createProduct
 );
 
 /*
 |--------------------------------------------------------------------------
-| GET ALL PRODUCTS
+| GET ALL
+|--------------------------------------------------------------------------
+| GET /api/products
+| GET /api/products?keyword=milk
 |--------------------------------------------------------------------------
 */
 
 router.get(
   "/",
-  auth,
+  authenticate,
   getProducts
 );
 
 /*
 |--------------------------------------------------------------------------
-| GET PRODUCT BY ID
+| GET ONE
+|--------------------------------------------------------------------------
+| GET /api/products/:id
 |--------------------------------------------------------------------------
 */
 
 router.get(
   "/:id",
-  auth,
+  authenticate,
   getProductById
 );
 
 /*
 |--------------------------------------------------------------------------
-| UPDATE PRODUCT
-|
-| Editable:
-| - name
-| - productCode
-| - unit
-| - sellingPrice
-|
-| Stock is NOT changed here.
+| UPDATE
+|--------------------------------------------------------------------------
+| PUT /api/products/:id
 |--------------------------------------------------------------------------
 */
 
 router.put(
   "/:id",
-  auth,
-  authorize(
-    "OWNER",
-    "ADMIN",
-    "MANAGER"
-  ),
+  authenticate,
+  authorize("OWNER", "ADMIN", "MANAGER"),
   updateProduct
 );
 
@@ -87,16 +80,14 @@ router.put(
 |--------------------------------------------------------------------------
 | UPDATE STOCK
 |--------------------------------------------------------------------------
+| PATCH /api/products/:id
+|--------------------------------------------------------------------------
 */
 
 router.patch(
   "/:id",
-  auth,
-  authorize(
-    "OWNER",
-    "ADMIN",
-    "MANAGER"
-  ),
+  authenticate,
+  authorize("OWNER", "ADMIN", "MANAGER"),
   updateProductStock
 );
 
@@ -104,32 +95,29 @@ router.patch(
 |--------------------------------------------------------------------------
 | UPDATE STATUS
 |--------------------------------------------------------------------------
+| PATCH /api/products/:id/status
+|--------------------------------------------------------------------------
 */
 
 router.patch(
   "/:id/status",
-  auth,
-  authorize(
-    "OWNER",
-    "ADMIN",
-    "MANAGER"
-  ),
+  authenticate,
+  authorize("OWNER", "ADMIN", "MANAGER"),
   updateProductStatus
 );
 
 /*
 |--------------------------------------------------------------------------
-| DELETE PRODUCT
+| DELETE
+|--------------------------------------------------------------------------
+| DELETE /api/products/:id
 |--------------------------------------------------------------------------
 */
 
 router.delete(
   "/:id",
-  auth,
-  authorize(
-    "OWNER",
-    "ADMIN"
-  ),
+  authenticate,
+  authorize("OWNER", "ADMIN"),
   deleteProduct
 );
 
