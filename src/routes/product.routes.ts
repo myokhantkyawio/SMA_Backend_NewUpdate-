@@ -80,7 +80,7 @@ router.put(
 
 router.patch(
   "/:id",
-  authenticate,
+
   updateProductStock
 );
 
