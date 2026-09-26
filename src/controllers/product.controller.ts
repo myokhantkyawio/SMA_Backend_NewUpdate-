@@ -1,10 +1,30 @@
 import { Response } from "express";
+
 import prisma from "../config/prisma";
 import { AuthRequest } from "../middleware/auth";
 
-/* =========================================================
-   GET ID
-========================================================= */
+/*
+|--------------------------------------------------------------------------
+| TYPES
+|--------------------------------------------------------------------------
+*/
+
+const ALLOWED_UNITS = [
+  "PCS",
+  "BOX",
+  "OTHER",
+] as const;
+
+const ALLOWED_STATUS = [
+  "ACTIVE",
+  "INACTIVE",
+] as const;
+
+/*
+|--------------------------------------------------------------------------
+| GET ID
+|--------------------------------------------------------------------------
+*/
 
 function getId(req: AuthRequest): string {
   const id = req.params.id;
@@ -16,11 +36,16 @@ function getId(req: AuthRequest): string {
   return id;
 }
 
-/* =========================================================
-   CREATE PRODUCT
-========================================================= */
+/*
+|--------------------------------------------------------------------------
+| CREATE PRODUCT
+|--------------------------------------------------------------------------
+*/
 
-export const createProduct = async (req, res) => {
+export async function createProduct(
+  req: AuthRequest,
+  res: Response
+) {
   try {
     const {
       name,
@@ -30,19 +55,30 @@ export const createProduct = async (req, res) => {
       stock,
     } = req.body;
 
-    // =========================
-    // REQUIRED FIELDS
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | NAME
+    |--------------------------------------------------------------------------
+    */
 
-    if (!name || !name.trim()) {
+    if (
+      typeof name !== "string" ||
+      !name.trim()
+    ) {
       return res.status(400).json({
         success: false,
         message: "Product name is required",
       });
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | PRODUCT CODE
+    |--------------------------------------------------------------------------
+    */
+
     if (
-      !productCode ||
+      typeof productCode !== "string" ||
       !productCode.trim()
     ) {
       return res.status(400).json({
@@ -51,17 +87,19 @@ export const createProduct = async (req, res) => {
       });
     }
 
-    // =========================
-    // UNIT
-    // =========================
+    const cleanName = name.trim();
+    const cleanProductCode =
+      productCode.trim();
 
-    const allowedUnits = [
-      "PCS",
-      "BOX",
-      "OTHER",
-    ];
+    /*
+    |--------------------------------------------------------------------------
+    | UNIT
+    |--------------------------------------------------------------------------
+    */
 
-    if (!allowedUnits.includes(unit)) {
+    if (
+      !ALLOWED_UNITS.includes(unit)
+    ) {
       return res.status(400).json({
         success: false,
         message:
@@ -69,11 +107,15 @@ export const createProduct = async (req, res) => {
       });
     }
 
-    // =========================
-    // SELLING PRICE
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | SELLING PRICE
+    |--------------------------------------------------------------------------
+    */
 
-    const price = Number(sellingPrice);
+    const price = Number(
+      sellingPrice
+    );
 
     if (
       !Number.isFinite(price) ||
@@ -81,15 +123,16 @@ export const createProduct = async (req, res) => {
     ) {
       return res.status(400).json({
         success: false,
-        message: "Invalid selling price",
+        message:
+          "Selling price must be a valid number",
       });
     }
 
-    // =========================
-    // STOCK
-    // =========================
-
-    const initialStock = Number(stock);
+    /*
+    |--------------------------------------------------------------------------
+    | STOCK
+    |--------------------------------------------------------------------------
+    */
 
     if (
       stock === undefined ||
@@ -102,6 +145,8 @@ export const createProduct = async (req, res) => {
       });
     }
 
+    const initialStock = Number(stock);
+
     if (
       !Number.isInteger(initialStock) ||
       initialStock < 0
@@ -113,15 +158,16 @@ export const createProduct = async (req, res) => {
       });
     }
 
-    // =========================
-    // CHECK DUPLICATE PRODUCT CODE
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | CHECK DUPLICATE PRODUCT CODE
+    |--------------------------------------------------------------------------
+    */
 
     const existingProduct =
       await prisma.product.findFirst({
         where: {
-          productCode:
-            productCode.trim(),
+          productCode: cleanProductCode,
         },
       });
 
@@ -133,17 +179,19 @@ export const createProduct = async (req, res) => {
       });
     }
 
-    // =========================
-    // CREATE PRODUCT
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | CREATE
+    |--------------------------------------------------------------------------
+    */
 
     const product =
       await prisma.product.create({
         data: {
-          name: name.trim(),
+          name: cleanName,
 
           productCode:
-            productCode.trim(),
+            cleanProductCode,
 
           unit,
 
@@ -151,95 +199,160 @@ export const createProduct = async (req, res) => {
 
           sellingPrice: price,
 
-          // ⭐ STOCK GOES TO DATABASE
           stock: initialStock,
 
           status: "ACTIVE",
         },
       });
 
-    // =========================
-    // RESPONSE
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSE
+    |--------------------------------------------------------------------------
+    */
 
     return res.status(201).json({
       success: true,
       message:
         "Product created successfully",
-
       data: product,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error(
-      "Create product error:",
+      "CREATE PRODUCT ERROR:",
       error
     );
+
+    /*
+    |--------------------------------------------------------------------------
+    | PRISMA UNIQUE ERROR
+    |--------------------------------------------------------------------------
+    */
+
+    if (error?.code === "P2002") {
+      return res.status(409).json({
+        success: false,
+        message:
+          "Product code already exists",
+      });
+    }
 
     return res.status(500).json({
       success: false,
       message:
         "Failed to create product",
-      error:
-        process.env.NODE_ENV ===
-        "development"
-          ? error.message
-          : undefined,
     });
   }
-};
+}
 
-/* =========================================================
-   GET ALL PRODUCTS
-
-   Search:
-   - name
-   - productCode
-========================================================= */
+/*
+|--------------------------------------------------------------------------
+| GET ALL PRODUCTS
+|--------------------------------------------------------------------------
+*/
 
 export async function getProducts(
   req: AuthRequest,
   res: Response
 ) {
   try {
-    const { search } = req.query;
+    const searchValue =
+      req.query.search;
 
-    const keyword = search
-      ? String(search).trim()
-      : "";
+    const keyword =
+      typeof searchValue === "string"
+        ? searchValue.trim()
+        : "";
+
+    console.log(
+      "GET /api/products"
+    );
+
+    console.log(
+      "PRODUCT SEARCH:",
+      keyword || "NONE"
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | WHERE
+    |--------------------------------------------------------------------------
+    */
+
+    const where =
+      keyword.length > 0
+        ? {
+            OR: [
+              {
+                name: {
+                  contains: keyword,
+                  mode: "insensitive" as const,
+                },
+              },
+              {
+                productCode: {
+                  contains: keyword,
+                  mode: "insensitive" as const,
+                },
+              },
+            ],
+          }
+        : undefined;
+
+    /*
+    |--------------------------------------------------------------------------
+    | COUNT
+    |--------------------------------------------------------------------------
+    */
+
+    const productCount =
+      await prisma.product.count({
+        where,
+      });
+
+    console.log(
+      "PRODUCT DATABASE COUNT:",
+      productCount
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | GET PRODUCTS
+    |--------------------------------------------------------------------------
+    */
 
     const products =
       await prisma.product.findMany({
-        where: keyword
-          ? {
-              OR: [
-                {
-                  name: {
-                    contains: keyword,
-                    mode: "insensitive",
-                  },
-                },
-                {
-                  productCode: {
-                    contains: keyword,
-                    mode: "insensitive",
-                  },
-                },
-              ],
-            }
-          : undefined,
+        where,
 
         orderBy: {
           createdAt: "desc",
         },
-
-        include: {
-          branches: {
-            include: {
-              branch: true,
-            },
-          },
-        },
       });
+
+    /*
+    |--------------------------------------------------------------------------
+    | LOG
+    |--------------------------------------------------------------------------
+    */
+
+    console.log(
+      "PRODUCTS RETURNED:",
+      products.length
+    );
+
+    if (products.length > 0) {
+      console.log(
+        "FIRST PRODUCT:",
+        products[0]
+      );
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSE
+    |--------------------------------------------------------------------------
+    */
 
     return res.status(200).json({
       success: true,
@@ -247,21 +360,23 @@ export async function getProducts(
     });
   } catch (error) {
     console.error(
-      "Get products error:",
+      "GET PRODUCTS ERROR:",
       error
     );
 
     return res.status(500).json({
       success: false,
       message:
-        "Internal server error",
+        "Failed to load products",
     });
   }
 }
 
-/* =========================================================
-   GET PRODUCT BY ID
-========================================================= */
+/*
+|--------------------------------------------------------------------------
+| GET PRODUCT BY ID
+|--------------------------------------------------------------------------
+*/
 
 export async function getProductById(
   req: AuthRequest,
@@ -270,18 +385,18 @@ export async function getProductById(
   try {
     const id = getId(req);
 
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Product ID is required",
+      });
+    }
+
     const product =
       await prisma.product.findUnique({
         where: {
           id,
-        },
-
-        include: {
-          branches: {
-            include: {
-              branch: true,
-            },
-          },
         },
       });
 
@@ -299,34 +414,32 @@ export async function getProductById(
     });
   } catch (error) {
     console.error(
-      "Get product error:",
+      "GET PRODUCT BY ID ERROR:",
       error
     );
 
     return res.status(500).json({
       success: false,
       message:
-        "Internal server error",
+        "Failed to load product",
     });
   }
 }
 
-/* =========================================================
-   UPDATE PRODUCT
+/*
+|--------------------------------------------------------------------------
+| UPDATE PRODUCT
+|
+| Stock is intentionally NOT updated here.
+|--------------------------------------------------------------------------
+*/
 
-   Editable:
-   - name
-   - productCode
-   - unit
-   - sellingPrice
-
-   NOT editable:
-   - stock
-========================================================= */
-
-export const updateProduct = async (req, res) => {
+export async function updateProduct(
+  req: AuthRequest,
+  res: Response
+) {
   try {
-    const { id } = req.params;
+    const id = getId(req);
 
     const {
       name,
@@ -335,38 +448,63 @@ export const updateProduct = async (req, res) => {
       sellingPrice,
     } = req.body;
 
-    // =========================
-    // REQUIRED
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | ID
+    |--------------------------------------------------------------------------
+    */
 
-    if (!name || !name.trim()) {
+    if (!id) {
       return res.status(400).json({
         success: false,
-        message: "Product name is required",
+        message:
+          "Product ID is required",
       });
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | NAME
+    |--------------------------------------------------------------------------
+    */
+
     if (
-      !productCode ||
+      typeof name !== "string" ||
+      !name.trim()
+    ) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Product name is required",
+      });
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | PRODUCT CODE
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+      typeof productCode !== "string" ||
       !productCode.trim()
     ) {
       return res.status(400).json({
         success: false,
-        message: "Product code is required",
+        message:
+          "Product code is required",
       });
     }
 
-    // =========================
-    // UNIT
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | UNIT
+    |--------------------------------------------------------------------------
+    */
 
-    const allowedUnits = [
-      "PCS",
-      "BOX",
-      "OTHER",
-    ];
-
-    if (!allowedUnits.includes(unit)) {
+    if (
+      !ALLOWED_UNITS.includes(unit)
+    ) {
       return res.status(400).json({
         success: false,
         message:
@@ -374,11 +512,15 @@ export const updateProduct = async (req, res) => {
       });
     }
 
-    // =========================
-    // PRICE
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | PRICE
+    |--------------------------------------------------------------------------
+    */
 
-    const price = Number(sellingPrice);
+    const price = Number(
+      sellingPrice
+    );
 
     if (
       !Number.isFinite(price) ||
@@ -386,35 +528,48 @@ export const updateProduct = async (req, res) => {
     ) {
       return res.status(400).json({
         success: false,
-        message: "Invalid selling price",
+        message:
+          "Selling price must be a valid number",
       });
     }
 
-    // =========================
-    // FIND PRODUCT
-    // =========================
+    const cleanName = name.trim();
 
-    const product =
+    const cleanProductCode =
+      productCode.trim();
+
+    /*
+    |--------------------------------------------------------------------------
+    | FIND PRODUCT
+    |--------------------------------------------------------------------------
+    */
+
+    const existing =
       await prisma.product.findUnique({
-        where: { id },
+        where: {
+          id,
+        },
       });
 
-    if (!product) {
+    if (!existing) {
       return res.status(404).json({
         success: false,
-        message: "Product not found",
+        message:
+          "Product not found",
       });
     }
 
-    // =========================
-    // DUPLICATE CODE
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | DUPLICATE PRODUCT CODE
+    |--------------------------------------------------------------------------
+    */
 
-    const existingProduct =
+    const duplicate =
       await prisma.product.findFirst({
         where: {
           productCode:
-            productCode.trim(),
+            cleanProductCode,
 
           NOT: {
             id,
@@ -422,7 +577,7 @@ export const updateProduct = async (req, res) => {
         },
       });
 
-    if (existingProduct) {
+    if (duplicate) {
       return res.status(409).json({
         success: false,
         message:
@@ -430,65 +585,69 @@ export const updateProduct = async (req, res) => {
       });
     }
 
-    // =========================
-    // UPDATE
-    // =========================
+    /*
+    |--------------------------------------------------------------------------
+    | UPDATE
+    |--------------------------------------------------------------------------
+    */
 
     const updatedProduct =
       await prisma.product.update({
-        where: { id },
+        where: {
+          id,
+        },
 
         data: {
-          name: name.trim(),
+          name: cleanName,
 
           productCode:
-            productCode.trim(),
+            cleanProductCode,
 
           unit,
 
           sellingPrice: price,
-
-          /*
-           * IMPORTANT
-           *
-           * stock is intentionally NOT here.
-           *
-           * Therefore Edit Product
-           * cannot change stock.
-           */
         },
       });
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSE
+    |--------------------------------------------------------------------------
+    */
 
     return res.status(200).json({
       success: true,
       message:
         "Product updated successfully",
-
       data: updatedProduct,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error(
-      "Update product error:",
+      "UPDATE PRODUCT ERROR:",
       error
     );
+
+    if (error?.code === "P2002") {
+      return res.status(409).json({
+        success: false,
+        message:
+          "Product code already exists",
+      });
+    }
 
     return res.status(500).json({
       success: false,
       message:
         "Failed to update product",
-      error:
-        process.env.NODE_ENV ===
-        "development"
-          ? error.message
-          : undefined,
     });
   }
-};
-/* =========================================================
-   UPDATE PRODUCT STOCK
+}
 
-   ONLY Stock Management uses this.
-========================================================= */
+/*
+|--------------------------------------------------------------------------
+| UPDATE PRODUCT STOCK
+|--------------------------------------------------------------------------
+*/
 
 export async function updateProductStock(
   req: AuthRequest,
@@ -499,6 +658,26 @@ export async function updateProductStock(
 
     const { stock } = req.body;
 
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Product ID is required",
+      });
+    }
+
+    if (
+      stock === undefined ||
+      stock === null ||
+      stock === ""
+    ) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Stock is required",
+      });
+    }
+
     const stockValue = Number(stock);
 
     if (
@@ -508,9 +687,15 @@ export async function updateProductStock(
       return res.status(400).json({
         success: false,
         message:
-          "Stock must be a valid number greater than or equal to 0",
+          "Stock must be a whole number 0 or greater",
       });
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CHECK PRODUCT
+    |--------------------------------------------------------------------------
+    */
 
     const existingProduct =
       await prisma.product.findUnique({
@@ -526,6 +711,12 @@ export async function updateProductStock(
           "Product not found",
       });
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | UPDATE STOCK
+    |--------------------------------------------------------------------------
+    */
 
     const product =
       await prisma.product.update({
@@ -546,7 +737,7 @@ export async function updateProductStock(
     });
   } catch (error) {
     console.error(
-      "Update product stock error:",
+      "UPDATE PRODUCT STOCK ERROR:",
       error
     );
 
@@ -558,9 +749,11 @@ export async function updateProductStock(
   }
 }
 
-/* =========================================================
-   UPDATE PRODUCT STATUS
-========================================================= */
+/*
+|--------------------------------------------------------------------------
+| UPDATE PRODUCT STATUS
+|--------------------------------------------------------------------------
+*/
 
 export async function updateProductStatus(
   req: AuthRequest,
@@ -570,6 +763,14 @@ export async function updateProductStatus(
     const id = getId(req);
 
     const { status } = req.body;
+
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Product ID is required",
+      });
+    }
 
     if (
       status !== "ACTIVE" &&
@@ -582,70 +783,11 @@ export async function updateProductStatus(
       });
     }
 
-    const product =
-      await prisma.product.findUnique({
-        where: {
-          id,
-        },
-      });
-
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-        message:
-          "Product not found",
-      });
-    }
-
-    const updated =
-      await prisma.product.update({
-        where: {
-          id,
-        },
-
-        data: {
-          status,
-        },
-      });
-
-    return res.status(200).json({
-      success: true,
-      message:
-        "Product status updated",
-      data: updated,
-    });
-  } catch (error) {
-    console.error(
-      "Update product status error:",
-      error
-    );
-
-    return res.status(500).json({
-      success: false,
-      message:
-        "Internal server error",
-    });
-  }
-}
-
-/* =========================================================
-   DELETE PRODUCT
-========================================================= */
-
-export async function deleteProduct(
-  req: AuthRequest,
-  res: Response
-) {
-  try {
-    const id = getId(req);
-
-    if (!id) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Product ID is required",
-      });
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | FIND PRODUCT
+    |--------------------------------------------------------------------------
+    */
 
     const existingProduct =
       await prisma.product.findUnique({
@@ -662,6 +804,91 @@ export async function deleteProduct(
       });
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | UPDATE
+    |--------------------------------------------------------------------------
+    */
+
+    const updated =
+      await prisma.product.update({
+        where: {
+          id,
+        },
+
+        data: {
+          status,
+        },
+      });
+
+    return res.status(200).json({
+      success: true,
+      message:
+        "Product status updated successfully",
+      data: updated,
+    });
+  } catch (error) {
+    console.error(
+      "UPDATE PRODUCT STATUS ERROR:",
+      error
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "Failed to update product status",
+    });
+  }
+}
+
+/*
+|--------------------------------------------------------------------------
+| DELETE PRODUCT
+|--------------------------------------------------------------------------
+*/
+
+export async function deleteProduct(
+  req: AuthRequest,
+  res: Response
+) {
+  try {
+    const id = getId(req);
+
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Product ID is required",
+      });
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | FIND PRODUCT
+    |--------------------------------------------------------------------------
+    */
+
+    const existingProduct =
+      await prisma.product.findUnique({
+        where: {
+          id,
+        },
+      });
+
+    if (!existingProduct) {
+      return res.status(404).json({
+        success: false,
+        message:
+          "Product not found",
+      });
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | DELETE
+    |--------------------------------------------------------------------------
+    */
+
     await prisma.product.delete({
       where: {
         id,
@@ -675,11 +902,19 @@ export async function deleteProduct(
     });
   } catch (error: any) {
     console.error(
-      "Delete product error:",
+      "DELETE PRODUCT ERROR:",
       error
     );
 
-    if (error?.code === "P2003") {
+    /*
+    |--------------------------------------------------------------------------
+    | FOREIGN KEY ERROR
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+      error?.code === "P2003"
+    ) {
       return res.status(409).json({
         success: false,
         message:
@@ -690,7 +925,7 @@ export async function deleteProduct(
     return res.status(500).json({
       success: false,
       message:
-        "Internal server error",
+        "Failed to delete product",
     });
   }
 }
