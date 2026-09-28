@@ -66,7 +66,9 @@ async function generateReceiptNumber(
     },
   });
 
-  return `SMA${String(nextValue).padStart(8, "0")}`;
+  return `SMA${String(
+    nextValue
+  ).padStart(8, "0")}`;
 }
 
 /* =========================================================
@@ -78,6 +80,50 @@ export async function createOrder(
   res: Response
 ) {
   try {
+    /* ==========================================
+       0. CHECK LOGIN USER
+    ========================================== */
+
+    const userId =
+      req.user?.id;
+
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message:
+          "Authenticated user not found",
+      });
+    }
+
+    /* ==========================================
+       1. GET CURRENT USER
+    ========================================== */
+
+    const currentUser =
+      await prisma.user.findUnique({
+        where: {
+          id: userId,
+        },
+
+        select: {
+          id: true,
+          name: true,
+          salesCode: true,
+        },
+      });
+
+    if (!currentUser) {
+      return res.status(401).json({
+        success: false,
+        message:
+          "User account not found",
+      });
+    }
+
+    /* ==========================================
+       2. REQUEST DATA
+    ========================================== */
+
     const {
       customerId,
       customerName,
@@ -90,49 +136,63 @@ export async function createOrder(
       paymentMethod,
     } = req.body;
 
+    /* ==========================================
+       3. VALIDATION
+    ========================================== */
+
     if (
       !Array.isArray(items) ||
       items.length === 0
     ) {
       return res.status(400).json({
         success: false,
-        message: "Order items are required",
+        message:
+          "Order items are required",
       });
     }
 
     if (!paymentMethod) {
       return res.status(400).json({
         success: false,
-        message: "Payment method is required",
+        message:
+          "Payment method is required",
       });
     }
+
+    /* ==========================================
+       4. CREATE TRANSACTION
+    ========================================== */
 
     const order =
       await prisma.$transaction(
         async (tx) => {
-          /* ==========================================
-             1. GENERATE INVOICE NUMBER
-          ========================================== */
+          /* ========================================
+             4.1 GENERATE INVOICE NUMBER
+          ======================================== */
 
           const receiptNumber =
-            await generateReceiptNumber(tx);
+            await generateReceiptNumber(
+              tx
+            );
 
-          /* ==========================================
-             2. DECREASE STOCK
-          ========================================== */
+          /* ========================================
+             4.2 DECREASE STOCK
+          ======================================== */
 
           for (const item of items) {
-            const productId = String(
-              item.productId ||
-                item.id ||
-                ""
-            );
+            const productId =
+              String(
+                item.productId ||
+                  item.id ||
+                  ""
+              );
 
-            const quantity = Number(
-              item.quantity ||
-                item.qty ||
-                0
-            );
+            const quantity =
+              Number(
+                item.quantity ||
+                  item.qty ||
+                  0
+              );
 
             if (!productId) {
               throw new Error(
@@ -165,13 +225,15 @@ export async function createOrder(
 
                 data: {
                   stock: {
-                    decrement: quantity,
+                    decrement:
+                      quantity,
                   },
                 },
               });
 
             if (
-              updatedProduct.count === 0
+              updatedProduct.count ===
+              0
             ) {
               const product =
                 await tx.product.findUnique({
@@ -192,14 +254,34 @@ export async function createOrder(
             }
           }
 
-          /* ==========================================
-             3. CREATE ORDER
-          ========================================== */
+          /* ========================================
+             4.3 CREATE ORDER
+          ======================================== */
 
           const createdOrder =
             await tx.order.create({
               data: {
+                /* ==================================
+                   INVOICE
+                ================================== */
+
                 receiptNumber,
+
+                /* ==================================
+                   SALES USER
+                ================================== */
+
+                salesCode:
+                  currentUser.salesCode ||
+                  null,
+
+                salesName:
+                  currentUser.name ||
+                  null,
+
+                /* ==================================
+                   CUSTOMER
+                ================================== */
 
                 customerId:
                   customerId || null,
@@ -215,6 +297,10 @@ export async function createOrder(
                 customerAddress:
                   customerAddress ||
                   null,
+
+                /* ==================================
+                   TOTALS
+                ================================== */
 
                 subtotal:
                   Number(
@@ -236,45 +322,52 @@ export async function createOrder(
                     paymentMethod
                   ),
 
+                /* ==================================
+                   ITEMS
+                ================================== */
+
                 items: {
-                  create: items.map(
-                    (item: any) => {
-                      const quantity =
-                        Number(
-                          item.quantity ||
-                            item.qty ||
-                            0
-                        );
+                  create:
+                    items.map(
+                      (
+                        item: any
+                      ) => {
+                        const quantity =
+                          Number(
+                            item.quantity ||
+                              item.qty ||
+                              0
+                          );
 
-                      const price =
-                        Number(
-                          item.price ||
-                            0
-                        );
+                        const price =
+                          Number(
+                            item.price ||
+                              0
+                          );
 
-                      return {
-                        productId:
-                          String(
-                            item.productId ||
-                              item.id
-                          ),
+                        return {
+                          productId:
+                            String(
+                              item.productId ||
+                                item.id
+                            ),
 
-                        name:
-                          String(
-                            item.name ||
-                              "Unnamed Product"
-                          ),
+                          name:
+                            String(
+                              item.name ||
+                                "Unnamed Product"
+                            ),
 
-                        price,
+                          price,
 
-                        quantity,
-
-                        amount:
-                          price *
                           quantity,
-                      };
-                    }
-                  ),
+
+                          amount:
+                            price *
+                            quantity,
+                        };
+                      }
+                    ),
                 },
               },
 
@@ -288,7 +381,7 @@ export async function createOrder(
       );
 
     /* ==========================================
-       4. RESPONSE
+       5. RESPONSE
     ========================================== */
 
     return res.status(201).json({

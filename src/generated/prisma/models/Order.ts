@@ -44,6 +44,8 @@ export type OrderMinAggregateOutputType = {
   receiptNumber: string | null
   customerName: string | null
   customerPhone: string | null
+  salesCode: string | null
+  salesName: string | null
   customerAddress: string | null
   subtotal: number | null
   discount: number | null
@@ -59,6 +61,8 @@ export type OrderMaxAggregateOutputType = {
   receiptNumber: string | null
   customerName: string | null
   customerPhone: string | null
+  salesCode: string | null
+  salesName: string | null
   customerAddress: string | null
   subtotal: number | null
   discount: number | null
@@ -74,6 +78,8 @@ export type OrderCountAggregateOutputType = {
   receiptNumber: number
   customerName: number
   customerPhone: number
+  salesCode: number
+  salesName: number
   customerAddress: number
   subtotal: number
   discount: number
@@ -103,6 +109,8 @@ export type OrderMinAggregateInputType = {
   receiptNumber?: true
   customerName?: true
   customerPhone?: true
+  salesCode?: true
+  salesName?: true
   customerAddress?: true
   subtotal?: true
   discount?: true
@@ -118,6 +126,8 @@ export type OrderMaxAggregateInputType = {
   receiptNumber?: true
   customerName?: true
   customerPhone?: true
+  salesCode?: true
+  salesName?: true
   customerAddress?: true
   subtotal?: true
   discount?: true
@@ -133,6 +143,8 @@ export type OrderCountAggregateInputType = {
   receiptNumber?: true
   customerName?: true
   customerPhone?: true
+  salesCode?: true
+  salesName?: true
   customerAddress?: true
   subtotal?: true
   discount?: true
@@ -235,6 +247,8 @@ export type OrderGroupByOutputType = {
   receiptNumber: string
   customerName: string | null
   customerPhone: string | null
+  salesCode: string | null
+  salesName: string | null
   customerAddress: string | null
   subtotal: number
   discount: number
@@ -273,6 +287,8 @@ export type OrderWhereInput = {
   receiptNumber?: Prisma.StringFilter<"Order"> | string
   customerName?: Prisma.StringNullableFilter<"Order"> | string | null
   customerPhone?: Prisma.StringNullableFilter<"Order"> | string | null
+  salesCode?: Prisma.StringNullableFilter<"Order"> | string | null
+  salesName?: Prisma.StringNullableFilter<"Order"> | string | null
   customerAddress?: Prisma.StringNullableFilter<"Order"> | string | null
   subtotal?: Prisma.FloatFilter<"Order"> | number
   discount?: Prisma.FloatFilter<"Order"> | number
@@ -289,6 +305,8 @@ export type OrderOrderByWithRelationInput = {
   receiptNumber?: Prisma.SortOrder
   customerName?: Prisma.SortOrderInput | Prisma.SortOrder
   customerPhone?: Prisma.SortOrderInput | Prisma.SortOrder
+  salesCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  salesName?: Prisma.SortOrderInput | Prisma.SortOrder
   customerAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   discount?: Prisma.SortOrder
@@ -308,6 +326,8 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   customerId?: Prisma.StringNullableFilter<"Order"> | string | null
   customerName?: Prisma.StringNullableFilter<"Order"> | string | null
   customerPhone?: Prisma.StringNullableFilter<"Order"> | string | null
+  salesCode?: Prisma.StringNullableFilter<"Order"> | string | null
+  salesName?: Prisma.StringNullableFilter<"Order"> | string | null
   customerAddress?: Prisma.StringNullableFilter<"Order"> | string | null
   subtotal?: Prisma.FloatFilter<"Order"> | number
   discount?: Prisma.FloatFilter<"Order"> | number
@@ -324,6 +344,8 @@ export type OrderOrderByWithAggregationInput = {
   receiptNumber?: Prisma.SortOrder
   customerName?: Prisma.SortOrderInput | Prisma.SortOrder
   customerPhone?: Prisma.SortOrderInput | Prisma.SortOrder
+  salesCode?: Prisma.SortOrderInput | Prisma.SortOrder
+  salesName?: Prisma.SortOrderInput | Prisma.SortOrder
   customerAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   discount?: Prisma.SortOrder
@@ -347,6 +369,8 @@ export type OrderScalarWhereWithAggregatesInput = {
   receiptNumber?: Prisma.StringWithAggregatesFilter<"Order"> | string
   customerName?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
   customerPhone?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
+  salesCode?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
+  salesName?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
   customerAddress?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
   subtotal?: Prisma.FloatWithAggregatesFilter<"Order"> | number
   discount?: Prisma.FloatWithAggregatesFilter<"Order"> | number
@@ -362,6 +386,8 @@ export type OrderCreateInput = {
   receiptNumber: string
   customerName?: string | null
   customerPhone?: string | null
+  salesCode?: string | null
+  salesName?: string | null
   customerAddress?: string | null
   subtotal: number
   discount?: number
@@ -378,6 +404,8 @@ export type OrderUncheckedCreateInput = {
   receiptNumber: string
   customerName?: string | null
   customerPhone?: string | null
+  salesCode?: string | null
+  salesName?: string | null
   customerAddress?: string | null
   subtotal: number
   discount?: number
@@ -394,6 +422,8 @@ export type OrderUpdateInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   customerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   discount?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -410,6 +440,8 @@ export type OrderUncheckedUpdateInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   customerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   discount?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -426,6 +458,8 @@ export type OrderCreateManyInput = {
   receiptNumber: string
   customerName?: string | null
   customerPhone?: string | null
+  salesCode?: string | null
+  salesName?: string | null
   customerAddress?: string | null
   subtotal: number
   discount?: number
@@ -441,6 +475,8 @@ export type OrderUpdateManyMutationInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   customerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   discount?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -456,6 +492,8 @@ export type OrderUncheckedUpdateManyInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   customerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   discount?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -471,6 +509,8 @@ export type OrderCountOrderByAggregateInput = {
   receiptNumber?: Prisma.SortOrder
   customerName?: Prisma.SortOrder
   customerPhone?: Prisma.SortOrder
+  salesCode?: Prisma.SortOrder
+  salesName?: Prisma.SortOrder
   customerAddress?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   discount?: Prisma.SortOrder
@@ -492,6 +532,8 @@ export type OrderMaxOrderByAggregateInput = {
   receiptNumber?: Prisma.SortOrder
   customerName?: Prisma.SortOrder
   customerPhone?: Prisma.SortOrder
+  salesCode?: Prisma.SortOrder
+  salesName?: Prisma.SortOrder
   customerAddress?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   discount?: Prisma.SortOrder
@@ -507,6 +549,8 @@ export type OrderMinOrderByAggregateInput = {
   receiptNumber?: Prisma.SortOrder
   customerName?: Prisma.SortOrder
   customerPhone?: Prisma.SortOrder
+  salesCode?: Prisma.SortOrder
+  salesName?: Prisma.SortOrder
   customerAddress?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   discount?: Prisma.SortOrder
@@ -555,6 +599,8 @@ export type OrderCreateWithoutItemsInput = {
   receiptNumber: string
   customerName?: string | null
   customerPhone?: string | null
+  salesCode?: string | null
+  salesName?: string | null
   customerAddress?: string | null
   subtotal: number
   discount?: number
@@ -570,6 +616,8 @@ export type OrderUncheckedCreateWithoutItemsInput = {
   receiptNumber: string
   customerName?: string | null
   customerPhone?: string | null
+  salesCode?: string | null
+  salesName?: string | null
   customerAddress?: string | null
   subtotal: number
   discount?: number
@@ -601,6 +649,8 @@ export type OrderUpdateWithoutItemsInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   customerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   discount?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -616,6 +666,8 @@ export type OrderUncheckedUpdateWithoutItemsInput = {
   receiptNumber?: Prisma.StringFieldUpdateOperationsInput | string
   customerName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salesName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   subtotal?: Prisma.FloatFieldUpdateOperationsInput | number
   discount?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -662,6 +714,8 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   receiptNumber?: boolean
   customerName?: boolean
   customerPhone?: boolean
+  salesCode?: boolean
+  salesName?: boolean
   customerAddress?: boolean
   subtotal?: boolean
   discount?: boolean
@@ -679,6 +733,8 @@ export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   receiptNumber?: boolean
   customerName?: boolean
   customerPhone?: boolean
+  salesCode?: boolean
+  salesName?: boolean
   customerAddress?: boolean
   subtotal?: boolean
   discount?: boolean
@@ -694,6 +750,8 @@ export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   receiptNumber?: boolean
   customerName?: boolean
   customerPhone?: boolean
+  salesCode?: boolean
+  salesName?: boolean
   customerAddress?: boolean
   subtotal?: boolean
   discount?: boolean
@@ -709,6 +767,8 @@ export type OrderSelectScalar = {
   receiptNumber?: boolean
   customerName?: boolean
   customerPhone?: boolean
+  salesCode?: boolean
+  salesName?: boolean
   customerAddress?: boolean
   subtotal?: boolean
   discount?: boolean
@@ -718,7 +778,7 @@ export type OrderSelectScalar = {
   updatedAt?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerId" | "receiptNumber" | "customerName" | "customerPhone" | "customerAddress" | "subtotal" | "discount" | "total" | "paymentMethod" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerId" | "receiptNumber" | "customerName" | "customerPhone" | "salesCode" | "salesName" | "customerAddress" | "subtotal" | "discount" | "total" | "paymentMethod" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   items?: boolean | Prisma.Order$itemsArgs<ExtArgs>
   _count?: boolean | Prisma.OrderCountOutputTypeDefaultArgs<ExtArgs>
@@ -737,6 +797,8 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     receiptNumber: string
     customerName: string | null
     customerPhone: string | null
+    salesCode: string | null
+    salesName: string | null
     customerAddress: string | null
     subtotal: number
     discount: number
@@ -1173,6 +1235,8 @@ export interface OrderFieldRefs {
   readonly receiptNumber: Prisma.FieldRef<"Order", 'String'>
   readonly customerName: Prisma.FieldRef<"Order", 'String'>
   readonly customerPhone: Prisma.FieldRef<"Order", 'String'>
+  readonly salesCode: Prisma.FieldRef<"Order", 'String'>
+  readonly salesName: Prisma.FieldRef<"Order", 'String'>
   readonly customerAddress: Prisma.FieldRef<"Order", 'String'>
   readonly subtotal: Prisma.FieldRef<"Order", 'Float'>
   readonly discount: Prisma.FieldRef<"Order", 'Float'>

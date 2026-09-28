@@ -43,6 +43,7 @@ model User {
   email            String            @unique
   passwordHash     String
   role             UserRole          @default(CASHIER)
+  salesCode String? @unique
   isActive         Boolean           @default(true)
   branchId         String?
   createdAt        DateTime          @default(now())
@@ -124,6 +125,8 @@ model Order {
   receiptNumber   String      @unique
   customerName    String?
   customerPhone   String?
+  salesCode String?
+salesName String?
   customerAddress String?
   subtotal        Float
   discount        Float       @default(0)
