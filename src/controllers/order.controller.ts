@@ -1,7 +1,73 @@
-
 import { Response } from "express";
 import prisma from "../config/prisma";
 import { AuthRequest } from "../middleware/auth";
+
+/* =========================================================
+   RECEIPT NUMBER GENERATOR
+   Result:
+   SMA00000001
+   SMA00000002
+   SMA00000003
+   ...
+========================================================= */
+
+async function generateReceiptNumber(
+  tx: any
+): Promise<string> {
+  const rows =
+    await tx.$queryRaw<
+      Array<{
+        id: string;
+        value: string | null;
+      }>
+    >`
+      SELECT "id", "value"
+      FROM "SystemSetting"
+      WHERE "key" = 'SALE_RECEIPT_COUNTER'
+      FOR UPDATE
+    `;
+
+  if (!rows || rows.length === 0) {
+    throw new Error(
+      "SALE_RECEIPT_COUNTER setting not found"
+    );
+  }
+
+  const setting = rows[0];
+
+  const currentValue =
+    Number(setting.value ?? "0");
+
+  if (
+    !Number.isInteger(currentValue) ||
+    currentValue < 0
+  ) {
+    throw new Error(
+      "Invalid SALE_RECEIPT_COUNTER value"
+    );
+  }
+
+  if (currentValue >= 99999999) {
+    throw new Error(
+      "Invoice number limit reached"
+    );
+  }
+
+  const nextValue =
+    currentValue + 1;
+
+  await tx.systemSetting.update({
+    where: {
+      id: setting.id,
+    },
+
+    data: {
+      value: String(nextValue),
+    },
+  });
+
+  return `SMA${String(nextValue).padStart(8, "0")}`;
+}
 
 /* =========================================================
    CREATE ORDER
@@ -45,7 +111,14 @@ export async function createOrder(
       await prisma.$transaction(
         async (tx) => {
           /* ==========================================
-             DECREASE STOCK
+             1. GENERATE INVOICE NUMBER
+          ========================================== */
+
+          const receiptNumber =
+            await generateReceiptNumber(tx);
+
+          /* ==========================================
+             2. DECREASE STOCK
           ========================================== */
 
           for (const item of items) {
@@ -79,36 +152,33 @@ export async function createOrder(
             }
 
             const updatedProduct =
-              await tx.product.updateMany(
-                {
-                  where: {
-                    id: productId,
-                    status: "ACTIVE",
-                    stock: {
-                      gte: quantity,
-                    },
-                  },
+              await tx.product.updateMany({
+                where: {
+                  id: productId,
 
-                  data: {
-                    stock: {
-                      decrement:
-                        quantity,
-                    },
+                  status: "ACTIVE",
+
+                  stock: {
+                    gte: quantity,
                   },
-                }
-              );
+                },
+
+                data: {
+                  stock: {
+                    decrement: quantity,
+                  },
+                },
+              });
 
             if (
               updatedProduct.count === 0
             ) {
               const product =
-                await tx.product.findUnique(
-                  {
-                    where: {
-                      id: productId,
-                    },
-                  }
-                );
+                await tx.product.findUnique({
+                  where: {
+                    id: productId,
+                  },
+                });
 
               if (!product) {
                 throw new Error(
@@ -123,92 +193,110 @@ export async function createOrder(
           }
 
           /* ==========================================
-             CREATE ORDER
+             3. CREATE ORDER
           ========================================== */
 
-         const createdOrder =
-  await tx.order.create({
-    data: {
-      receiptNumber,
+          const createdOrder =
+            await tx.order.create({
+              data: {
+                receiptNumber,
 
-      customerId:
-        customerId || null,
+                customerId:
+                  customerId || null,
 
-      customerName:
-        customerName ||
-        "Walk-in Customer",
+                customerName:
+                  customerName ||
+                  "Walk-in Customer",
 
-      customerPhone:
-        customerPhone || null,
+                customerPhone:
+                  customerPhone ||
+                  null,
 
-      customerAddress:
-        customerAddress || null,
+                customerAddress:
+                  customerAddress ||
+                  null,
 
-      subtotal:
-        Number(subtotal || 0),
+                subtotal:
+                  Number(
+                    subtotal || 0
+                  ),
 
-      discount:
-        Number(discount || 0),
+                discount:
+                  Number(
+                    discount || 0
+                  ),
 
-      total:
-        Number(total || 0),
+                total:
+                  Number(
+                    total || 0
+                  ),
 
-      paymentMethod:
-        String(paymentMethod),
+                paymentMethod:
+                  String(
+                    paymentMethod
+                  ),
 
-      items: {
-        create: items.map(
-          (item: any) => {
-            const quantity =
-              Number(
-                item.quantity ||
-                  item.qty ||
-                  0
-              );
+                items: {
+                  create: items.map(
+                    (item: any) => {
+                      const quantity =
+                        Number(
+                          item.quantity ||
+                            item.qty ||
+                            0
+                        );
 
-            const price =
-              Number(
-                item.price || 0
-              );
+                      const price =
+                        Number(
+                          item.price ||
+                            0
+                        );
 
-            return {
-              productId:
-                String(
-                  item.productId ||
-                    item.id
-                ),
+                      return {
+                        productId:
+                          String(
+                            item.productId ||
+                              item.id
+                          ),
 
-              name:
-                String(
-                  item.name ||
-                    "Unnamed Product"
-                ),
+                        name:
+                          String(
+                            item.name ||
+                              "Unnamed Product"
+                          ),
 
-              price,
+                        price,
 
-              quantity,
+                        quantity,
 
-              amount:
-                price *
-                quantity,
-            };
-          }
-        ),
-      },
-    },
+                        amount:
+                          price *
+                          quantity,
+                      };
+                    }
+                  ),
+                },
+              },
 
-    include: {
-      items: true,
-    },
-  });
+              include: {
+                items: true,
+              },
+            });
+
           return createdOrder;
         }
       );
 
+    /* ==========================================
+       4. RESPONSE
+    ========================================== */
+
     return res.status(201).json({
       success: true,
+
       message:
         "Order created successfully",
+
       data: order,
     });
   } catch (error: any) {
@@ -219,6 +307,7 @@ export async function createOrder(
 
     return res.status(400).json({
       success: false,
+
       message:
         error?.message ||
         "Failed to create order",
@@ -248,6 +337,7 @@ export async function getOrders(
 
     return res.json({
       success: true,
+
       data: orders,
     });
   } catch (error) {
@@ -258,6 +348,7 @@ export async function getOrders(
 
     return res.status(500).json({
       success: false,
+
       message:
         "Failed to get orders",
     });
@@ -273,25 +364,33 @@ export async function deleteOrder(
   res: Response
 ) {
   try {
-    const id = String(req.params.id);
+    const id =
+      String(
+        req.params.id
+      );
 
     if (!id) {
       return res.status(400).json({
         success: false,
-        message: "Order ID is required",
+
+        message:
+          "Order ID is required",
       });
     }
 
-    const order = await prisma.order.findUnique({
-      where: {
-        id,
-      },
-    });
+    const order =
+      await prisma.order.findUnique({
+        where: {
+          id,
+        },
+      });
 
     if (!order) {
       return res.status(404).json({
         success: false,
-        message: "Order not found",
+
+        message:
+          "Order not found",
       });
     }
 
@@ -303,7 +402,9 @@ export async function deleteOrder(
 
     return res.json({
       success: true,
-      message: "Order deleted successfully",
+
+      message:
+        "Order deleted successfully",
     });
   } catch (error) {
     console.error(
@@ -313,7 +414,9 @@ export async function deleteOrder(
 
     return res.status(500).json({
       success: false,
-      message: "Failed to delete order",
+
+      message:
+        "Failed to delete order",
     });
   }
 }
