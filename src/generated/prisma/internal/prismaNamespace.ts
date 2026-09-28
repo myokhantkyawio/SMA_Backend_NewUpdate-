@@ -2694,7 +2694,9 @@ export const ProductScalarFieldEnum = {
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  stock: 'stock'
+  stock: 'stock',
+  productCode: 'productCode',
+  unit: 'unit'
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -2703,6 +2705,7 @@ export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeo
 export const OrderScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
+  receiptNumber: 'receiptNumber',
   customerName: 'customerName',
   customerPhone: 'customerPhone',
   customerAddress: 'customerAddress',
