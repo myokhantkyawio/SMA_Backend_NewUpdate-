@@ -126,88 +126,81 @@ export async function createOrder(
              CREATE ORDER
           ========================================== */
 
-          const createdOrder =
-            await tx.order.create({
-              data: {
-                customerId:
-                  customerId || null,
+         const createdOrder =
+  await tx.order.create({
+    data: {
+      receiptNumber,
 
-                customerName:
-                  customerName ||
-                  "Walk-in Customer",
+      customerId:
+        customerId || null,
 
-                customerPhone:
-                  customerPhone ||
-                  null,
+      customerName:
+        customerName ||
+        "Walk-in Customer",
 
-                customerAddress:
-                  customerAddress ||
-                  null,
+      customerPhone:
+        customerPhone || null,
 
-                subtotal: Number(
-                  subtotal || 0
+      customerAddress:
+        customerAddress || null,
+
+      subtotal:
+        Number(subtotal || 0),
+
+      discount:
+        Number(discount || 0),
+
+      total:
+        Number(total || 0),
+
+      paymentMethod:
+        String(paymentMethod),
+
+      items: {
+        create: items.map(
+          (item: any) => {
+            const quantity =
+              Number(
+                item.quantity ||
+                  item.qty ||
+                  0
+              );
+
+            const price =
+              Number(
+                item.price || 0
+              );
+
+            return {
+              productId:
+                String(
+                  item.productId ||
+                    item.id
                 ),
 
-                discount: Number(
-                  discount || 0
+              name:
+                String(
+                  item.name ||
+                    "Unnamed Product"
                 ),
 
-                total: Number(
-                  total || 0
-                ),
+              price,
 
-                paymentMethod:
-                  String(
-                    paymentMethod
-                  ),
+              quantity,
 
-                items: {
-                  create: items.map(
-                    (item: any) => {
-                      const quantity =
-                        Number(
-                          item.quantity ||
-                            item.qty ||
-                            0
-                        );
+              amount:
+                price *
+                quantity,
+            };
+          }
+        ),
+      },
+    },
 
-                      const price =
-                        Number(
-                          item.price ||
-                            0
-                        );
-
-                      return {
-                        productId:
-                          String(
-                            item.productId ||
-                              item.id
-                          ),
-
-                        name:
-                          String(
-                            item.name ||
-                              "Unnamed Product"
-                          ),
-
-                        price,
-
-                        quantity,
-
-                        amount:
-                          price *
-                          quantity,
-                      };
-                    }
-                  ),
-                },
-              },
-
-              include: {
-                items: true,
-              },
-            });
-
+    include: {
+      items: true,
+    },
+  });
           return createdOrder;
         }
       );

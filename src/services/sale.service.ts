@@ -73,7 +73,12 @@ async function generateReceiptNumber(tx: any): Promise<string> {
     },
   });
 
-  return String(nextValue).padStart(8, "0");
+  return `SMA${String(
+  nextValue
+).padStart(
+  8,
+  "0"
+)}`;
 }
 
 /* =========================================================

@@ -1,9 +1,14 @@
-async function generateReceiptNumber(tx) {
+async function generateReceiptNumber(
+  tx: any
+): Promise<string> {
   const rows =
-    await tx.$queryRaw`
-      SELECT
-        "id",
-        "value"
+    await tx.$queryRaw<
+      Array<{
+        id: string;
+        value: string | null;
+      }>
+    >`
+      SELECT "id", "value"
       FROM "SystemSetting"
       WHERE "key" = 'SALE_RECEIPT_COUNTER'
       FOR UPDATE
@@ -18,22 +23,18 @@ async function generateReceiptNumber(tx) {
   const setting = rows[0];
 
   const currentValue =
-    Number(setting.value || 0);
+    Number(setting.value ?? "0");
 
   if (
-    !Number.isInteger(
-      currentValue
-    )
+    !Number.isInteger(currentValue) ||
+    currentValue < 0
   ) {
     throw new Error(
       "Invalid SALE_RECEIPT_COUNTER value"
     );
   }
 
-  if (
-    currentValue >=
-    99999999
-  ) {
+  if (currentValue >= 99999999) {
     throw new Error(
       "Invoice number limit reached"
     );
@@ -42,30 +43,16 @@ async function generateReceiptNumber(tx) {
   const nextValue =
     currentValue + 1;
 
-  const receiptNumber =
-    String(
-      nextValue
-    ).padStart(
-      8,
-      "0"
-    );
-
   await tx.systemSetting.update({
     where: {
       id: setting.id,
     },
-
     data: {
-      value: String(
-        nextValue
-      ),
-
-      updatedAt:
-        new Date(),
+      value: String(nextValue),
     },
   });
 
-  return receiptNumber;
+  return `SMA${String(nextValue).padStart(8, "0")}`;
 }
 
 module.exports = {
